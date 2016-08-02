@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements IView {
         initList();
 
         presenter.onCreate(savedInstanceState);
+
+        Toast.makeText(this,"dfsdf",Toast.LENGTH_LONG).show();
     }
 
     @Override
