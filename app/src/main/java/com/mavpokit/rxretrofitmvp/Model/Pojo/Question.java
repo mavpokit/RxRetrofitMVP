@@ -31,16 +31,16 @@ public class Question implements Serializable{
         return title;
     }
 
+    public int getAnswer_count() {
+        return answer_count;
+    }
+
     public void setLink(String link) {
         this.link = link;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getAnswer_count() {
-        return answer_count;
     }
 
     public void setAnswer_count(int answer_count) {
