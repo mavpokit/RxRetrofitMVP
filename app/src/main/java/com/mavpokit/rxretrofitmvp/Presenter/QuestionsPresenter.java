@@ -1,18 +1,11 @@
 package com.mavpokit.rxretrofitmvp.Presenter;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Model;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
-import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
-import com.mavpokit.rxretrofitmvp.View.IView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
 import rx.Observer;
 import rx.Subscription;
@@ -21,15 +14,15 @@ import rx.subscriptions.Subscriptions;
 /**
  * Created by Alex on 27.07.2016.
  */
-public class MainActivityPresenter implements IPresenter {
+public class QuestionsPresenter implements IQuestionsPresenter {
 
     IModel model = new Model();
-    private IView view;
+    private IQuestionsView view;
     private Subscription subscription = Subscriptions.empty();
     private ListQuestion listQuestion;
     private final static String Q_LIST_KEY = "questionList";
 
-    public MainActivityPresenter(IView view) {
+    public QuestionsPresenter(IQuestionsView view) {
         this.view = view;
     }
 

@@ -19,8 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
-import com.mavpokit.rxretrofitmvp.Presenter.IPresenter;
-import com.mavpokit.rxretrofitmvp.Presenter.MainActivityPresenter;
+import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
+import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapter.MyAdapter;
 
@@ -30,16 +30,16 @@ import butterknife.ButterKnife;
 /**
  * Created by Alex on 03.08.2016.
  */
-public class QuestionListFragment extends Fragment implements IView {
+public class QuestionsFragment extends Fragment implements IQuestionsView {
 
-    @BindView(R.id.my_recycler_view)
+    @BindView(R.id.questions_recycler_view)
     RecyclerView mRecyclerView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
     @BindView(R.id.emptyTextView)
     TextView emptyTextView;
 
-    private IPresenter presenter;
+    private IQuestionsPresenter presenter;
     private MyAdapter adapter;
 
     SearchView searchView;
@@ -60,7 +60,7 @@ public class QuestionListFragment extends Fragment implements IView {
         setHasOptionsMenu(true);
         ButterKnife.bind(this,view);
 
-        presenter = new MainActivityPresenter(this);
+        presenter = new QuestionsPresenter(this);
 
         initList();
 
