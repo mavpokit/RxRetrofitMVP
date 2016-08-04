@@ -7,6 +7,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,11 +45,12 @@ public class QuestionListFragment extends Fragment implements IView {
     SearchView searchView;
     private String searchViewText="";
 
-
+    private static String LOGTAG="------------------";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LOGTAG,"Fragment onCreate "+this.hashCode());
     }
 
     @Nullable
@@ -63,6 +65,8 @@ public class QuestionListFragment extends Fragment implements IView {
         initList();
 
         presenter.onCreate(savedInstanceState);
+
+        Log.d(LOGTAG,"Fragment onCreateView");
 
         return view;
     }
@@ -153,5 +157,11 @@ public class QuestionListFragment extends Fragment implements IView {
                 }
         );
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(LOGTAG,"Fragment onDestroy");
     }
 }
