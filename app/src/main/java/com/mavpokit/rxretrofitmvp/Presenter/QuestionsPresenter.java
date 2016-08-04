@@ -78,6 +78,16 @@ public class QuestionsPresenter implements IQuestionsPresenter {
         outState.putSerializable(Q_LIST_KEY, listQuestion);
     }
 
+    @Override
+    public void showAnswers(int position) {
+
+    }
+
+    @Override
+    public void openLink(int position) {
+        view.showQuestionList();
+    }
+
     private boolean isListEmpty(ListQuestion questionList) {
         return questionList != null && !questionList.getItems().isEmpty();
     }

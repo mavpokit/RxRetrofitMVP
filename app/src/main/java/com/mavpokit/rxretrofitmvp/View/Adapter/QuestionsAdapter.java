@@ -11,12 +11,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
+import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ViewHolder> {
     //private ArrayList<String> mDatasetTitle;
     //private ArrayList<String> mDatasetLink;
     private ListQuestion listQuestion =new ListQuestion();
+    private IQuestionsPresenter presenter;
+
+    public QuestionsAdapter(IQuestionsPresenter presenter) {
+        this.presenter = presenter;
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -45,8 +51,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public QuestionsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycle_view_questions_item, parent, false);
@@ -69,20 +75,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xc1,0xff,0xc1));
         else holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xd9,0xda,0xd9));
 
-        //holder.mCard.setCardBackgroundColor( (position%2==0) ? Color.GRAY : Color.LTGRAY );
+        holder.mTextViewLink.setOnClickListener(v ->  presenter.openLink(position));
 
-        holder.mTextViewLink.setOnClickListener(v ->  {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(listQuestion.getItems().get(position).getLink()));
-                Context context=v.getContext();
-                if (intent.resolveActivity(context.getPackageManager())!=null)
-                    context.startActivity(Intent.createChooser(intent,"Choose"));
-            }
-        );
-
-        holder.mTextViewAnswers.setOnClickListener(v-> {
-
-        });
-
+        holder.mTextViewAnswers.setOnClickListener(v-> presenter.showAnswers(position));
 
     }
 

@@ -10,4 +10,6 @@ public interface IQuestionsPresenter {
     void onStop();
     void onCreate(Bundle savedInstanceState);
     void onSaveInstanceState(Bundle outState);
+    void showAnswers(int position);
+    void openLink(int position);
 }

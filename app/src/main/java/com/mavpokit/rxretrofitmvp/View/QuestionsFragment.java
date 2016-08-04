@@ -1,5 +1,8 @@
 package com.mavpokit.rxretrofitmvp.View;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,7 +25,9 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
-import com.mavpokit.rxretrofitmvp.View.Adapter.MyAdapter;
+import com.mavpokit.rxretrofitmvp.View.Adapter.QuestionsAdapter;
+
+import java.net.URI;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +45,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     TextView emptyTextView;
 
     private IQuestionsPresenter presenter;
-    private MyAdapter adapter;
+    private QuestionsAdapter adapter;
 
     SearchView searchView;
     private String searchViewText="";
@@ -106,6 +111,14 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         mProgressBar.setVisibility(View.GONE);
     }
 
+    @Override
+    public void openLink(Uri link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, link);
+        if (intent.resolveActivity(getContext().getPackageManager())!=null)
+            startActivity(Intent.createChooser(intent,"Choose"));
+
+    }
+
     private void initList() {
         //mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -114,7 +127,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        adapter = new MyAdapter();
+        adapter = new QuestionsAdapter(presenter);
         mRecyclerView.setAdapter(adapter);
 
     }
