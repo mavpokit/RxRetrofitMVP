@@ -1,9 +1,11 @@
 package com.mavpokit.rxretrofitmvp.Model.Pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Alex on 01.08.2016.
  */
-public class Answer {
+public class Answer implements Serializable {
     int answer_id;
     boolean is_accepted;
     String body;
