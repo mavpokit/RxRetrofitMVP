@@ -1,5 +1,7 @@
 package com.mavpokit.rxretrofitmvp.Presenter;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.mavpokit.rxretrofitmvp.Model.IModel;
@@ -45,7 +47,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
             @Override
             public void onNext(ListQuestion questionList) {
-                if (isListEmpty(questionList)) {
+                if (isListNotEmpty(questionList)) {
                     listQuestion = questionList;
                     view.showQuestionList(questionList);
                     view.hideSpinner();
@@ -64,31 +66,30 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null)
             listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
-            if (isListEmpty(listQuestion)) {
-                view.showQuestionList(listQuestion);
-            }
 
-        }
+        if (isListNotEmpty(listQuestion))
+                view.showQuestionList(listQuestion);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        if (isListNotEmpty(listQuestion))
         outState.putSerializable(Q_LIST_KEY, listQuestion);
     }
 
     @Override
     public void showAnswers(int position) {
-
+        view.openAnswers(listQuestion.getItems().get(position));
     }
 
     @Override
     public void openLink(int position) {
-        view.showQuestionList();
+        view.openLink(Uri.parse(listQuestion.getItems().get(position).getLink()));
     }
 
-    private boolean isListEmpty(ListQuestion questionList) {
+    private boolean isListNotEmpty(ListQuestion questionList) {
         return questionList != null && !questionList.getItems().isEmpty();
     }
 

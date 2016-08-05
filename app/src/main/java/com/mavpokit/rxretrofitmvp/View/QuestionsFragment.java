@@ -22,12 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapter.QuestionsAdapter;
-
-import java.net.URI;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,13 +43,23 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @BindView(R.id.emptyTextView)
     TextView emptyTextView;
 
-    private IQuestionsPresenter presenter;
+    private IQuestionsPresenter presenter=new QuestionsPresenter(this);
+
     private QuestionsAdapter adapter;
+
+    OnShowAnswersListener listener;
 
     SearchView searchView;
     private String searchViewText="";
 
     private static String LOGTAG="------------------";
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener=(OnShowAnswersListener)context;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,9 +72,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_question_fragment, container, false);
         setHasOptionsMenu(true);
-        ButterKnife.bind(this,view);
 
-        presenter = new QuestionsPresenter(this);
+        ButterKnife.bind(this,view);
 
         initList();
 
@@ -78,6 +86,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        Log.d(LOGTAG,"Fragment onSaveInstanceState");
         super.onSaveInstanceState(outState);
         presenter.onSaveInstanceState(outState);
     }
@@ -117,6 +126,17 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         if (intent.resolveActivity(getContext().getPackageManager())!=null)
             startActivity(Intent.createChooser(intent,"Choose"));
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(LOGTAG,"Fragment onPause");
+    }
+
+    @Override
+    public void openAnswers(Question question) {
+        listener.openAnswersFragment(question);
     }
 
     private void initList() {
@@ -176,5 +196,9 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void onDestroy() {
         super.onDestroy();
         Log.d(LOGTAG,"Fragment onDestroy");
+    }
+
+    public interface OnShowAnswersListener{
+        void openAnswersFragment(Question question);
     }
 }

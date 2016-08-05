@@ -3,6 +3,7 @@ package com.mavpokit.rxretrofitmvp.View;
 import android.net.Uri;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 
 
 /**
@@ -15,4 +16,5 @@ public interface IQuestionsView {
     void showSpinner();
     void hideSpinner();
     void openLink(Uri link);
+    void openAnswers(Question question);
 }
