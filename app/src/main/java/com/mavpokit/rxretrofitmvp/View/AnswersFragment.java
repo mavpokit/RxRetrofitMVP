@@ -66,6 +66,12 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter.onCreate(savedInstanceState);
+    }
+
     private void initAnswersList() {
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -76,6 +82,14 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showAnswerList(ListAnswer answerList) {
+
+    }
+
+    @Override
+    public void showQuestion(Question question) {
+        textViewQuestionLink.setText(question.getLink());
+        textViewQuestionTitle.setText(question.getTitle());
+        textViewQuestionBody.setText(question.getBody());
 
     }
 

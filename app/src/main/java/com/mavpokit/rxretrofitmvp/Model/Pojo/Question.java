@@ -10,6 +10,9 @@ import java.io.Serializable;
 public class Question implements Serializable{
     String link;
     String title;
+    String body;
+
+
     int answer_count;
     long question_id;
 
@@ -34,6 +37,9 @@ public class Question implements Serializable{
     public int getAnswer_count() {
         return answer_count;
     }
+
+    public String getBody() {return body;}
+
 
     public void setLink(String link) {
         this.link = link;

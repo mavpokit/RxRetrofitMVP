@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * Created by Alex on 05.08.2016.
  */
-public class AnswersPresenter implements IAnswersPresenter{
+public class AnswersPresenter implements IAnswersPresenter {
     private static final String A_LIST_KEY = "A_LIST_KEY";
     IAnswersView view;
     private ListAnswer listAnswer;
@@ -21,19 +21,20 @@ public class AnswersPresenter implements IAnswersPresenter{
 
     public AnswersPresenter(IAnswersView view, Question question) {
         this.view = view;
-        this.question=question;
+        this.question = question;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null)
             listAnswer = (ListAnswer) savedInstanceState.getSerializable(A_LIST_KEY);
-            if (isListEmpty(listAnswer)) {
-                view.showAnswerList(listAnswer);
-            }
+    }
 
-        }
-
+    @Override
+    public void onCreateView(Bundle savedInstanceState) {
+        if (isListEmpty(listAnswer))
+            view.showAnswerList(listAnswer);
+        view.showQuestion(question);
     }
 
     @Override
