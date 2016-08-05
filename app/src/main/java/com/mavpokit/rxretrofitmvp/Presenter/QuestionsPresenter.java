@@ -69,9 +69,16 @@ public class QuestionsPresenter implements IQuestionsPresenter {
         if (savedInstanceState != null)
             listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
 
-        if (isListNotEmpty(listQuestion))
-                view.showQuestionList(listQuestion);
     }
+
+    @Override
+    public void onCreateView(Bundle savedInstanceState) {
+        if (isListNotEmpty(listQuestion))
+            view.showQuestionList(listQuestion);
+    }
+
+
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

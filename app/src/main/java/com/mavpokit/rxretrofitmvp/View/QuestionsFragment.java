@@ -63,6 +63,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        presenter.onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
         Log.d(LOGTAG,"Fragment onCreate "+this.hashCode());
     }
@@ -77,7 +78,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
         initList();
 
-        presenter.onCreate(savedInstanceState);
+        presenter.onCreateView(savedInstanceState);
 
         Log.d(LOGTAG,"Fragment onCreateView");
 
