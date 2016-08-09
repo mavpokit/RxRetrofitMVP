@@ -9,5 +9,5 @@ public interface IAnswersPresenter {
     public void onCreate(Bundle savedInstanceState);
     public void onCreateView(Bundle savedInstanceState);
     void onSaveInstanceState(Bundle outState);
-
+    void onStop();
 }

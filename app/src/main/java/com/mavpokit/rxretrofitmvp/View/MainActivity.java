@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.R;
+import com.mavpokit.rxretrofitmvp.View.Fragments.AnswersFragment;
+import com.mavpokit.rxretrofitmvp.View.Fragments.QuestionsFragment;
 
 public class MainActivity extends AppCompatActivity implements QuestionsFragment.OnShowAnswersListener {
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements QuestionsFragment
     @Override
     public void openAnswersFragment(Question question) {
         replaceFragment(AnswersFragment.getInstance(question), ANSWER_TAG, true);
+
     }
 }
 

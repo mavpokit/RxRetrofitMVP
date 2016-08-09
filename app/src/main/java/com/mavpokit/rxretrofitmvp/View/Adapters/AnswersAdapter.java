@@ -1,6 +1,7 @@
-package com.mavpokit.rxretrofitmvp.View.Adapter;
+package com.mavpokit.rxretrofitmvp.View.Adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
         }
     }
 
-    void setListAnswer(ListAnswer listAnswer) {
+    public void setListAnswer(ListAnswer listAnswer) {
         this.listAnswer = listAnswer;
         notifyDataSetChanged();
     }
@@ -57,7 +58,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextViewAnswer.setText(listAnswer.getItems().get(position).getBody());
+        holder.mTextViewAnswer.setText(Html.fromHtml( listAnswer.getItems().get(position).getBody()));
 
     }
 

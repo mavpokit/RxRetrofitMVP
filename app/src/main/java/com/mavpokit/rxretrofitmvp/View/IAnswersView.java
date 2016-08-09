@@ -12,4 +12,5 @@ public interface IAnswersView {
     void showError(String errorMessage);
     void showSpinner();
     void hideSpinner();
+    void showNothing();
 }

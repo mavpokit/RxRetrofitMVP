@@ -52,7 +52,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
                     view.showQuestionList(questionList);
                     view.hideSpinner();
                 } else
-                    view.showNoAnswer();
+                    view.showNothing();
             }
         });
 

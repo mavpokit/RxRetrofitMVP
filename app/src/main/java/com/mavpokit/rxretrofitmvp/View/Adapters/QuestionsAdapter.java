@@ -1,9 +1,6 @@
-package com.mavpokit.rxretrofitmvp.View.Adapter;
+package com.mavpokit.rxretrofitmvp.View.Adapters;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +37,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
             mTextViewTitle = (TextView)v.findViewById(R.id.textViewTitle);
             mTextViewLink = (TextView)v.findViewById(R.id.textViewLink);
             mTextViewAnswers = (TextView)v.findViewById(R.id.textViewAnswers);
-            //mCard = (CardView)v.findViewById(R.id.card_view);
+            //mCard = (CardView)v.findViewById(R.id.card_view);answers_card_view
         }
     }
 

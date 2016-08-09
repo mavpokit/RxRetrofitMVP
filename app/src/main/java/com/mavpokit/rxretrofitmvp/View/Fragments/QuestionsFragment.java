@@ -1,4 +1,4 @@
-package com.mavpokit.rxretrofitmvp.View;
+package com.mavpokit.rxretrofitmvp.View.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,8 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
-import com.mavpokit.rxretrofitmvp.View.Adapter.QuestionsAdapter;
+import com.mavpokit.rxretrofitmvp.View.Adapters.QuestionsAdapter;
+import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -100,7 +101,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     }
 
     @Override
-    public void showNoAnswer() {
+    public void showNothing() {
 
     }
 
@@ -136,8 +137,10 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     }
 
     @Override
-    public void openAnswers(Question question) {
+    public void openAnswers(Question question)
+    {
         listener.openAnswersFragment(question);
+
     }
 
     private void initList() {

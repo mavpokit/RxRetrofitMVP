@@ -40,6 +40,9 @@ public class Question implements Serializable{
 
     public String getBody() {return body;}
 
+    public long getQuestion_id() {
+        return question_id;
+    }
 
     public void setLink(String link) {
         this.link = link;
@@ -51,5 +54,10 @@ public class Question implements Serializable{
 
     public void setAnswer_count(int answer_count) {
         this.answer_count = answer_count;
+    }
+
+    @Override
+    public String toString() {
+        return title+"\n"+link;
     }
 }

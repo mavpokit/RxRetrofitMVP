@@ -11,7 +11,7 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
  */
 public interface IQuestionsView {
     void showQuestionList(ListQuestion questionList);
-    void showNoAnswer();
+    void showNothing();
     void showError(String errorMessage);
     void showSpinner();
     void hideSpinner();
