@@ -1,5 +1,6 @@
 package com.mavpokit.rxretrofitmvp.Presenter;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.mavpokit.rxretrofitmvp.Model.IModel;
@@ -88,5 +89,12 @@ public class AnswersPresenter implements IAnswersPresenter {
         if (!subscription.isUnsubscribed())
             subscription.unsubscribe();
     }
+
+    @Override
+
+    public void openLink() {
+        view.openLink(Uri.parse(question.getLink()));
+    }
+
 
 }
