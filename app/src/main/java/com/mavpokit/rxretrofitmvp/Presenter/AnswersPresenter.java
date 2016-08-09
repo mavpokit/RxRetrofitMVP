@@ -91,7 +91,6 @@ public class AnswersPresenter implements IAnswersPresenter {
     }
 
     @Override
-
     public void openLink() {
         view.openLink(Uri.parse(question.getLink()));
     }

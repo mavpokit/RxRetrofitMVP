@@ -1,5 +1,7 @@
 package com.mavpokit.rxretrofitmvp.View.Fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -93,6 +95,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         textViewQuestionLink.setText(question.getLink());
         textViewQuestionTitle.setText(question.getTitle());
         textViewQuestionBody.setText(Html.fromHtml(question.getBody()));
+        textViewQuestionLink.setOnClickListener(v -> presenter.openLink());
 
     }
 
@@ -129,4 +132,13 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         super.onStop();
         presenter.onStop();
     }
+
+    @Override
+    public void openLink(Uri link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, link);
+        if (intent.resolveActivity(getContext().getPackageManager())!=null)
+            startActivity(Intent.createChooser(intent,"Choose"));
+
+    }
+
 }
