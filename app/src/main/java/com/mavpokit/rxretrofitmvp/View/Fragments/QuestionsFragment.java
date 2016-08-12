@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
@@ -28,6 +29,8 @@ import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapters.QuestionsAdapter;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +47,9 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @BindView(R.id.emptyTextView)
     TextView emptyTextView;
 
-    private IQuestionsPresenter presenter=new QuestionsPresenter(this);
+    //private IQuestionsPresenter presenter=new QuestionsPresenter(this); before DI
+    @Inject
+    IQuestionsPresenter presenter;
 
     private QuestionsAdapter adapter;
 
@@ -64,7 +69,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        presenter.onCreate(savedInstanceState);
+        MyApplication.getAppComponent().inject(this);
+        presenter.onCreate(this, savedInstanceState);
         super.onCreate(savedInstanceState);
         Log.d(LOGTAG,"Fragment onCreate "+this.hashCode());
     }

@@ -3,11 +3,14 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Model;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.View.IAnswersView;
+
+import javax.inject.Inject;
 
 import rx.Observer;
 import rx.Subscription;
@@ -18,20 +21,26 @@ import rx.subscriptions.Subscriptions;
  */
 public class AnswersPresenter implements IAnswersPresenter {
     private static final String A_LIST_KEY = "A_LIST_KEY";
+
+    @Inject
+    IModel model;
+    //IModel model = new Model();before DI
+
     IAnswersView view;
-    IModel model = new Model();
     private ListAnswer listAnswer;
     private Question question;//we het it from args, so it is retained
     private Subscription subscription = Subscriptions.empty();
 
 
-    public AnswersPresenter(IAnswersView view, Question question) {
-        this.view = view;
-        this.question = question;
+    public AnswersPresenter() {
+        MyApplication.getAppComponent().inject(this);
+        //this.question = question;//before DI
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(IAnswersView view, Question question, Bundle savedInstanceState) {
+        this.view=view;
+        this.question=question;
         if (savedInstanceState != null)
             listAnswer = (ListAnswer) savedInstanceState.getSerializable(A_LIST_KEY);
     }

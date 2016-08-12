@@ -30,9 +30,8 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     private ListQuestion listQuestion;
     private final static String Q_LIST_KEY = "questionList";
 
-    public QuestionsPresenter(IQuestionsView view)
+    public QuestionsPresenter()
     {
-        this.view = view;
         MyApplication.getAppComponent().inject(this);
     }
 
@@ -73,7 +72,8 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
+        this.view = view;
         if (savedInstanceState != null)
             listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
 

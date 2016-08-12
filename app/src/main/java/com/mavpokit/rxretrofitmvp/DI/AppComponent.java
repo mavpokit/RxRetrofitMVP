@@ -15,11 +15,11 @@ import dagger.Component;
  * Created by Alex on 12.08.2016.
  */
 @Singleton
-@Component(modules = {ModelModule.class, PresenterModule.class})
+@Component(modules = {ModelModule.class, PresenterModule.class, QuestionsFragmentModule.class, AnswersFragmentModule.class})
 public interface AppComponent {
     public void inject(Model model);
     public void inject(QuestionsPresenter questionsPresenter);
-//    public void inject(AnswersPresenter answersPresenter);
-//    public void injext(QuestionsFragment questionsFragment);
-//    public void injext(AnswersFragment answersFragment);
+    public void inject(QuestionsFragment questionsFragment);
+    public void inject(AnswersPresenter answersPresenter);
+    public void inject(AnswersFragment answersFragment);
 }

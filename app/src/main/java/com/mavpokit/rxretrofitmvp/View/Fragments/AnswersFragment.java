@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.Presenter.AnswersPresenter;
@@ -22,6 +23,8 @@ import com.mavpokit.rxretrofitmvp.Presenter.IAnswersPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapters.AnswersAdapter;
 import com.mavpokit.rxretrofitmvp.View.IAnswersView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,20 +34,27 @@ import butterknife.ButterKnife;
  */
 public class AnswersFragment extends Fragment implements IAnswersView {
     private static final String TAG = "TAG";
-    @BindView(R.id.textViewQuestionLink)    TextView textViewQuestionLink;
-    @BindView(R.id.textViewQuestionTitle)   TextView textViewQuestionTitle;
-    @BindView(R.id.textViewQuestionBody)    TextView textViewQuestionBody;
-    @BindView(R.id.answers_recycler_view)   RecyclerView mRecyclerView;
-    @BindView(R.id.answersProgressBar)      ProgressBar mProgressBar;
+    @BindView(R.id.textViewQuestionLink)
+    TextView textViewQuestionLink;
+    @BindView(R.id.textViewQuestionTitle)
+    TextView textViewQuestionTitle;
+    @BindView(R.id.textViewQuestionBody)
+    TextView textViewQuestionBody;
+    @BindView(R.id.answers_recycler_view)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.answersProgressBar)
+    ProgressBar mProgressBar;
 
 
     private Question question;
 
-    private IAnswersPresenter presenter;
+    @Inject
+    IAnswersPresenter presenter;
+
     private AnswersAdapter adapter;
 
 
-    public static AnswersFragment getInstance(Question question){
+    public static AnswersFragment getInstance(Question question) {
         AnswersFragment fragment = new AnswersFragment();
         Bundle args = new Bundle();
         args.putSerializable(TAG, question);
@@ -56,7 +66,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_answer_fragment, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         initAnswersList();
 
@@ -65,15 +75,15 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         //Log.d(LOGTAG,"Fragment onCreateView");
 
         return view;
-
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        MyApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
-        question=(Question) getArguments().getSerializable(TAG);
-        presenter = new AnswersPresenter(this,question);
-        presenter.onCreate(savedInstanceState);
+        question = (Question) getArguments().getSerializable(TAG);
+        //presenter = new AnswersPresenter(this,question);//before DI
+        presenter.onCreate(this, question, savedInstanceState);
     }
 
     private void initAnswersList() {
@@ -91,7 +101,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showQuestion(Question question) {
-        if (question==null) return;
+        if (question == null) return;
         textViewQuestionLink.setText(question.getLink());
         textViewQuestionTitle.setText(question.getTitle());
         textViewQuestionBody.setText(Html.fromHtml(question.getBody()));
@@ -101,7 +111,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showError(String errorMessage) {
-        Toast.makeText(getContext(),errorMessage,Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -136,8 +146,8 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     @Override
     public void openLink(Uri link) {
         Intent intent = new Intent(Intent.ACTION_VIEW, link);
-        if (intent.resolveActivity(getContext().getPackageManager())!=null)
-            startActivity(Intent.createChooser(intent,"Choose"));
+        if (intent.resolveActivity(getContext().getPackageManager()) != null)
+            startActivity(Intent.createChooser(intent, "Choose"));
 
     }
 

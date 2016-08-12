@@ -11,11 +11,11 @@ import dagger.Provides;
 /**
  * Created by Alex on 12.08.2016.
  */
-//@Module
+@Module
 public class QuestionsFragmentModule {
-//    @Provides
-//    @Singleton
-//    QuestionsPresenter provideQuestionsPresenter(){
-//
-//    }
+    @Provides
+    @Singleton
+    IQuestionsPresenter provideQuestionsPresenter(){
+        return new QuestionsPresenter();
+    }
 }
