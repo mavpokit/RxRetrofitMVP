@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Model;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
+
+import javax.inject.Inject;
 
 import rx.Observer;
 import rx.Subscription;
@@ -18,14 +21,19 @@ import rx.subscriptions.Subscriptions;
  */
 public class QuestionsPresenter implements IQuestionsPresenter {
 
-    IModel model = new Model();
+    //IModel model = new Model(); //before DI
+    @Inject
+    IModel model;
+
     private IQuestionsView view;
     private Subscription subscription = Subscriptions.empty();
     private ListQuestion listQuestion;
     private final static String Q_LIST_KEY = "questionList";
 
-    public QuestionsPresenter(IQuestionsView view) {
+    public QuestionsPresenter(IQuestionsView view)
+    {
         this.view = view;
+        MyApplication.getAppComponent().inject(this);
     }
 
     @Override
