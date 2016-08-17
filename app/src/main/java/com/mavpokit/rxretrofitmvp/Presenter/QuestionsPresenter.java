@@ -74,13 +74,13 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     @Override
     public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
         this.view = view;
-        if (savedInstanceState != null)
-            listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
+//        if (savedInstanceState != null)
+//            listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
 
     }
 
     @Override
-    public void onCreateView(Bundle savedInstanceState) {
+    public void onCreateView() {
         if (isListNotEmpty(listQuestion))
             view.showQuestionList(listQuestion);
     }
@@ -90,8 +90,8 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        if (isListNotEmpty(listQuestion))
-        outState.putSerializable(Q_LIST_KEY, listQuestion);
+        //if (isListNotEmpty(listQuestion))
+        //outState.putSerializable(Q_LIST_KEY, listQuestion);
     }
 
     @Override
