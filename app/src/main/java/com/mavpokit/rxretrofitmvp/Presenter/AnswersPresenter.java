@@ -2,6 +2,8 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
@@ -24,7 +26,7 @@ public class AnswersPresenter implements IAnswersPresenter {
 
     @Inject
     IModel model;
-    //IModel model = new Model();before DI
+    //IModel model = new Model();//before DI
 
     IAnswersView view;
     private ListAnswer listAnswer;
@@ -34,8 +36,15 @@ public class AnswersPresenter implements IAnswersPresenter {
 
     public AnswersPresenter() {
         MyApplication.getAppComponent().inject(this);
-        //this.question = question;//before DI
     }
+
+//    public AnswersPresenter(IAnswersView view, Question question) {
+  //      MyApplication.getAppComponent().inject(this);
+        //this.question = question;//before DI
+        //this.view=view;
+        //this.question=question;
+
+    //}
 
     @Override
     public void onCreate(IAnswersView view, Question question, Bundle savedInstanceState) {
@@ -43,6 +52,8 @@ public class AnswersPresenter implements IAnswersPresenter {
         this.question=question;
         if (savedInstanceState != null)
             listAnswer = (ListAnswer) savedInstanceState.getSerializable(A_LIST_KEY);
+
+        Log.d("+++++++++++++","onCreate AnswersPresenter"+question.getQuestion_id());
     }
 
     private void loadAnswers() {
@@ -81,11 +92,7 @@ public class AnswersPresenter implements IAnswersPresenter {
     @Override
     public void onCreateView(Bundle savedInstanceState) {
         view.showQuestion(question);
-        if (isListNotEmpty(listAnswer))
-            view.showAnswerList(listAnswer);
-        else
-            loadAnswers();
-
+        loadAnswers();
     }
 
     @Override
