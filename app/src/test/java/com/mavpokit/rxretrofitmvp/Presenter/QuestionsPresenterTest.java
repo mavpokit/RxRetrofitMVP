@@ -46,10 +46,12 @@ public class QuestionsPresenterTest {
     @Mock
     private IQuestionsView view;
 
+    //@Inject
     IQuestionsPresenter presenter;
 
     @Before
     public void setUp() throws Exception {
+        //MyApplication.getAppComponent().inject(this);
         MockitoAnnotations.initMocks(this);
 
         question=new Question(LINK,"title",1,0);
