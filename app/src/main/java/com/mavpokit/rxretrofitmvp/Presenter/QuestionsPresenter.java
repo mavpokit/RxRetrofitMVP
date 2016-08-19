@@ -32,7 +32,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     public QuestionsPresenter()
     {
-        MyApplication.getAppComponent().inject(this);
+        //MyApplication.getAppComponent().inject(this);
     }
 
     @Override
@@ -73,6 +73,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     @Override
     public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
+//        MyApplication.getAppComponent().inject(this);
         this.view = view;
 //        if (savedInstanceState != null)
 //            listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
@@ -108,4 +109,9 @@ public class QuestionsPresenter implements IQuestionsPresenter {
         return questionList != null && !questionList.getItems().isEmpty();
     }
 
+    //for Tests
+    @Override
+    public void setListQuestion(ListQuestion listQuestion) {
+        this.listQuestion = listQuestion;
+    }
 }

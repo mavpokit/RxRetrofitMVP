@@ -2,6 +2,7 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 
 import android.os.Bundle;
 
+import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
 /**
@@ -15,4 +16,7 @@ public interface IQuestionsPresenter {
     void onSaveInstanceState(Bundle outState);
     void showAnswers(int position);
     void openLink(int position);
+
+    //for Tests
+    void setListQuestion(ListQuestion listQuestion);
 }
