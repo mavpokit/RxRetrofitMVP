@@ -28,7 +28,6 @@ import javax.inject.Inject;
 import dagger.Module;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**

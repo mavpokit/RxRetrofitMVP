@@ -32,7 +32,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     public QuestionsPresenter()
     {
-        //MyApplication.getAppComponent().inject(this);
+        MyApplication.getAppComponent().inject(this);
     }
 
     @Override
