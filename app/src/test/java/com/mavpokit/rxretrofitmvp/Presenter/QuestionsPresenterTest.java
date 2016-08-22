@@ -83,4 +83,8 @@ public class QuestionsPresenterTest {
         return questionList != null && !questionList.getItems().isEmpty();
     }
 
+    @Test
+    public void testOnSearchClick() throws Exception{
+
+    }
 }

@@ -33,9 +33,13 @@ public class AnswersPresenter implements IAnswersPresenter {
     private Question question;//we het it from args, so it is retained
     private Subscription subscription = Subscriptions.empty();
 
+    boolean newQuestion=false;
 
-    public AnswersPresenter() {
+
+    public AnswersPresenter()
+    {
         MyApplication.getAppComponent().inject(this);
+        Log.d("+++++++++++++","new AnswersPresenter");
     }
 
 //    public AnswersPresenter(IAnswersView view, Question question) {
@@ -47,11 +51,13 @@ public class AnswersPresenter implements IAnswersPresenter {
     //}
 
     @Override
-    public void onCreate(IAnswersView view, Question question, Bundle savedInstanceState) {
+    public void onCreate(IAnswersView view, Question question/*, Bundle savedInstanceState*/) {
         this.view=view;
         this.question=question;
-        if (savedInstanceState != null)
-            listAnswer = (ListAnswer) savedInstanceState.getSerializable(A_LIST_KEY);
+        newQuestion=true;
+
+        //if (savedInstanceState != null)
+          //  listAnswer = (ListAnswer) savedInstanceState.getSerializable(A_LIST_KEY);
 
         Log.d("+++++++++++++","onCreate AnswersPresenter"+question.getQuestion_id());
     }
@@ -90,15 +96,29 @@ public class AnswersPresenter implements IAnswersPresenter {
     }
 
     @Override
-    public void onCreateView(Bundle savedInstanceState) {
+    public void onCreateView(/*Bundle savedInstanceState*/) {
         view.showQuestion(question);
-        loadAnswers();
+
+        if (question.getAnswer_count()==0){
+            view.showNothing();
+            return;
+        }
+
+        if (newQuestion){
+            newQuestion=false;
+            loadAnswers();
+            return;
+        }
+
+        if (isListNotEmpty(listAnswer))
+            view.showAnswerList(listAnswer);
+
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable(A_LIST_KEY, listAnswer);
-    }
+    //@Override
+    //public void onSaveInstanceState(Bundle outState) {
+    //    outState.putSerializable(A_LIST_KEY, listAnswer);
+    //}
 
     @Override
     public void onStop() {

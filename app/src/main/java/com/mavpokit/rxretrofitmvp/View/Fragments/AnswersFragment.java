@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import butterknife.ButterKnife;
  */
 public class AnswersFragment extends Fragment implements IAnswersView {
     private static final String TAG = "TAG";
+    private static final String LOGTAG = "//////////////";
     @BindView(R.id.textViewQuestionLink)
     TextView textViewQuestionLink;
     @BindView(R.id.textViewQuestionTitle)
@@ -44,6 +46,8 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     RecyclerView mRecyclerView;
     @BindView(R.id.answersProgressBar)
     ProgressBar mProgressBar;
+    @BindView(R.id.textView0answers)
+    TextView textView0answers;
 
 
     private Question question;
@@ -70,9 +74,9 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
         initAnswersList();
 
-        presenter.onCreateView(savedInstanceState);
+        presenter.onCreateView();
 
-        //Log.d(LOGTAG,"Fragment onCreateView");
+        Log.d(LOGTAG,"AnswersFragment onCreateView");
 
         return view;
     }
@@ -83,7 +87,8 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         super.onCreate(savedInstanceState);
         question = (Question) getArguments().getSerializable(TAG);
         //presenter = new AnswersPresenter(this,question);//before DI
-        presenter.onCreate(this, question, savedInstanceState);
+        presenter.onCreate(this, question/*, savedInstanceState*/);
+        Log.d(LOGTAG,"AnswersFragment onCreate");
     }
 
     private void initAnswersList() {
@@ -128,13 +133,13 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showNothing() {
-
+        textView0answers.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        presenter.onSaveInstanceState(outState);
+        //presenter.onSaveInstanceState(outState);
     }
 
     @Override
@@ -150,5 +155,13 @@ public class AnswersFragment extends Fragment implements IAnswersView {
             startActivity(Intent.createChooser(intent, "Choose"));
 
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setRetainInstance(true);
+    }
+
 
 }
