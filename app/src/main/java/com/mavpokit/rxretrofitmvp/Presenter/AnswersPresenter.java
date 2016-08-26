@@ -3,20 +3,30 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Model;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Answer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.View.IAnswersView;
 
+import org.mockito.Mockito;
+
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
+import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
+
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Alex on 05.08.2016.
@@ -27,6 +37,7 @@ public class AnswersPresenter implements IAnswersPresenter {
     @Inject
     IModel model;
     //IModel model = new Model();//before DI
+    //IModel model= Mockito.mock(Model.class);
 
     IAnswersView view;
     private ListAnswer listAnswer;
@@ -35,10 +46,22 @@ public class AnswersPresenter implements IAnswersPresenter {
 
     boolean newQuestion=false;
 
+    public void setNewQuestion(boolean newQuestion) {
+        this.newQuestion = newQuestion;
+    }
+
+    public boolean isNewQuestion() {
+        return newQuestion;
+    }
+
+    public void setListAnswer(ListAnswer listAnswer) {
+        this.listAnswer = listAnswer;
+    }
 
     public AnswersPresenter()
     {
         MyApplication.getAppComponent().inject(this);
+        System.out.println("*****AnswersPresenter "+MyApplication.getAppComponent().hashCode() );
         Log.d("+++++++++++++","new AnswersPresenter");
     }
 
@@ -69,26 +92,26 @@ public class AnswersPresenter implements IAnswersPresenter {
         view.showSpinner();
 
         subscription = model.getAnswerList(String.valueOf(question.getQuestion_id())).subscribe(new Observer<ListAnswer>() {
-            @Override
-            public void onCompleted() {
-            }
+                @Override
+                public void onCompleted() {
+                }
 
-            @Override
-            public void onError(Throwable e) {
-                view.showError(e.getLocalizedMessage());
-            }
+                @Override
+                public void onError(Throwable e) {
+                    view.showError(e.getLocalizedMessage());
+                }
 
-            @Override
-            public void onNext(ListAnswer answerList) {
+                @Override
+                public void onNext(ListAnswer answerList) {
                 if (isListNotEmpty(answerList)) {
                     listAnswer = answerList;
                     view.showAnswerList(listAnswer);
-                    view.hideSpinner();
+
                 } else
                     view.showNothing();
-            }
-        });
-
+                }
+            });
+        view.hideSpinner();
     }
 
     private boolean isListNotEmpty(ListAnswer answerList) {
