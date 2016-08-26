@@ -11,10 +11,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent=DaggerAppComponent
-                .builder()
-                .build();
+        appComponent=buildComponent();
 
+    }
+
+    protected AppComponent buildComponent() {
+        return DaggerAppComponent.builder().build();
     }
 
     public static AppComponent getAppComponent() {

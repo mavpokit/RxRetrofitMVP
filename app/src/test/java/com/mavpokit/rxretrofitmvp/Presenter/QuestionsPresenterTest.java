@@ -3,6 +3,7 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 import android.net.Uri;
 
 import com.mavpokit.rxretrofitmvp.BuildConfig;
+import com.mavpokit.rxretrofitmvp.DI.AppTestComponent;
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
@@ -26,10 +27,7 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by Alex on 18.08.2016.
  */
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(application = MyTestApplication.class,
-        constants = BuildConfig.class, sdk = 19)
-public class QuestionsPresenterTest {
+public class QuestionsPresenterTest extends BaseTest{
 
     private static final String LINK="https://github.com";
     Question question;
@@ -44,7 +42,8 @@ public class QuestionsPresenterTest {
 
     @Before
     public void setUp() throws Exception {
-        MyTestApplication.getAppTestComponent().inject(this);
+        super.setUp();
+        component.inject(this);
         MockitoAnnotations.initMocks(this);
 
         question=new Question(LINK,"title",1,0);

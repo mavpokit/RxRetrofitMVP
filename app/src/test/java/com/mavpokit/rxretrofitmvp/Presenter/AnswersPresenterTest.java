@@ -1,9 +1,14 @@
 package com.mavpokit.rxretrofitmvp.Presenter;
 
 import android.net.Uri;
+import android.util.Log;
 
 import com.mavpokit.rxretrofitmvp.BuildConfig;
+import com.mavpokit.rxretrofitmvp.DI.AppTestComponent;
 import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
+import com.mavpokit.rxretrofitmvp.Model.IModel;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Answer;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.View.IAnswersView;
 
@@ -15,17 +20,22 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
+import rx.Observable;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 /**
  * Created by Alex on 22.08.2016.
  */
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(application = MyTestApplication.class,
-        constants = BuildConfig.class, sdk = 19)
-public class AnswersPresenterTest {
+public class AnswersPresenterTest extends BaseTest {
 
     @Inject
     IAnswersPresenter presenter;
@@ -34,31 +44,75 @@ public class AnswersPresenterTest {
     IAnswersView view;
 
     private static final String LINK="https://github.com";
-    private static final Question question=new Question(LINK,"title",1,0);
+    private static final Question question=new Question(LINK,"title",1,2);
+    private ArrayList<Answer> answerList=new ArrayList<>();
+    private ListAnswer listAnswer=new ListAnswer();
+
+
 
     @Before
     public void setUp() throws Exception {
-        MyTestApplication.getAppTestComponent().inject(this);
+        super.setUp();
+        component.inject(this);
         MockitoAnnotations.initMocks(this);
 
-        presenter.onCreate(view,question);
+        answerList.add(new Answer(1,true,"answer body"));
+        listAnswer.setItems(answerList);
 
     }
 
 
     @Test
     public void testOnCreate() throws Exception {
-
+        presenter.onCreate(view,question);
+        assertEquals(presenter.isNewQuestion(),true);
     }
 
     @Test
-    public void testOnCreateView() throws Exception {
-        //when answer count == 0, show only question
+    public void testOnCreateView0answers() throws Exception {
+        //when answer count == 0, show only question and text "No answers"
         question.setAnswer_count(0);
         presenter.onCreate(view,question);
         presenter.onCreateView();
         verify(view).showQuestion(question);
+        verify(view).showNothing();
+    }
 
+    @Test
+    public void testOnCreateView1answer() throws Exception {
+        //when answer count > 0, show only question and load answers
+        question.setAnswer_count(1);
+        when( model.getAnswerList(String.valueOf(question.getQuestion_id())) )
+                .thenReturn(Observable.just(listAnswer));
+        presenter.onCreate(view,question);
+        presenter.onCreateView();
+        verify(view).showQuestion(question);
+        verify(view).showSpinner();
+        verify(view).showAnswerList(listAnswer);
+        verify(view).hideSpinner();
+        verify(view,times(0)).showNothing();
+    }
+
+    @Test
+    public void testOnCreateViewRotate() throws Exception {
+        presenter.onCreate(view,question);
+        presenter.setNewQuestion(false);
+        presenter.setListAnswer(listAnswer);
+        presenter.onCreateView();
+        verify(view).showAnswerList(listAnswer);
+        verify(view,times(0)).showSpinner();
+    }
+
+    @Test
+    public void onError() throws Exception{
+        question.setAnswer_count(1);
+        when(model.getAnswerList(String.valueOf(question.getQuestion_id())) )
+                .thenReturn(Observable.error(new Throwable()));
+        presenter.onCreate(view,question);
+        presenter.onCreateView();
+        verify(view).showSpinner();
+        verify(view).showError(null);
+        verify(view).hideSpinner();
 
     }
 
@@ -72,9 +126,10 @@ public class AnswersPresenterTest {
 
     }
 
-//    @Test
-//    public void testOpenLink() throws Exception {
-//        presenter.openLink();
-//        verify(view).openLink(Uri.parse(question.getLink()));
-//    }
+    @Test
+    public void testOpenLink() throws Exception {
+        presenter.onCreate(view,question);
+        presenter.openLink();
+        verify(view).openLink(Uri.parse(question.getLink()));
+    }
 }
