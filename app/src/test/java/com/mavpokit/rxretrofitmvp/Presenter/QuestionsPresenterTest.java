@@ -2,43 +2,46 @@ package com.mavpokit.rxretrofitmvp.Presenter;
 
 import android.net.Uri;
 
-import com.mavpokit.rxretrofitmvp.BuildConfig;
-import com.mavpokit.rxretrofitmvp.DI.AppTestComponent;
-import com.mavpokit.rxretrofitmvp.DI.MyApplication;
-import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
+import com.mavpokit.rxretrofitmvp.BaseTest;
+import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import rx.Observable;
+
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Alex on 18.08.2016.
  */
-public class QuestionsPresenterTest extends BaseTest{
+public class QuestionsPresenterTest extends BaseTest {
 
     private static final String LINK="https://github.com";
+    private static final String QUERY="java";
+    private static final String ERROR_MESSAGE="ERROR_MESSAGE";
     Question question;
     ArrayList<Question> questionsList=new ArrayList<>();
-    private ListQuestion listQuestion=new ListQuestion();
+    private ListQuestion mListQuestion =new ListQuestion();
 
     @Mock
     private IQuestionsView view;
 
     @Inject
     IQuestionsPresenter presenter;
+
+    @Inject
+    IModel model;
 
     @Before
     public void setUp() throws Exception {
@@ -48,18 +51,18 @@ public class QuestionsPresenterTest extends BaseTest{
 
         question=new Question(LINK,"title",1,0);
         questionsList.add(question);
-        listQuestion.setItems(questionsList);
+        mListQuestion.setItems(questionsList);
 
         //presenter=new QuestionsPresenter();
         presenter.onCreate(view,null);
-        presenter.setListQuestion(listQuestion);
+        presenter.setListQuestion(mListQuestion);
     }
 
     @Test
     public void testShowAnswers() throws Exception {
         final int INDEX=0;
         presenter.showAnswers(INDEX);
-        verify(view).openAnswers(listQuestion.getItems().get(INDEX));
+        verify(view).openAnswers(mListQuestion.getItems().get(INDEX));
     }
 
     @Test
@@ -74,8 +77,8 @@ public class QuestionsPresenterTest extends BaseTest{
     @Test
     public void testOnCreateView() throws Exception{
         presenter.onCreateView();
-        if (isListNotEmpty(listQuestion))
-            verify(view).showQuestionList(listQuestion);
+        if (isListNotEmpty(mListQuestion))
+            verify(view).showQuestionList(mListQuestion);
     }
 
     private boolean isListNotEmpty(ListQuestion questionList) {
@@ -83,7 +86,31 @@ public class QuestionsPresenterTest extends BaseTest{
     }
 
     @Test
-    public void testOnSearchClick() throws Exception{
+    public void testOnSearchClick1result() throws Exception{
+        presenter.setListQuestion(null);
+        when(model.getQuestionList(QUERY)).thenReturn(Observable.just(mListQuestion));
+        presenter.onSearchClick(QUERY);
+        verify(view).showSpinner();
+        verify(view).showQuestionList(mListQuestion);
+        verify(view).hideSpinner();
+    }
 
+    @Test
+    public void testOnSearchClick0results() throws Exception{
+        presenter.setListQuestion(null);
+        when(model.getQuestionList(QUERY)).thenReturn(Observable.just(null));
+        presenter.onSearchClick(QUERY);
+        verify(view).showSpinner();
+        verify(view).showNothing();
+        verify(view).hideSpinner();
+    }
+    @Test
+    public void testOnSearchClickError() throws Exception{
+        presenter.setListQuestion(null);
+        when(model.getQuestionList(QUERY)).thenReturn(Observable.error(new Throwable(ERROR_MESSAGE)));
+        presenter.onSearchClick(QUERY);
+        verify(view).showSpinner();
+        verify(view).showError(ERROR_MESSAGE);
+        verify(view).hideSpinner();
     }
 }

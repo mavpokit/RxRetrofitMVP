@@ -1,6 +1,7 @@
 package com.mavpokit.rxretrofitmvp.DI;
 
 import com.mavpokit.rxretrofitmvp.Model.Model;
+import com.mavpokit.rxretrofitmvp.Model.ModelTest;
 import com.mavpokit.rxretrofitmvp.Presenter.AnswersPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.AnswersPresenterTest;
 import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
@@ -20,4 +21,5 @@ import dagger.Component;
 public interface AppTestComponent extends AppComponent{
     public void inject(QuestionsPresenterTest questionsPresenterTest);
     public void inject(AnswersPresenterTest answersPresenterTest);
+    public void inject(ModelTest modelTest);
 }

@@ -1,4 +1,4 @@
-package com.mavpokit.rxretrofitmvp.Presenter;
+package com.mavpokit.rxretrofitmvp;
 
 import com.mavpokit.rxretrofitmvp.BuildConfig;
 import com.mavpokit.rxretrofitmvp.DI.AppTestComponent;
@@ -19,8 +19,6 @@ import javax.inject.Inject;
 @Config(application = MyTestApplication.class,
         constants = BuildConfig.class, sdk = 19)
 public class BaseTest {
-    @Inject
-    IModel model;
 
     protected AppTestComponent component;
 

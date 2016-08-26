@@ -42,8 +42,6 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
         view.showSpinner();
 
-        System.out.println("=============================QP "+model.hashCode() );
-
         subscription = model.getQuestionList(query).subscribe(new Observer<ListQuestion>() {
             @Override
             public void onCompleted() {
@@ -59,12 +57,12 @@ public class QuestionsPresenter implements IQuestionsPresenter {
                 if (isListNotEmpty(questionList)) {
                     listQuestion = questionList;
                     view.showQuestionList(questionList);
-                    view.hideSpinner();
-                } else
+                }
+                else
                     view.showNothing();
             }
         });
-
+        view.hideSpinner();
     }
 
     @Override
