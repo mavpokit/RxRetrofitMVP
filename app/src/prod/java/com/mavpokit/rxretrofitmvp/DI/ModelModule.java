@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.HttpUrl;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -22,7 +23,7 @@ public class ModelModule {
     @Provides
     @Singleton
     StackoverflowApiInterface provideApiInterface(){
-        return ApiModule.getApiInterface();
+        return ApiModule.getApiInterface(HttpUrl.parse("https://api.stackexchange.com/"));
     }
     @Provides
     @Singleton

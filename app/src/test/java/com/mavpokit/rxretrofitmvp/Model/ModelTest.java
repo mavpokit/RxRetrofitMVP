@@ -8,6 +8,7 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
 
@@ -26,6 +27,7 @@ import static org.mockito.Mockito.when;
 /**
  * Created by Alex on 26.08.2016.
  */
+@Ignore
 public class ModelTest extends BaseTest {
 
     @Inject
