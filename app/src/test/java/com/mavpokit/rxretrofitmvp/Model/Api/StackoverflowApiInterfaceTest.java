@@ -46,10 +46,10 @@ public class StackoverflowApiInterfaceTest
         super.setUp();
         server = new MockWebServer();
         server.start();
-        String getQuestionsResponce = this.jsonReader.read("getquestions.json");
-        mListQuestion = this.jsonReader.getListQuestion("getquestions.json");
-        String getAnswersResponce = this.jsonReader.read("getanswers.json");
-        mListAnswer = this.jsonReader.getListAnswer("getanswers.json");
+        String getQuestionsResponce = jsonReader.read("getquestions.json");
+        mListQuestion = jsonReader.getListQuestion("getquestions.json");
+        String getAnswersResponce = jsonReader.read("getanswers.json");
+        mListAnswer = jsonReader.getListAnswer("getanswers.json");
 
         final Dispatcher dispatcher = new Dispatcher() {
 
@@ -69,7 +69,7 @@ public class StackoverflowApiInterfaceTest
         };
 
         server.setDispatcher((Dispatcher)dispatcher);
-        HttpUrl baseUrl = this.server.url("/");
+        HttpUrl baseUrl = server.url("/");
         apiInterface = ApiModule.getApiInterface((String)baseUrl.toString());
     }
 
