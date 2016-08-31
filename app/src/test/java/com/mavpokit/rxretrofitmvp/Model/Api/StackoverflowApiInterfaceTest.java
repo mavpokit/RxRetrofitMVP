@@ -31,6 +31,8 @@ import static org.junit.Assert.assertEquals;
 @Ignore
 public class StackoverflowApiInterfaceTest
         extends BaseTest {
+
+    private static final String HTTP_404_CLIENT_ERROR = "HTTP 404 Client Error";
     MockWebServer server;
     StackoverflowApiInterface apiInterface;
     private static final String QUERY = "java";
@@ -104,4 +106,25 @@ public class StackoverflowApiInterfaceTest
             assertEquals(actual, expected);
         }
     }
+
+    @Test
+    public void testGetQuestionsIncorrect() throws Exception {
+        try {
+            apiInterface.getQuestions("!!!!!!!!!!!!!!!").subscribe();
+        } catch (Exception expected) {
+            System.out.println(expected.getMessage());
+            assertEquals(HTTP_404_CLIENT_ERROR, expected.getMessage());
+        }
+    }
+    @Test
+    public void testGetAnswersIncorrect() throws Exception {
+        try {
+            apiInterface.getAnswers("!!!!!!!!!!!!!!!").subscribe();
+        } catch (Exception expected) {
+            System.out.println(expected.getMessage());
+            assertEquals(HTTP_404_CLIENT_ERROR, expected.getMessage());
+        }
+    }
+
+
 }
