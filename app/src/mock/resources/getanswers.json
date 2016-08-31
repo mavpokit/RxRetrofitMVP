@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "owner": {
+        "reputation": 19,
+        "user_id": 5962401,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/-3cSRR7sANow/AAAAAAAAAAI/AAAAAAAAAes/Imum8uupB4U/photo.jpg?sz=128",
+        "display_name": "Syagin Kumar",
+        "link": "http://stackoverflow.com/users/5962401/syagin-kumar"
+      },
+      "is_accepted": false,
+      "score": 0,
+      "last_activity_date": 1472633083,
+      "creation_date": 1472633083,
+      "answer_id": 39244816,
+      "question_id": 23804123,
+      "body": "<p>use .getAttribute(\"value\") to extract text</p>\n"
+    },
+    {
+      "owner": {
+        "reputation": 36,
+        "user_id": 4809579,
+        "user_type": "registered",
+        "accept_rate": 86,
+        "profile_image": "https://graph.facebook.com/949937175050412/picture?type=large",
+        "display_name": "Boyka Zhu",
+        "link": "http://stackoverflow.com/users/4809579/boyka-zhu"
+      },
+      "is_accepted": false,
+      "score": 0,
+      "last_activity_date": 1469588666,
+      "creation_date": 1469588666,
+      "answer_id": 38603013,
+      "question_id": 23804123,
+      "body": "<p>Java\n<code>ele.getAttribute(\"innerHTML\");</code> </p>\n\n<p>This could get the text already in the background and not displayed on the page yet.</p>\n"
+    },
+    {
+      "owner": {
+        "reputation": 2686,
+        "user_id": 1654825,
+        "user_type": "registered",
+        "accept_rate": 92,
+        "profile_image": "https://www.gravatar.com/avatar/23b190df02b302c4b87fdcbb9ea35229?s=128&d=identicon&r=PG",
+        "display_name": "Danstahr",
+        "link": "http://stackoverflow.com/users/1654825/danstahr"
+      },
+      "is_accepted": false,
+      "score": 0,
+      "last_activity_date": 1400754757,
+      "creation_date": 1400754757,
+      "answer_id": 23804332,
+      "question_id": 23804123,
+      "body": "<p>Simple answer - it's designed this way. <code>getText()</code> parses the content of the tag (i.e. its innerText), which is obviously empty for inputs.</p>\n"
+    },
+    {
+      "owner": {
+        "reputation": 502,
+        "user_id": 1811853,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/c57613f6b1c9b9801c9638421d976f3f?s=128&d=identicon&r=PG",
+        "display_name": "azraelAT",
+        "link": "http://stackoverflow.com/users/1811853/azraelat"
+      },
+      "is_accepted": true,
+      "score": 7,
+      "last_activity_date": 1400754701,
+      "creation_date": 1400754701,
+      "answer_id": 23804308,
+      "question_id": 23804123,
+      "body": "<p><a href=\"http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/WebElement.html#getText%28%29\">http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/WebElement.html#getText()</a></p>\n\n<p>getText() delivers the innerText of a WebElement.</p>\n\n<p>Your input field does not have any inner Text. The text is found inside your value-attribute, hence accessing it via getAttribute(\"value\") is the correct way to do it.</p>\n"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 300,
+  "quota_remaining": 298
+}

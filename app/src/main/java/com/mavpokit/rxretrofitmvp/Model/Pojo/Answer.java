@@ -30,5 +30,20 @@ public class Answer implements Serializable {
     public String getBody() {
         return body;
     }
+
+    public boolean equals(Object o) {
+        Answer equal = (Answer)o;
+        if (this.body != null && equal.body != null && !this.body.equals(equal.body)) {
+            return false;
+        }
+        if (this.answer_id != equal.answer_id) {
+            return false;
+        }
+        if (this.is_accepted != equal.is_accepted) {
+            return false;
+        }
+        return true;
+    }
+
 }
 

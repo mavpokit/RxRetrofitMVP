@@ -22,6 +22,6 @@ public interface StackoverflowApiInterface {
     @GET("2.2/search?order=desc&sort=activity&site=stackoverflow&filter=withbody")
     Observable<ListQuestion> getQuestions(@Query("tagged") String searchText);
 
-    @GET("/2.2/questions/{ids}/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody")
+    @GET("2.2/questions/{ids}/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody")
     Observable<ListAnswer> getAnswers(@Path("ids") String questionId);
 }

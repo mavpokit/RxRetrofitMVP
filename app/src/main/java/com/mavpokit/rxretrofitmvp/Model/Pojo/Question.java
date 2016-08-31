@@ -60,4 +60,24 @@ public class Question implements Serializable{
     public String toString() {
         return title+"\n"+link;
     }
+    public boolean equals(Object o) {
+        Question equal = (Question)o;
+        if (!this.link.equals(equal.link)) {
+            return false;
+        }
+        if (!this.title.equals(equal.title)) {
+            return false;
+        }
+        if (this.body != null && equal.body != null && !this.body.equals(equal.body)) {
+            return false;
+        }
+        if (this.answer_count != equal.answer_count) {
+            return false;
+        }
+        if (this.question_id != equal.question_id) {
+            return false;
+        }
+        return true;
+    }
+
 }

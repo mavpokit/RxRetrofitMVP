@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 /**
  * Created by Alex on 26.08.2016.
  */
-@Ignore
+
 public class ModelTest extends BaseTest {
 
     @Inject
