@@ -1,17 +1,13 @@
 package com.mavpokit.rxretrofitmvp;
 
-import com.mavpokit.rxretrofitmvp.BuildConfig;
 import com.mavpokit.rxretrofitmvp.DI.AppTestComponent;
 import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
-import com.mavpokit.rxretrofitmvp.Model.IModel;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
-
-import javax.inject.Inject;
 
 /**
  * Created by Alex on 25.08.2016.

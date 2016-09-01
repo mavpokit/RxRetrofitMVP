@@ -23,7 +23,7 @@ public class ModelModule {
     @Provides
     @Singleton
     StackoverflowApiInterface provideApiInterface(){
-        return ApiModule.getApiInterface(HttpUrl.parse("https://api.stackexchange.com/"));
+        return ApiModule.getApiInterface("https://api.stackexchange.com/");
     }
     @Provides
     @Singleton
