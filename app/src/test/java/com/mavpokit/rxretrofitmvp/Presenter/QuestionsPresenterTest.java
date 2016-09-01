@@ -37,8 +37,7 @@ public class QuestionsPresenterTest extends BaseTest {
     @Mock
     private IQuestionsView view;
 
-    @Inject
-    IQuestionsPresenter presenter;
+    IQuestionsPresenter presenter=new QuestionsPresenter();
 
     @Inject
     IModel model;

@@ -30,8 +30,7 @@ import static org.mockito.Mockito.when;
  */
 public class AnswersPresenterTest extends BaseTest {
 
-    @Inject
-    IAnswersPresenter presenter;
+    IAnswersPresenter presenter=new AnswersPresenter();
 
     @Inject
     IModel model;

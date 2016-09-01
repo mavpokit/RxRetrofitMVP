@@ -25,7 +25,6 @@ public class ModelModule {
     @Provides
     @Singleton
     StackoverflowApiInterface provideApiInterface(){
-        //return  ApiModule.getApiInterface();
         return mock(StackoverflowApiInterface.class);
     }
     @Provides

@@ -137,12 +137,6 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //presenter.onSaveInstanceState(outState);
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         presenter.onStop();

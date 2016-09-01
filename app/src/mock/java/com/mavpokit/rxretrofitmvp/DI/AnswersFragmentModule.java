@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import static org.mockito.Mockito.mock;
 
 /**
  * Created by Alex on 12.08.2016.
@@ -16,6 +17,6 @@ public class AnswersFragmentModule {
     @Provides
     @Singleton
     IAnswersPresenter provideIAnswersPresenter(){
-        return new AnswersPresenter();
+        return mock(AnswersPresenter.class);
     }
 }

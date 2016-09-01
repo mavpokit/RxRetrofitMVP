@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.mavpokit.rxretrofitmvp.BaseTest;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Answer;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
+import com.mavpokit.rxretrofitmvp.Presenter.IAnswersPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.MainActivity;
@@ -19,52 +22,55 @@ import javax.inject.Inject;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 /**
- * Created by Alex on 31.08.2016.
+ * Created by Alex on 01.09.2016.
  */
-public class QuestionsFragmentTest extends BaseTest{
+public class AnswersFragmentTest extends BaseTest{
 
     @Inject
-    IQuestionsPresenter presenter;
+    IAnswersPresenter presenter;
 
     //QuestionsFragment questionsFragment=new QuestionsFragment();
-    QuestionsFragment questionsFragment;
+    AnswersFragment answersFragment;
 
     Bundle bundle;
 
     MainActivity activity;
+
+    private static final String LINK="https://github.com";
+    private static final Question question=new Question(LINK,"title",1,2);
 
 
     @Before
     public void setUp() throws Exception {
         super.setUp();
         component.inject(this);
-        questionsFragment=new QuestionsFragment();
+        answersFragment=AnswersFragment.getInstance(question);
         bundle=Bundle.EMPTY;
-        //activity= Robolectric.setupActivity(MainActivity.class);
-        activity= Robolectric.buildActivity(MainActivity.class).create().get();
-        questionsFragment.onCreate(bundle);
+        activity= Robolectric.setupActivity(MainActivity.class);
+        //activity= Robolectric.buildActivity(MainActivity.class).create().get();
+        answersFragment.onCreate(bundle);
         System.out.println("setup");
     }
 
     @After
     public void tearDown() throws Exception {
-    }
 
-    @Test
-    public void testOnCreate() throws Exception {
-        verify(presenter).onCreate(questionsFragment,bundle);
     }
 
     @Test
     public void testOnCreateView() throws Exception {
-        questionsFragment.onCreateView(LayoutInflater.from(activity),(ViewGroup)activity.findViewById(R.id.container),null);
+        answersFragment.onCreateView(LayoutInflater.from(activity),(ViewGroup)activity.findViewById(R.id.container),null);
         verify(presenter).onCreateView();
     }
 
     @Test
-    public void testOnStop() throws Exception {
-        questionsFragment.onStop();
-        verify(presenter).onStop();
+    public void testOnCreate() throws Exception {
+        verify(presenter).onCreate(answersFragment,question);
     }
 
+    @Test
+    public void testOnStop() throws Exception {
+        answersFragment.onStop();
+        verify(presenter).onStop();
+    }
 }
