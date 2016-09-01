@@ -12,7 +12,7 @@ import dagger.Provides;
  * Created by Alex on 12.08.2016.
  */
 @Module
-public class PresenterModule {
+public class ModelProvider {
     @Provides
     @Singleton
     IModel provideModel(){

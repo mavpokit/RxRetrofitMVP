@@ -1,12 +1,10 @@
 package com.mavpokit.rxretrofitmvp.Presenter;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
-import com.mavpokit.rxretrofitmvp.Model.Model;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 

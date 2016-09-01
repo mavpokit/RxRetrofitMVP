@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
  * Created by Alex on 12.08.2016.
  */
 @Module
-public class PresenterModule {
+public class ModelMockProvider {
     @Provides
     @Singleton
     IModel provideModel(){

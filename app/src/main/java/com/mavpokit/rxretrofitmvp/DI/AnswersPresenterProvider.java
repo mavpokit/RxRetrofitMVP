@@ -7,16 +7,15 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import static org.mockito.Mockito.mock;
 
 /**
  * Created by Alex on 12.08.2016.
  */
 @Module
-public class AnswersFragmentModule {
+public class AnswersPresenterProvider {
     @Provides
     @Singleton
     IAnswersPresenter provideIAnswersPresenter(){
-        return mock(AnswersPresenter.class);
+        return new AnswersPresenter();
     }
 }

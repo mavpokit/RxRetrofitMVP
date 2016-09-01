@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
-import com.mavpokit.rxretrofitmvp.Presenter.AnswersPresenter;
 import com.mavpokit.rxretrofitmvp.Presenter.IAnswersPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapters.AnswersAdapter;
