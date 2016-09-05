@@ -14,7 +14,11 @@ import dagger.Component;
  * Created by Alex on 12.08.2016.
  */
 @Singleton
-@Component(modules = {ApiAndSchedulerProvider.class, ModelProvider.class, QuestionsPresenterProvider.class, AnswersPresenterProvider.class})
+@Component(modules = {ApiProvider.class,
+        SchedulerProvider.class,
+        ModelProvider.class,
+        QuestionsPresenterProvider.class,
+        AnswersPresenterProvider.class})
 public interface AppComponent {
     public void inject(Model model);
     public void inject(QuestionsPresenter questionsPresenter);

@@ -10,7 +10,7 @@ import java.io.PrintStream;
 import java.io.Reader;
 
 public class JsonReader {
-    String read(String filename) {
+    public String read(String filename) {
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(filename);
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder sb = new StringBuilder();
@@ -26,12 +26,12 @@ public class JsonReader {
         return sb.toString();
     }
 
-    ListQuestion getListQuestion(String filename) {
+    public ListQuestion getListQuestion(String filename) {
         ListQuestion listQuestion = (ListQuestion)new Gson().fromJson(this.read(filename), (Class)ListQuestion.class);
         return listQuestion;
     }
 
-    ListAnswer getListAnswer(String filename) {
+    public ListAnswer getListAnswer(String filename) {
         ListAnswer listAnswer = (ListAnswer)new Gson().fromJson(this.read(filename), (Class)ListAnswer.class);
         return listAnswer;
     }

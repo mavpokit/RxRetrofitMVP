@@ -1,0 +1,788 @@
+{
+  "items": [
+    {
+      "tags": [
+        "java",
+        "java-ee"
+      ],
+      "owner": {
+        "reputation": 3,
+        "user_id": 4809870,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/c6e2d30f45e424eda7868a59d2b070c5?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Guru Ayyappa",
+        "link": "http://stackoverflow.com/users/4809870/guru-ayyappa"
+      },
+      "is_answered": false,
+      "view_count": 8,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632773,
+      "creation_date": 1472632688,
+      "question_id": 39244665,
+      "link": "http://stackoverflow.com/questions/39244665/how-to-improve-perfomance-of-a-java-program",
+      "title": "How to improve perfomance of a java program?",
+      "body": "<p>I have a Calc Runner java class .In this class process 6000 recrods,each record have some calculation takes 5-6 days to process the all records.How to improve the code with multi threading Thanks in advance </p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "spring-data"
+      ],
+      "owner": {
+        "reputation": 11,
+        "user_id": 6396861,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/ac62cc49d30d23f67eba2e3672c518f7?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Sajad",
+        "link": "http://stackoverflow.com/users/6396861/sajad"
+      },
+      "is_answered": false,
+      "view_count": 8,
+      "answer_count": 1,
+      "score": 2,
+      "last_activity_date": 1472632734,
+      "creation_date": 1472631097,
+      "last_edit_date": 1472631807,
+      "question_id": 39244110,
+      "link": "http://stackoverflow.com/questions/39244110/sqlresultsetmapping-in-pojo",
+      "title": "SqlResultSetMapping in POJO",
+      "body": "<p>I have a simple POJO:</p>\n\n<p>I'm trying to map title column to title field:</p>\n\n<pre><code>@SqlResultSetMapping(\n        name = \"ownerSaleMapping\",\n        classes = {\n                @ConstructorResult(\n                        targetClass = OwnerSale.class,\n                        columns = {\n                                @ColumnResult(name = \"title\", type = String.class)\n                        }\n                )\n        }\n)\n\n@NamedNativeQuery(name = \"ownerSaleReport\", query = \"SELECT title FROM content where id=:contentId\", resultSetMapping = \"ownerSaleMapping\")\npublic class OwnerSale {\n\n    public OwnerSale() {\n    }\n\n     private String title;\n\n    public OwnerSale(String title) {\n        this.title = title;\n    }\n\n    public String getTitle() {\n        return title;\n    }\n\n    public void setTitle(String title) {\n        this.title = title;\n    }\n}\n</code></pre>\n\n<p>My repository interface:</p>\n\n<pre><code>public interface OwnerSaleRepository extends JpaRepository&lt;OwnerSale, Long&gt; {\n\n    List&lt;OwnerSale&gt; ownerSaleReport(@Param(\"contentId\") Long ownerId);\n}\n</code></pre>\n\n<p>But when i'm using that:</p>\n\n<pre><code>List&lt;OwnerSale&gt; sales = ownerSaleRepository.ownerSaleReport(6);\n</code></pre>\n\n<p>I got this error:</p>\n\n<pre><code>IllegalArgumentException: Not an managed type: class domain.owner.OwnerSale\n</code></pre>\n\n<p>But i need to <code>OwnerSale</code> be a <code>POJO</code> not an <code>Entity</code>.</p>\n\n<p>what is the solution?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "builder",
+        "jhipster"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 6777666,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/2385e357ec40ba8d27e4debac6d005d7?s=128&d=identicon&r=PG&f=1",
+        "display_name": "frida",
+        "link": "http://stackoverflow.com/users/6777666/frida"
+      },
+      "is_answered": false,
+      "view_count": 14,
+      "answer_count": 1,
+      "score": -5,
+      "last_activity_date": 1472632670,
+      "creation_date": 1472630942,
+      "question_id": 39244073,
+      "link": "http://stackoverflow.com/questions/39244073/i-run-into-trouble-when-i-make-my-java-procedures-to-package-i-do-not-know-why",
+      "title": "I run into trouble when i make my java Procedures to package,i do not know why?",
+      "body": "<p><a href=\"http://i.stack.imgur.com/fOBsN.jpg\" rel=\"nofollow\">i use hipster to builder my procedures,but it is wrong</a></p>\n\n<p>i use hipster to builder my procedures ,but it tell me this Problem</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android",
+        "xmpp",
+        "smack"
+      ],
+      "owner": {
+        "reputation": 332,
+        "user_id": 2828124,
+        "user_type": "registered",
+        "accept_rate": 78,
+        "profile_image": "https://www.gravatar.com/avatar/765ec0bb81fdfd608bb1e8f8b63f636c?s=128&d=identicon&r=PG&f=1",
+        "display_name": "architjn",
+        "link": "http://stackoverflow.com/users/2828124/architjn"
+      },
+      "is_answered": false,
+      "view_count": 21,
+      "answer_count": 1,
+      "score": -1,
+      "last_activity_date": 1472632665,
+      "creation_date": 1472277930,
+      "question_id": 39178024,
+      "link": "http://stackoverflow.com/questions/39178024/smack-api-group-not-working",
+      "title": "Smack Api Group not working",
+      "body": "<p>I am trying to create Group using Smack Api<br> \nI use the following code<br>\nIt crashes on <code>muc#roomconfig_roomowners</code> tag<br>\nIf i remove that line, it works fine, Group creates<br>\nBut no group is assigned to the current user, no one is owner</p>\n\n<pre><code>    public void createGroup() {\n        MultiUserChat chatRoom = MultiUserChatManager.getInstanceFor(mConnection).getMultiUserChat(\"room719@conference.\" + MYSITE);\n        try {\n            chatRoom.create(\"room719\");\n            Form form = chatRoom.getConfigurationForm().createAnswerForm();\n            form.setAnswer(\"muc#roomconfig_publicroom\", true);\n            form.setAnswer(\"muc#roomconfig_roomname\", \"room719\");\n//            List owners = new ArrayList();\n//            owners.add(\"currUser@\"+MYSITE);\n            form.setAnswer(\"muc#roomconfig_roomowners\", Arrays.asList(\"currUser@\"+MYSITE));\n            form.setAnswer(\"muc#roomconfig_persistentroom\", true);\n            chatRoom.sendConfigurationForm(form);\n        } catch (XMPPException.XMPPErrorException e) {\n            e.printStackTrace();\n        } catch (SmackException e) {\n            e.printStackTrace();\n        } catch (IllegalStateException e) {\n            e.printStackTrace();\n        }\n    }\n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "xml",
+        "spring"
+      ],
+      "owner": {
+        "reputation": 3,
+        "user_id": 6264661,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/740c3e2a0e7fb876582c1f373e0c997f?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Naresh Gounder",
+        "link": "http://stackoverflow.com/users/6264661/naresh-gounder"
+      },
+      "is_answered": false,
+      "view_count": 6,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632623,
+      "creation_date": 1472632623,
+      "question_id": 39244637,
+      "link": "http://stackoverflow.com/questions/39244637/to-convert-larger-xml-file-into-json-csv-by-spring-sts-java",
+      "title": "To Convert Larger XML file into Json/Csv by spring STS Java",
+      "body": "<p>How to Convert Larger XML File into json or csv using spring sts java or any other way  ???? (Xml file size is 400mb)</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "gzip",
+        "netty"
+      ],
+      "owner": {
+        "reputation": 6,
+        "user_id": 5180335,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/bf5301b2b3a0e383410aa3cde55f5787?s=128&d=identicon&r=PG&f=1",
+        "display_name": "NguyenPhan",
+        "link": "http://stackoverflow.com/users/5180335/nguyenphan"
+      },
+      "is_answered": false,
+      "view_count": 5,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632591,
+      "creation_date": 1472631748,
+      "last_edit_date": 1472632591,
+      "question_id": 39244348,
+      "link": "http://stackoverflow.com/questions/39244348/how-to-decompress-httpcontentgzip-in-netty-to-view-plain-html-content",
+      "title": "How to decompress httpContent(gzip) in netty to view plain html content?",
+      "body": "<p>I try override the serverToProxyResponse method to view plain html content from the server by the following codes:</p>\n\n<pre><code>    @Override\n    public HttpObject serverToProxyResponse(HttpObject httpObject) {\n        try{\n        if(httpObject instanceof HttpResponse){\n            HttpResponse _response = (HttpResponse) httpObject;\n            HttpHeaders _response_header = _response.headers();\n\n            if(!_response_header.isEmpty()){\n                lastResponseHeaderContentType = _response_header.get(HttpHeaders.Names.CONTENT_TYPE).toLowerCase();\n                lastResponseHeaderContentEncoding = _response_header.get(HttpHeaders.Names.CONTENT_ENCODING);\n                Utilities.appendAllText(Utilities.getCurrentDir() + File.separator + \"Content_type.txt\", lastResponseHeaderContentType + \"\\n\");\n                Utilities.appendAllText(Utilities.getCurrentDir() + File.separator + \"Content_type.txt\", lastResponseHeaderContentEncoding + \"\\n\");\n            }                                   \n        }\n\n        if(httpObject instanceof HttpContent){\n            HttpContent _content = (HttpContent) httpObject;\n            if(lastResponseHeaderContentType.contains(\"text\") &amp;&amp; lastResponseHeaderContentEncoding.equals(HttpHeaders.Values.GZIP)){\n                HttpContent content_copy = _content.copy();\n                //Utilities.appendAllText(Utilities.getCurrentDir() + File.separator + \"response_content.txt\", content_copy.content().toString(CharsetUtil.UTF_8));\n                ResponseContentProcessing.storeResponseContent(content_copy);\n                ResponseContentProcessing.captureFullResponseContents();\n            }\n        }                               \n        }catch(Exception ex){\n\n        }\n        return httpObject;\n    }\n</code></pre>\n\n<p>and ResponseContentProcessing class:</p>\n\n<pre><code>    import java.io.ByteArrayInputStream;\n    import java.io.ByteArrayOutputStream;\n    import java.io.File;\n    import java.io.FileNotFoundException;\n    import java.io.IOException;\n    import java.util.zip.GZIPInputStream;\n    import java.util.zip.InflaterInputStream;\n\n    import io.netty.buffer.ByteBuf;\n    import io.netty.handler.codec.compression.DecompressionException;\n    import io.netty.handler.codec.http.HttpContent;\n\n    public class ResponseContentProcessing {\n\n        /**\n         * Buffer size when decompressing content.\n         */\n        public static final int DECOMPRESS_BUFFER_SIZE = 16192;\n\n        /**\n         * Populated by serverToProxyResponse() as it receives HttpContent\n         * responses. If the response is chunked, it will be populated across\n         * multiple calls to proxyToServerResponse().\n         */\n\n        /**\n         * Populated by serverToProxyResponse() as it receives HttpContent\n         * responses. If the response is chunked, it will be populated across\n         * multiple calls to proxyToServerResponse().\n         */\n        private final static ByteArrayOutputStream rawResponseContents = new ByteArrayOutputStream();\n\n        /**\n         * Populated when processing the LastHttpContent. If the response is\n         * compressed and decompression is requested, this contains the entire\n         * decompressed response. Otherwise it contains the raw response.\n         */\n        private volatile static byte[] fullResponseContents;\n\n        // process response(decompress)\n\n        public static void storeResponseContent(HttpContent httpContent) {\n            ByteBuf bufferedContent = httpContent.content();\n            byte[] content = ResponseContentProcessing.extractReadableBytes(bufferedContent);\n\n            try {\n                rawResponseContents.write(content);\n            } catch (IOException e) {\n                // can't happen\n            }\n        }\n\n        public static void captureFullResponseContents() {\n    //      fullResponseContents = getRawResponseContents();\n            decompressContents();\n        }\n\n        /**\n         * Returns the raw contents of the entire response, without decompression.\n         *\n         * @return entire response contents, without decompression\n         */\n        public static byte[] getRawResponseContents() {\n            return rawResponseContents.toByteArray();\n        }\n\n        protected static void decompressContents() {\n            try {\n\n                fullResponseContents = ResponseContentProcessing.decompressContents(getRawResponseContents());\n                Utilities.appendAllText(Utilities.getCurrentDir() + File.separator + \"response_content.txt\",\n                        new String(fullResponseContents));\n\n            } catch (FileNotFoundException e) {\n                // TODO Auto-generated catch block\n                // e.printStackTrace();\n                Utilities.WriteLog(\"Error while decompress content\");\n            }\n        }\n\n        /**\n         * Decompresses the gzipped byte stream.\n         *\n         * @param fullMessage\n         *            gzipped byte stream to decomress\n         * @return decompressed bytes\n         * @throws DecompressionException\n         *             thrown if the fullMessage cannot be read or decompressed for\n         *             any reason\n         */\n        public static byte[] decompressContents(byte[] fullMessage) throws DecompressionException {\n            InflaterInputStream gzipReader = null;\n            ByteArrayOutputStream uncompressed;\n            try {\n                gzipReader = new GZIPInputStream(new ByteArrayInputStream(fullMessage));\n\n                uncompressed = new ByteArrayOutputStream(fullMessage.length);\n\n                byte[] decompressBuffer = new byte[DECOMPRESS_BUFFER_SIZE];\n                int bytesRead;\n                while ((bytesRead = gzipReader.read(decompressBuffer)) &gt; -1) {\n                    uncompressed.write(decompressBuffer, 0, bytesRead);   \n                }\n\n                fullMessage = uncompressed.toByteArray();\n            } catch (IOException e) {\n                Utilities.WriteLog(e.getMessage());\n            } finally {\n                try {\n                    if (gzipReader != null) {\n                        gzipReader.close();\n                    }\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }\n            return fullMessage;\n        }\n\n        /**\n         * Extracts all readable bytes from the ByteBuf as a byte array.\n         *\n         * @param content\n         *            ByteBuf to read\n         * @return byte array containing the readable bytes from the ByteBuf\n         */\n        public static byte[] extractReadableBytes(ByteBuf content) {\n            byte[] binaryContent = new byte[content.readableBytes()];\n\n            content.markReaderIndex();\n            content.readBytes(binaryContent);\n            content.resetReaderIndex();\n\n            return binaryContent;\n        }\n    }\n</code></pre>\n\n<p>but when i write html content into response_content.txt, i alway receive binary(not html plain) even though last response header content encoding is gzip. Where is problem?\nPlease advise.</p>\n\n<p>Thanks.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "xstream",
+        "xml-deserialization"
+      ],
+      "owner": {
+        "reputation": 111,
+        "user_id": 277778,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/4dcef745ffdc70e4c358377e26080569?s=128&d=identicon&r=PG",
+        "display_name": "anonymous",
+        "link": "http://stackoverflow.com/users/277778/anonymous"
+      },
+      "is_answered": true,
+      "view_count": 6204,
+      "answer_count": 3,
+      "score": 4,
+      "last_activity_date": 1472632572,
+      "creation_date": 1266962765,
+      "last_edit_date": 1472632572,
+      "question_id": 2322125,
+      "link": "http://stackoverflow.com/questions/2322125/xstream-how-do-i-map-xml-mixed-attributes-and-elements-to-pojos",
+      "title": "XStream: How do I map xml mixed attributes and elements to POJOs?",
+      "body": "<p>This must be a newbie question, but I could not get it from <a href=\"http://x-stream.github.io/\" rel=\"nofollow\">http://x-stream.github.io/</a>.</p>\n\n<p>Well, I have the following xml string</p>\n\n<pre><code>&lt;cat age=\"4\" &gt;\n   &lt;name&gt;Garfield&lt;/name&gt;\n&lt;/cat&gt;\n</code></pre>\n\n<p>which needs to be mapped to:</p>\n\n<pre><code>class Cat {\n  int age;\n  String name;\n}\n</code></pre>\n\n<p>Is there a simple way to do that using XStream? If not, what else could I try?</p>\n\n<p>Thanks in advance.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "apache",
+        "tomcat",
+        "docker"
+      ],
+      "owner": {
+        "reputation": 24,
+        "user_id": 6690056,
+        "user_type": "registered",
+        "accept_rate": 0,
+        "profile_image": "https://www.gravatar.com/avatar/29e1d3b6ad1d80edd6cae20bad53e924?s=128&d=identicon&r=PG&f=1",
+        "display_name": "fff",
+        "link": "http://stackoverflow.com/users/6690056/fff"
+      },
+      "is_answered": false,
+      "view_count": 17,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1472632459,
+      "creation_date": 1472629726,
+      "question_id": 39243691,
+      "link": "http://stackoverflow.com/questions/39243691/docker-container-start-error",
+      "title": "Docker container start error",
+      "body": "<pre><code>canerapp:\n  image: tomcat\n  ports:\n    - \"8000:8000\"\n</code></pre>\n\n<p>this is my compose.yml.\n when i run to up</p>\n\n<blockquote>\n  <p>caner@vegan:~/IdeaProjects/homework$ docker-compose up Creating\n  homework_canerapp_1 Attaching to homework_canerapp_1 canerapp_1  |\n  31-Aug-2016 07:31:53.362 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Server version: \n  Apache Tomcat/8.0.36 canerapp_1  | 31-Aug-2016 07:31:53.363 INFO\n  [main] org.apache.catalina.startup.VersionLoggerListener.log Server\n  built:          Jun 9 2016 13:55:50 UTC canerapp_1  | 31-Aug-2016\n  07:31:53.364 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Server number:<br>\n  8.0.36.0 canerapp_1  | 31-Aug-2016 07:31:53.364 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:<br>\n  Linux canerapp_1  | 31-Aug-2016 07:31:53.364 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log OS Version:<br>\n  4.4.0-34-generic canerapp_1  | 31-Aug-2016 07:31:53.364 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:<br>\n  amd64 canerapp_1  | 31-Aug-2016 07:31:53.364 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Java Home:<br>\n  /usr/lib/jvm/java-7-openjdk-amd64/jre canerapp_1  | 31-Aug-2016\n  07:31:53.364 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log JVM Version:<br>\n  1.7.0_111-b01 canerapp_1  | 31-Aug-2016 07:31:53.365 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:<br>\n  Oracle Corporation canerapp_1  | 31-Aug-2016 07:31:53.365 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:<br>\n  /usr/local/tomcat canerapp_1  | 31-Aug-2016 07:31:53.365 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:<br>\n  /usr/local/tomcat canerapp_1  | 31-Aug-2016 07:31:53.365 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument:\n  -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties\n  canerapp_1  | 31-Aug-2016 07:31:53.365 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument:\n  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager canerapp_1  | 31-Aug-2016 07:31:53.366 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument: -Djdk.tls.ephemeralDHKeySize=2048 canerapp_1  | 31-Aug-2016\n  07:31:53.366 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument: -Djava.endorsed.dirs=/usr/local/tomcat/endorsed canerapp_1 \n  | 31-Aug-2016 07:31:53.366 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument: -Dcatalina.base=/usr/local/tomcat canerapp_1  | 31-Aug-2016\n  07:31:53.366 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument: -Dcatalina.home=/usr/local/tomcat canerapp_1  | 31-Aug-2016\n  07:31:53.366 INFO [main]\n  org.apache.catalina.startup.VersionLoggerListener.log Command line\n  argument: -Djava.io.tmpdir=/usr/local/tomcat/temp canerapp_1  |\n  31-Aug-2016 07:31:53.366 INFO [main]\n  org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded\n  APR based Apache Tomcat Native library 1.2.7 using APR version 1.5.1.\n  canerapp_1  | 31-Aug-2016 07:31:53.367 INFO [main]\n  org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR\n  capabilities: IPv6 [true], sendfile [true], accept filters [false],\n  random [true]. canerapp_1  | 31-Aug-2016 07:31:53.422 INFO [main]\n  org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL\n  successfully initialized (OpenSSL 1.0.2h  3 May 2016) canerapp_1  |\n  31-Aug-2016 07:31:54.256 INFO [main]\n  org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler\n  [\"http-apr-8080\"] canerapp_1  | 31-Aug-2016 07:31:54.282 INFO [main]\n  org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler\n  [\"ajp-apr-8009\"] canerapp_1  | 31-Aug-2016 07:31:54.285 INFO [main]\n  org.apache.catalina.startup.Catalina.load Initialization processed in\n  2933 ms canerapp_1  | 31-Aug-2016 07:31:54.373 INFO [main]\n  org.apache.catalina.core.StandardService.startInternal Starting\n  service Catalina canerapp_1  | 31-Aug-2016 07:31:54.374 INFO [main]\n  org.apache.catalina.core.StandardEngine.startInternal Starting Servlet\n  Engine: Apache Tomcat/8.0.36 canerapp_1  | 31-Aug-2016 07:31:54.442\n  INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deploying web\n  application directory /usr/local/tomcat/webapps/ROOT canerapp_1  |\n  31-Aug-2016 07:31:56.275 INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deployment of\n  web application directory /usr/local/tomcat/webapps/ROOT has finished\n  in 1,832 ms canerapp_1  | 31-Aug-2016 07:31:56.275 INFO\n  [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deploying web\n  application directory /usr/local/tomcat/webapps/manager canerapp_1  |\n  31-Aug-2016 07:31:56.337 INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deployment of\n  web application directory /usr/local/tomcat/webapps/manager has\n  finished in 61 ms canerapp_1  | 31-Aug-2016 07:31:56.337 INFO\n  [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deploying web\n  application directory /usr/local/tomcat/webapps/docs canerapp_1  |\n  31-Aug-2016 07:31:56.372 INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deployment of\n  web application directory /usr/local/tomcat/webapps/docs has finished\n  in 35 ms canerapp_1  | 31-Aug-2016 07:31:56.373 INFO\n  [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deploying web\n  application directory /usr/local/tomcat/webapps/host-manager\n  canerapp_1  | 31-Aug-2016 07:31:56.475 INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deployment of\n  web application directory /usr/local/tomcat/webapps/host-manager has\n  finished in 103 ms canerapp_1  | 31-Aug-2016 07:31:56.475 INFO\n  [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deploying web\n  application directory /usr/local/tomcat/webapps/examples canerapp_1  |\n  31-Aug-2016 07:31:56.949 INFO [localhost-startStop-1]\n  org.apache.catalina.startup.HostConfig.deployDirectory Deployment of\n  web application directory /usr/local/tomcat/webapps/examples has\n  finished in 474 ms canerapp_1  | 31-Aug-2016 07:31:56.954 INFO [main]\n  org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler\n  [\"http-apr-8080\"] canerapp_1  | 31-Aug-2016 07:31:56.966 INFO [main]\n  org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler\n  [\"ajp-apr-8009\"] canerapp_1  | 31-Aug-2016 07:31:56.969 INFO [main]\n  org.apache.catalina.startup.Catalina.start Server startup in 2683 ms</p>\n</blockquote>\n\n<p>what i want to do is, seeing an simple html file in my web local host after i run compose up. but i cant see anything in 8080 8000 8009 ports in localhost.</p>\n\n<p>also when i change yml to this</p>\n\n<pre><code>canerapp:\n  image: tomcat\n  ports:\n    - \"8000:8000\"\nvolumes:\n     - ./html:/home/caner/IdeaProjects/homework/html\n</code></pre>\n\n<p>it says</p>\n\n<blockquote>\n  <p>In file './docker-compose.yml', service 'volumes' must be a mapping\n  not an array.</p>\n</blockquote>\n\n<p>my file directory is like that</p>\n\n<blockquote>\n  <p>caner@vegan:~/IdeaProjects/homework$ pwd\n  /home/caner/IdeaProjects/homework caner@vegan:~/IdeaProjects/homework$\n  ls docker-compose.yml  html caner@vegan:~/IdeaProjects/homework$ ls\n  html index.html caner@vegan:~/IdeaProjects/homework$</p>\n</blockquote>\n\n<p>homework\n html\n  indx.html\n docker-compose.yml</p>\n\n<p>this is also my index.html</p>\n\n<pre><code>welcome hello world\n</code></pre>\n\n<p>what am i doin wrong?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "jsoup"
+      ],
+      "owner": {
+        "reputation": 13,
+        "user_id": 3548039,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/d47ce685e16bc49c8c0449c297a19b88?s=128&d=identicon&r=PG&f=1",
+        "display_name": "user3548039",
+        "link": "http://stackoverflow.com/users/3548039/user3548039"
+      },
+      "is_answered": false,
+      "view_count": 5,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632434,
+      "creation_date": 1472632434,
+      "question_id": 39244584,
+      "link": "http://stackoverflow.com/questions/39244584/how-to-extract-the-script-particular-script-file-from-website",
+      "title": "how to extract the script particular script file from website",
+      "body": "<p>I have a particular set of web pages and i want to check whether particular url has been used in those webpages or not. As there are 37000 number of web pages and searching url manually is time consuming. I have a script which will scrape  the url from the webpages. I want to search 'adsbygoogle' keyword in webpages but I am not getting how do i use this keyword to search url from webpage. Here is what i have tried till now. </p>\n\n<pre><code>import org.jsoup.Jsoup;\nimport org.jsoup.helper.Validate;\nimport org.jsoup.nodes.Document;\nimport org.jsoup.nodes.Element;\nimport org.jsoup.select.Elements;\n\nimport java.io.IOException;\n\n/**\n * Example program to list links from a URL.\n */\npublic class ListLinks {\n    public static void main(String[] args) throws IOException {\n\n        String url = \"url1,url2,..\";\n        print(\"Fetching %s...\", url);\n\n        Document doc = Jsoup.connect(url).timeout(10000).get();\n        Elements links = doc.select(\"a[href]\");\n        Elements media = doc.select(\"[src]\");\n        Elements imports = doc.select(\"link[href]\");\n        Elements scripts = doc.getElementsByTag(\"script\");\n        for (Element script : scripts) {\n             System.out.println(script.data());\n        }\n\n        print(\"\\nMedia: (%d)\", media.size());\n        for (Element src : media) {\n            if (src.tagName().equals(\"img\"))\n                print(\" * %s: &lt;%s&gt; %sx%s (%s)\",\n                        src.tagName(), src.attr(\"abs:src\"), src.attr(\"width\"), src.attr(\"height\"),\n                        trim(src.attr(\"alt\"), 20));\n            else\n                print(\" * %s: &lt;%s&gt;\", src.tagName(), src.attr(\"abs:src\"));\n        }\n\n        print(\"\\nImports: (%d)\", imports.size());\n        for (Element link : imports) {\n            print(\" * %s &lt;%s&gt; (%s)\", link.tagName(),link.attr(\"abs:href\"), link.attr(\"rel\"));\n        }\n\n        print(\"\\nLinks: (%d)\", links.size());\n        for (Element link : links) {\n            print(\" * a: &lt;%s&gt;  (%s)\", link.attr(\"abs:href\"), trim(link.text(), 35));\n        }\n    }\n\n    private static void print(String msg, Object... args) {\n        System.out.println(String.format(msg, args));\n    }\n\n    private static String trim(String s, int width) {\n        if (s.length() &gt; width)\n            return s.substring(0, width-1) + \".\";\n        else\n            return s;\n    }\n}\n</code></pre>\n\n<p>I have used this code but i am also not getting where to place this code in program</p>\n\n<pre><code>&lt;script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"&gt;&lt;/script&gt;\n&lt;!-- xxxxx --&gt;\n&lt;ins class=\"adsbygoogle\"\n     style=\"display:inline-block;width:xxxpx;height:xxxpx\"\n     data-ad-client=\"ca-pub-3778064616989016\"\n     data-ad-slot=\"xxxxxx\"&gt;&lt;/ins&gt;\n&lt;script&gt;\n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "swing",
+        "jframe"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 6777775,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/5240fa6486da62faf5027290b72008b8?s=128&d=identicon&r=PG&f=1",
+        "display_name": "haydarberk",
+        "link": "http://stackoverflow.com/users/6777775/haydarberk"
+      },
+      "is_answered": false,
+      "view_count": 7,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632433,
+      "creation_date": 1472632433,
+      "question_id": 39244583,
+      "link": "http://stackoverflow.com/questions/39244583/how-combining-panelone-jframe-page",
+      "title": "How combining panel?One JFrame page?",
+      "body": "<p>Im writing this code for once week.My answer is When the code is two pages works but I want one page.Two cirles are works one page.This code works , open the two jrame page.I want one jframe page.\nHelp me pls??Can I help me?</p>\n\n<pre><code>       package ggggjgjhcfdf;\n\n       import java.awt.BorderLayout;\n       import java.awt.Color;\n       import java.awt.Dimension;\n       import java.awt.EventQueue;\n `         import java.awt.Graphics;\n       import java.awt.Graphics2D;\n       import java.awt.RenderingHints;\n       import java.awt.event.ActionEvent;\n       import java.awt.event.ActionListener;\n       import java.awt.geom.Ellipse2D;\n       import javax.swing.AbstractAction;\n       import javax.swing.Action;\n       import javax.swing.Timer;\n       import javax.swing.JButton;\n       import javax.swing.JFrame;\n       import javax.swing.JPanel;\n\n\n    class panel2 extends JPanel{\n    private final Ellipse2D.Float ball2 = new Ellipse2D.Float(90, 260, 80, 80);\n    private final Timer timer2;\n    private final Color on2;\n    private final Color off2;\n     private final AbstractAction flashAction = new AbstractAction(\"Flash2\") {\n         @Override\n        public void actionPerformed(ActionEvent e) {\n            timer2.restart();\n\n        }\n    };\n      private final AbstractAction onAction = new AbstractAction(\"On2\") {\n        @Override\n        public void actionPerformed(ActionEvent e) {\n            stop(on2);\n        }\n    };\n      private final AbstractAction offAction = new AbstractAction(\"Off2\") {\n        @Override\n        public void actionPerformed(ActionEvent e) {\n            stop(off2);\n     }\n};\n      private Color currentColor2;\n      public panel2(Color on2, Color off2) {\n        this.on2 = on2;\n        this.off2 = off2;\n        this.currentColor2 = on2;\n        timer2 = new Timer(500, new ActionListener() {\n            @Override\n            public void actionPerformed(ActionEvent e) {\n                changeColors2();\n            }\n        });\n    }\n      public void start() {\n        timer2.start();\n    }\n      public void paintComponent(Graphics g) {\n        super.paintComponent(g);\n        Graphics2D g3 = (Graphics2D) g;\n        g3.setRenderingHint(RenderingHints.KEY_ANTIALIASING,\n            RenderingHints.VALUE_ANTIALIAS_ON);\n\n        g3.setColor(currentColor2);\n        g3.fill(ball2);\n        g3.setColor(Color.red);\n        g3.draw(ball2);\n\n    }\n      private void changeColors2() {\n        currentColor2 = currentColor2 == on2 ? off2 : on2;\n        repaint();\n    }\n      private void stop(Color color2) {\n        timer2.stop();\n        currentColor2 = color2;\n        repaint();\n    }\n       public Action getFlashAction() {\n        return flashAction;\n    }\n\n    public Action getOnAction() {\n        return onAction;\n    }\n\n    public Action getOffAction() {\n        return offAction;\n    }\n public static void display2() {\n    JFrame f = new JFrame(\"panel2\");\n    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n    final panel2 panel3 = new panel2(Color.red, Color.white.brighter());\n    f.add(panel3);\n    JPanel controls2 = new JPanel();\n    controls2.add(new JButton(panel3.getFlashAction()));\n    controls2.add(new JButton(panel3.getOnAction()));\n    controls2.add(new JButton(panel3.getOffAction()));\n    f.add(controls2, BorderLayout.SOUTH);\n    f.pack();\n    f.setLocationRelativeTo(null);\n    f.setVisible(true);\n    panel3.start();\n}\n\npublic static void main(String[] args) {\n    EventQueue.invokeLater(new Runnable() {\n        @Override\n        public void run() {\n\n            panel2.display2();\n            panel1.display();\n        }\n    });\n}\n</code></pre>\n\n<p>}</p>\n\n<pre><code>    class panel1 extends JPanel{\n    private final Ellipse2D.Float ball = new Ellipse2D.Float(90, 100,80,80);\n    private final Timer timer;\n    private final Color on;\n    private final Color off;\n     private final AbstractAction flashAction = new AbstractAction(\"Flash\") {\n         @Override\n        public void actionPerformed(ActionEvent e) {\n            timer.restart();\n\n        }\n    };\n      private final AbstractAction onAction = new AbstractAction(\"On\") {\n        @Override\n        public void actionPerformed(ActionEvent e) {\n            stop(on);\n        }\n    };\n      private final AbstractAction offAction = new AbstractAction(\"Off\") {\n        @Override\n        public void actionPerformed(ActionEvent e) {\n            stop(off);\n     }\n};\n      private Color currentColor;\n      public panel1(Color on, Color off) {\n        this.on = on;\n        this.off = off;\n        this.currentColor = on;\n        timer = new Timer(500, new ActionListener() {\n            @Override\n            public void actionPerformed(ActionEvent e) {\n                changeColors();\n            }\n        });\n    }\n      public void start() {\n        timer.start();\n    }\n      public void paintComponent(Graphics g) {\n        super.paintComponent(g);\n        Graphics2D g2 = (Graphics2D) g;\n        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,\n            RenderingHints.VALUE_ANTIALIAS_ON);\n\n        g2.setColor(currentColor);\n        g2.fill(ball);\n        g2.setColor(Color.red);\n        g2.draw(ball);\n\n    }\n      private void changeColors() {\n        currentColor = currentColor == on ? off : on;\n        repaint();\n    }\n      private void stop(Color color) {\n        timer.stop();\n        currentColor = color;\n        repaint();\n    }\n       public Action getFlashAction() {\n        return flashAction;\n    }\n\n    public Action getOnAction() {\n        return onAction;\n    }\n\n    public Action getOffAction() {\n        return offAction;\n    }\n public static void display() {\n    JFrame f = new JFrame(\"Beacon\");\n    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n    final panel1 panel4 = new panel1(Color.red, Color.white.brighter());\n    f.add(panel4);\n    JPanel controls = new JPanel();\n    controls.add(new JButton(panel4.getFlashAction()));\n    controls.add(new JButton(panel4.getOnAction()));\n    controls.add(new JButton(panel4.getOffAction()));\n    f.add(controls, BorderLayout.SOUTH);\n    f.pack();\n    f.setLocationRelativeTo(null);\n    f.setVisible(true);\n    panel4.start();\n}\n</code></pre>\n\n<p>}</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "bigdecimal"
+      ],
+      "owner": {
+        "reputation": 11,
+        "user_id": 4219375,
+        "user_type": "registered",
+        "profile_image": "https://graph.facebook.com/523525837/picture?type=large",
+        "display_name": "Oren Levi",
+        "link": "http://stackoverflow.com/users/4219375/oren-levi"
+      },
+      "is_answered": true,
+      "view_count": 5,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1472632405,
+      "creation_date": 1472631571,
+      "last_edit_date": 1472632405,
+      "question_id": 39244287,
+      "link": "http://stackoverflow.com/questions/39244287/what-is-the-number-of-significant-digits-that-bigdecimal-is-allowing-to-use-ja",
+      "title": "What is the number of significant digits that BigDecimal is allowing to use - Java",
+      "body": "<p>My application is using a double in Java for representing floating point numbers.\ndouble has a limitations of 17 significant digits.\nwe are considering to refactor the code to use BigDecimal - however i couldn't find any information in the documentation regarding the number of significant digits that BigDecimal is allowing to use.</p>\n\n<p>Any information regarding this will be very helpful, thanks in advance !</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "maven"
+      ],
+      "owner": {
+        "reputation": 2216,
+        "user_id": 1015678,
+        "user_type": "registered",
+        "accept_rate": 66,
+        "profile_image": "https://www.gravatar.com/avatar/e12a835193e80c39b8483eb90780ff37?s=128&d=identicon&r=PG",
+        "display_name": "Lahiru Chandima",
+        "link": "http://stackoverflow.com/users/1015678/lahiru-chandima"
+      },
+      "is_answered": false,
+      "view_count": 9,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632398,
+      "creation_date": 1472632398,
+      "question_id": 39244569,
+      "link": "http://stackoverflow.com/questions/39244569/does-maven-artifact-inherit-from-the-parent-pom-of-a-dependency",
+      "title": "Does maven artifact inherit from the parent pom of a dependency?",
+      "body": "<p>I have a maven artifact (<code>Artifact A</code>) which depends on a certain artifact (<code>Artifact B</code>).</p>\n\n<p><code>Artifact B</code> has a parent pom where certain another dependencies are included.</p>\n\n<p>Can <code>artifact A</code> use these dependencies, without explicitly adding them under dependencies section of its own pom?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android",
+        "cookies",
+        "httpurlconnection"
+      ],
+      "owner": {
+        "reputation": 11526,
+        "user_id": 304151,
+        "user_type": "registered",
+        "accept_rate": 82,
+        "profile_image": "https://www.gravatar.com/avatar/630874e300da5f969435bf39d8e25c04?s=128&d=identicon&r=PG",
+        "display_name": "Mridang Agarwalla",
+        "link": "http://stackoverflow.com/users/304151/mridang-agarwalla"
+      },
+      "is_answered": true,
+      "view_count": 12593,
+      "accepted_answer_id": 12352908,
+      "answer_count": 4,
+      "score": 20,
+      "last_activity_date": 1472632375,
+      "creation_date": 1347270915,
+      "last_edit_date": 1347284304,
+      "question_id": 12349266,
+      "link": "http://stackoverflow.com/questions/12349266/how-do-i-persist-cookies-when-using-httpurlconnection",
+      "title": "How do I persist cookies when using HTTPUrlConnection?",
+      "body": "<p>I've begun using the recommended <code>HTTPUrlConnection</code> and moved away from the <code>DefaultHTTPClient</code>. One of the things that I haven't been able to glue back together is the use of a persistent cookie store. I'd like to simply attach a custom cookie handler/manager to my connection to store the cookies. The Android documentation hasn't been very helpful as it wraps up the subject about cookies in two lines. </p>\n\n<p>I've been using LoopJ's <code>PersistentCookieStore</code> earlier and that worked beautifully.</p>\n\n<p>Any idea on how I could set up a persistent cookie store in Android that I can attach to my <code>HTTPUrlConnection</code> that saves and retrieves cookies automatically?</p>\n\n<p>Thanks</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android"
+      ],
+      "owner": {
+        "reputation": 11,
+        "user_id": 6478080,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/4c910a4a0b5441bd6971cf6f8a1f805f?s=128&d=identicon&r=PG&f=1",
+        "display_name": "rakesh",
+        "link": "http://stackoverflow.com/users/6478080/rakesh"
+      },
+      "is_answered": false,
+      "view_count": 18,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1472632370,
+      "creation_date": 1472631256,
+      "last_edit_date": 1472632370,
+      "question_id": 39244166,
+      "link": "http://stackoverflow.com/questions/39244166/how-to-add-progress-indicator-like-wifi-settings-in-listview-in-android",
+      "title": "How to add progress indicator like wifi settings in listview in android",
+      "body": "<p>I am able to display available wifi list in my android app...for displaying available wifi list i am using expandablelistview in my app...but i want add progress indicator image in my app..like wifi settings..If wifi connected i want to display connected status below the wifi ssid...how can i do this?</p>\n\n<pre><code>         List&lt;ScanResult&gt; List = wifiManager.getScanResults();\n         ArrayList&lt;String&gt; scannedList = new ArrayList&lt;String&gt;();\n         for (int i = 0; i &lt; List.size(); i++) {\n             if (List.get(i).SSID.matches(\"\")) {\n                scannedList.add(List.get(i).SSID);\n                scanlist.append(List.get(i).SSID);\n            } else {\n                scannedHomeAps.add(String.valueOf(List.get(i).SSID));\n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "couchbase-lite"
+      ],
+      "owner": {
+        "reputation": 14,
+        "user_id": 6507514,
+        "user_type": "registered",
+        "accept_rate": 0,
+        "profile_image": "https://i.stack.imgur.com/FVORU.jpg?s=128&g=1",
+        "display_name": "Shriram",
+        "link": "http://stackoverflow.com/users/6507514/shriram"
+      },
+      "is_answered": false,
+      "view_count": 3,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632336,
+      "creation_date": 1472632336,
+      "question_id": 39244547,
+      "link": "http://stackoverflow.com/questions/39244547/regarding-fetching-document-from-couchbaselite-offline-database",
+      "title": "regarding fetching document from couchbaselite offline database",
+      "body": "<p>I am trying to fetch the document using view and query.\nI am running query.run and getting QueryEnumerator,\nand tryin to fetch values by QueryEnumerator ref .getdocument() function,\nIt giving document which i have store,\nNow,\nAt the time of storing document I have stored documet as (\"key\" , my POJO class object),\nat at the time of retrieval it giving me(\"key\", JAVA object) , I have tried to do typecasting but it is giving error as follows:</p>\n\n<p>java.lang.ClassCastException: java.util.LinkedHashMap cannot be cast to com.kpit.ecueditor.newdtc.entity.Dtc </p>\n\n<p>eventhough it should store the object in Dtc object but it is not allowing me, and i am not able to retrieve data from objecy,</p>\n\n<p>Any idea what should i do?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "inner-classes"
+      ],
+      "owner": {
+        "reputation": 20,
+        "user_id": 4413164,
+        "user_type": "registered",
+        "accept_rate": 0,
+        "profile_image": "https://lh3.googleusercontent.com/-N-ec1TzCdbo/AAAAAAAAAAI/AAAAAAAAABo/wRhfdETjTo0/photo.jpg?sz=128",
+        "display_name": "Salahin Rocky",
+        "link": "http://stackoverflow.com/users/4413164/salahin-rocky"
+      },
+      "is_answered": true,
+      "view_count": 19,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1472632331,
+      "creation_date": 1431317047,
+      "last_edit_date": 1472632331,
+      "question_id": 30159494,
+      "link": "http://stackoverflow.com/questions/30159494/why-jdk7-not-allow-method-local-inner-class-to-access-its-own-methods-local-var",
+      "title": "Why JDK7 not allow method local Inner Class to access its own method&#39;s local variables",
+      "body": "<pre><code>class MyOuter2{\nprivate String x;\nvoid doStuff(){\n    int mloc= 100;\n    x =\"Outer class variable\";\n    class MyInner{\n        public void seeOuter(){\n            System.out.println(\"Access both: \" + x+\" and \" + mloc);\n            System.out.println(\"Inner class ref is \" + this);\n            System.out.println(\"Outer class ref is \" + MyOuter2.this);\n        }\n    }\n    MyInner MethodInnerClass = new MyInner();\n    MethodInnerClass.seeOuter();\n\n  }\n}\n\npublic class InnerClass {\n   public static void main(String[] args) {\n      MyOuter2 outer = new MyOuter2();\n      outer.doStuff();\n   }\n}\n</code></pre>\n\n<p>In this code I use doStuff()'s variable mloc in method local MyInner Class \nmy compiler compile this code and also run this code through JDK8.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android",
+        "android-gradle",
+        "payu"
+      ],
+      "owner": {
+        "reputation": 6,
+        "user_id": 1789169,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/da2962d4338ef564671715a0e94e4d3c?s=128&d=identicon&r=PG",
+        "display_name": "prash32",
+        "link": "http://stackoverflow.com/users/1789169/prash32"
+      },
+      "is_answered": false,
+      "view_count": 111,
+      "answer_count": 1,
+      "score": 1,
+      "last_activity_date": 1472632276,
+      "creation_date": 1466427834,
+      "last_edit_date": 1466450370,
+      "question_id": 37923347,
+      "link": "http://stackoverflow.com/questions/37923347/java-util-zip-zipexception-duplicate-entry-error-on-payu-custom-browser-librar",
+      "title": "java.util.zip.ZipException: duplicate entry: Error on Payu custom browser library",
+      "body": "<pre><code>Error:Execution failed for task ':AppName:transformClassesWithJarMergingForRelease'.\n</code></pre>\n\n<blockquote>\n  <p>com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/payu/custombrowser/BuildConfig.class</p>\n</blockquote>\n\n<p>Unfortunately, the above error is the only thing that we have as information about this error. When we are trying to build the app for release it finds duplicate entries. These files are from the <code>Payu</code> library and if you delete them from the hard disk they are again auto generated while compiling and causing the <code>duplicate entry error</code>. Also, 23 <code>BuildConfig.class</code> files exist in the entire folder(including Facebook, <code>Google play store</code>, Payu, <code>Image loader</code> libraries). Now, I am not sure which file to delete which to keep. Deleting the files is useless as it is again auto generated.  </p>\n\n<p>Thank you.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "swing",
+        "serialization",
+        "look-and-feel"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 6777237,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/5201b686626911d03f98e4307b8a6865?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Am&#233;rico Jorge",
+        "link": "http://stackoverflow.com/users/6777237/am%c3%a9rico-jorge"
+      },
+      "is_answered": false,
+      "view_count": 16,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632244,
+      "creation_date": 1472629530,
+      "last_edit_date": 1472632244,
+      "question_id": 39243624,
+      "link": "http://stackoverflow.com/questions/39243624/how-to-create-a-method-to-save-and-keep-the-look-and-feel-selected-using-the-jco",
+      "title": "How to create a method to save and keep the Look And Feel selected using the JComboBox?",
+      "body": "<p>I ask for a help please , I'm still very new to programming. I just create a simple <code>JFrame</code> in NeatBeans with some Look And Feel's /Themes available using the <code>JComboBox</code> for the user to choose the LAF/theme \nwhat he wants, and also I put the \"Save\" button to Action , so far I can change the \"Theme\" perfectly , the problem is that the \" LAF / Theme \" just chosen is \" save \" at the moment of execution, when closing and perform the <code>JFrame</code> again the LAF chosen remains unsaved , I would like to know how to create a method to \"Save \" and Keep the \" LAF / theme \" chosen . Can someone help me? Thank you very much in advance!</p>\n\n<p>Here's the example:</p>\n\n<p><a href=\"http://i.stack.imgur.com/kdya6.png\" rel=\"nofollow\"><img src=\"http://i.stack.imgur.com/kdya6.png\" alt=\"IMAGE\"></a></p>\n\n<p>Here is the button Save Code</p>\n\n<pre><code>private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {                                        \n        //Button Save Action\n       String t = (String)jComboBoxLAF.getSelectedItem();\n\n        JOptionPane.showMessageDialog(null, t);\n\n        try {\n\n            if (\"Metal\".equals(t)){\n\n                UIManager.setLookAndFeel(new MetalLookAndFeel());\n                this.setVisible(false);\n                new TelaJtable().setVisible(true);\n\n            }else if(\"Nimbus\".equals(t)){\n                UIManager.setLookAndFeel(new NimbusLookAndFeel());\n                this.setVisible(false);\n                new TelaJtable().setVisible(true);\n\n            }else if(\"CDE/Motif\".equals(t)){\n                UIManager.setLookAndFeel(new MotifLookAndFeel());\n                this.setVisible(false);\n                new TelaJtable().setVisible(true);\n\n            }else if(\"Windows\".equals(t)){\n                UIManager.setLookAndFeel(new WindowsLookAndFeel());\n                this.setVisible(false);\n                new TelaJtable().setVisible(true);\n            }\n            else if(\"Windows Classic\".equals(t)){\n                UIManager.setLookAndFeel(new WindowsClassicLookAndFeel());\n                this.setVisible(false);\n                new TelaJtable().setVisible(true);\n            }\n\n    } catch (Exception e) {\n\n    }\n\n}                                       \n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "jasper-reports"
+      ],
+      "owner": {
+        "reputation": 23,
+        "user_id": 2036394,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/965dfcae6a121f29d25ad62991b16533?s=128&d=identicon&r=PG",
+        "display_name": "kripton haz",
+        "link": "http://stackoverflow.com/users/2036394/kripton-haz"
+      },
+      "is_answered": true,
+      "view_count": 7397,
+      "answer_count": 3,
+      "score": 1,
+      "last_activity_date": 1472632229,
+      "creation_date": 1375715893,
+      "last_edit_date": 1375716206,
+      "question_id": 18061733,
+      "link": "http://stackoverflow.com/questions/18061733/jasperreport-error-evaluating-expression-source-text-new-java-lang-integer1",
+      "title": "JasperReport Error evaluating expression: Source text : new java.lang.Integer(1)",
+      "body": "<p>I'm using JasperSoft Studio 5.1.0 for creating my report. This is library I used so far</p>\n\n<ul>\n<li>commons-beanutils-1.8.3.jar commons-collections.jar\ncommons-digester-1.7.jar commons-javaflow-20060411.jar\ncommons-logging-1.1.3.jar groovy-all-1.7.5.jar itext-2.1.7.jar\njasperreports-5.1.0.jar</li>\n</ul>\n\n<p>I'm trying using parameter and it's not showing any error when I see the preview on JasperSoft Studio, but when I try to print from my Java program it's show an error like this:</p>\n\n<blockquote>\n  <p>net.sf.jasperreports.engine.fill.JRExpressionEvalException: Error evaluating expression :\n  Source text : new java.lang.Integer(1)</p>\n</blockquote>\n\n<p>the code I use on my program for action performed is like this</p>\n\n<pre><code>try\n{\n   String NamaFile = \"src/Laporan Penawaran.jasper\";\n   Class.forName(\"com.mysql.jdbc.Driver\").newInstance();\n   Connection konek = Koneksi.getKoneksi();\n   HashMap hash = new HashMap();\n   hash.put(\"param1\",no_tender.getText());\n\n   File file = new File(NamaFile);\n   JasperReport jasperReport = (JasperReport) JRLoader.loadObject(file.getPath());\n   JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hash,konek);\n   JasperViewer.viewReport(jasperPrint);\n} catch(Exception ex) {\n   System.out.println(ex);\n}\n</code></pre>\n\n<p>I just wondering maybe my jasper file is error, but when I try to erase all field and using only static text the error still exist. What am I supposed to do? </p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "xml",
+        "apache-camel"
+      ],
+      "owner": {
+        "reputation": 196,
+        "user_id": 1805712,
+        "user_type": "registered",
+        "accept_rate": 33,
+        "profile_image": "https://i.stack.imgur.com/2Ku45.jpg?s=128&g=1",
+        "display_name": "Kikou",
+        "link": "http://stackoverflow.com/users/1805712/kikou"
+      },
+      "is_answered": false,
+      "view_count": 7,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632205,
+      "creation_date": 1472629485,
+      "last_edit_date": 1472632205,
+      "question_id": 39243611,
+      "link": "http://stackoverflow.com/questions/39243611/pulling-multiple-files-in-simultaneously",
+      "title": "Pulling multiple files in simultaneously",
+      "body": "<p>Here an example for writing files Using Apache Camel FrameWork in a specific folder.</p>\n\n<pre><code>&lt;beans xmlns=\"http://www.springframework.org/schema/beans\"\n   xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n   xsi:schemaLocation=\"\n   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd\n   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd\"&gt;\n\n&lt;camelContext xmlns=\"http://camel.apache.org/schema/spring\"&gt;\n    &lt;route&gt;\n        &lt;from uri=\"file:src/data?noop=true\"/&gt;\n        &lt;loop&gt;\n            &lt;constant&gt;10000&lt;/constant&gt;\n            &lt;to uri=\"file://src/data/out?fileName=${date:now:yyyymmddhhmmss}.LOOP.${header.CamelLoopIndex}.txt\"/&gt;\n        &lt;/loop&gt;\n    &lt;/route&gt;\n&lt;/camelContext&gt;\n</code></pre>\n\n<p></p>\n\n<p><strong>Is there a way to write all files simultaneously ?</strong> When the Loop processing\nends, is there a way to invoke writing files in one time ?</p>\n\n<p>Thxs.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "protocol-buffers",
+        "tomtom"
+      ],
+      "owner": {
+        "reputation": 354,
+        "user_id": 4655830,
+        "user_type": "registered",
+        "profile_image": "https://lh5.googleusercontent.com/-qhyDPQ03YlM/AAAAAAAAAAI/AAAAAAAAAwk/2WcUFRD0rSg/photo.jpg?sz=128",
+        "display_name": "Sergio Tx",
+        "link": "http://stackoverflow.com/users/4655830/sergio-tx"
+      },
+      "is_answered": false,
+      "view_count": 3,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472632123,
+      "creation_date": 1472631584,
+      "last_edit_date": 1472632123,
+      "question_id": 39244290,
+      "link": "http://stackoverflow.com/questions/39244290/tomtom-trafficflow-api-with-protobuf-response-gives-different-openlr-than-xml-re",
+      "title": "TomTom TrafficFlow API with protobuf response gives different OpenLR than XML response",
+      "body": "<p>We are planning to change our Java app from using <a href=\"http://developer.tomtom.com/products/realtimemaps/traffic/intermediatetrafficservice/datexii/Flow\" rel=\"nofollow\">TomTom Traffic Flow - Intermediate Service - DatexII</a> to <a href=\"http://developer.tomtom.com/products/realtimemaps/traffic/intermediatetrafficservice/Protobuf/\" rel=\"nofollow\">TomTom Traffic Flow - Intermediate Service - Protobuf</a>, but we are facing a problem with OpenLR data.</p>\n\n<p>In datexII, the response comes in a XML. The binary for OpenLR is a normal String like this: <code>CwcZ6yJrqQslDgRLAQULFw==</code></p>\n\n<p>But when we use the Protobuff option, we have a location object that contains: </p>\n\n<p><code>openlr: \"\\v\\377\\276\\372\\036:a#\\213\\v\\000\\361\\376\\225$\\r\"</code>.</p>\n\n<p>It has a <code>.getOpenLR()</code> method that returns a ByteString object like this (toString): </p>\n\n<p><code>16 bytes [0x0b,0xff,0xbe,0xfa,0x1e,0x3a,0x61,0x23,0x8b,0x0b,0x00,0xf1,0xfe,0x95,0x24,0x0d]</code></p>\n\n<p>We've tried everything, but we cannot get the same String from the XML or any format OpenLR can decode from there. As OpenLR is developed by TomTom and they recommend to use Protobuf to get data, there must be a way to get OpenLR locations from that ByteString. Any ideas?</p>\n\n<p>PS: there is also another difference, the XML has an ID for each Object, which Protobuf doesn't.</p>\n\n<p>PS2: there is no OpenLR tag :S</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "json"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 5338048,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/d15e952b89d5237a8f7f167678581fe1?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Nishant Kishore",
+        "link": "http://stackoverflow.com/users/5338048/nishant-kishore"
+      },
+      "is_answered": false,
+      "view_count": 21,
+      "answer_count": 1,
+      "score": -1,
+      "last_activity_date": 1472632119,
+      "creation_date": 1472623934,
+      "last_edit_date": 1472625334,
+      "question_id": 39241980,
+      "link": "http://stackoverflow.com/questions/39241980/java-objectmapper-readvalue-reading-wrong-string",
+      "title": "java objectmapper readvalue reading wrong string",
+      "body": "<p>I need to convert a certain <code>JSON</code> string to a Java object. I am using Jackson ObjectMapper for reading the <code>JSON</code>. The <code>JSON</code> String is something like this:-</p>\n\n<p><code>\"{\"emailId\":\"gmail@rajnikant.com\",\"accessToken\":\"accTok\"}4\".</code></p>\n\n<p>When I am using <code>objectMapper.readValue()</code> for reading the <code>JSON</code> string to a specific destination class, it should throw an exception because of the <code>JSON</code> string being appended by 4. What should I do so that only valid JSON can be read and in other cases it will throw an exception?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "inheritance",
+        "final"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 3196835,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/e8cfbd927d10bdb33aadc92ceb706656?s=128&d=identicon&r=PG&f=1",
+        "display_name": "user3196835",
+        "link": "http://stackoverflow.com/users/3196835/user3196835"
+      },
+      "is_answered": true,
+      "view_count": 14,
+      "answer_count": 1,
+      "score": -1,
+      "last_activity_date": 1472632035,
+      "creation_date": 1472631469,
+      "question_id": 39244238,
+      "link": "http://stackoverflow.com/questions/39244238/inheriting-a-final-field-and-casting-subclass-object-into-parent-class-to-use-it",
+      "title": "Inheriting a FINAL field and casting subclass object into parent class to use it",
+      "body": "<pre><code>class Test {\npublic static final String FOO = \"foo\";\npublic static void main(String[] args) {\nTest b = new Test();\nSub s = new Sub();\nSystem.out.print(Test.FOO);           /* Prints foo */\nSystem.out.print(Sub.FOO);            /* Prints bar */\nSystem.out.print(b.FOO);              /* Prints foo */\nSystem.out.print(s.FOO);              /* Prints bar */\n System.out.print(((Test)s).FOO);     /* Prints foo but Why?*/ \n } }\n class Sub extends Test {public static final String FOO=\"bar\";}\n</code></pre>\n\n<p>I was reading about Inheritance and i found out that even when you cast a SUB CLASS object to PARENT class and try to call a overridden method using that object (see <a href=\"http://stackoverflow.com/questions/22874640/overriding-methods-in-java-and-then-casting-object-to-parent-class-behavior\">here</a>), the SUBCLASS method will be called.</p>\n\n<p>But here in my Question why the Parent Class variable value is being printed even when the object TYPE is of Class Sub.?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "arrays",
+        "list",
+        "java-8",
+        "java-stream"
+      ],
+      "owner": {
+        "reputation": 289,
+        "user_id": 6124796,
+        "user_type": "registered",
+        "accept_rate": 88,
+        "profile_image": "https://www.gravatar.com/avatar/6e05fc28fa7efcc77cdc754f972e83d4?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Mayday",
+        "link": "http://stackoverflow.com/users/6124796/mayday"
+      },
+      "is_answered": true,
+      "view_count": 31,
+      "closed_date": 1472631044,
+      "accepted_answer_id": 39243555,
+      "answer_count": 1,
+      "score": 1,
+      "last_activity_date": 1472631988,
+      "creation_date": 1472629135,
+      "last_edit_date": 1472631988,
+      "question_id": 39243495,
+      "link": "http://stackoverflow.com/questions/39243495/understanding-stream-map-in-java",
+      "closed_reason": "duplicate",
+      "title": "Understanding stream.map in java",
+      "body": "<p>I am launching in java some SQL queries, which will return some data that looks like :</p>\n\n<blockquote>\n  <p>[<strong>ID</strong>,Description,WhateverColumn,...,...,<strong>ImportantNumber</strong>]</p>\n</blockquote>\n\n<p>Sample:</p>\n\n<blockquote>\n  <p>[<strong>1</strong>,\"Desc\",...,...,<strong>1</strong>]</p>\n  \n  <p>[<strong>1</strong>,\"Desc\",...,...,<strong>2</strong>]</p>\n  \n  <p>[<strong>1</strong>,\"Desc\",...,...,<strong>3</strong>]</p>\n  \n  <p>[<strong>2</strong>,\"Desc\",...,...,<strong>1</strong>]</p>\n  \n  <p>[<strong>3</strong>,\"Desc\",...,...,<strong>3</strong>]</p>\n  \n  <p>[<strong>3</strong>,\"Desc\",...,...,<strong>5</strong>]</p>\n</blockquote>\n\n<p>I am using the following List to store it in memory:</p>\n\n<pre><code>List&lt;Object[]&gt; myList = queryLaunched(...);\n</code></pre>\n\n<p>Later on, I want to do some operations with this <code>List</code> of <code>Object[]</code>:</p>\n\n<blockquote>\n  <p>[[1,\"Desc\",...,...,1],[1,\"Desc\",...,...,2],...]</p>\n</blockquote>\n\n<p>and I am trying to use stream.map in the following way:</p>\n\n<pre><code>myList.stream().map(item -&gt; System.out.println(item.toString()));\n</code></pre>\n\n<p>but I just receive this error:</p>\n\n<blockquote>\n  <p>Type mismatch: cannot convert from <code>Stream&lt;Object&gt;</code> to <code>void</code></p>\n</blockquote>\n\n<p>Wherever I look in google I just find samples made with <code>List&lt;Class&gt;</code>, not with <code>List&lt;Object[]&gt;</code>.</p>\n\n<p>How could I print, and therefore, after it, start doing operations with each of the items in that list?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "mailjet"
+      ],
+      "owner": {
+        "reputation": 357,
+        "user_id": 1231767,
+        "user_type": "registered",
+        "accept_rate": 27,
+        "profile_image": "https://www.gravatar.com/avatar/683c56dc940c050fcde6db2e233c87cc?s=128&d=identicon&r=PG",
+        "display_name": "nicearma",
+        "link": "http://stackoverflow.com/users/1231767/nicearma"
+      },
+      "is_answered": false,
+      "view_count": 7,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472631924,
+      "creation_date": 1472631924,
+      "question_id": 39244412,
+      "link": "http://stackoverflow.com/questions/39244412/add-news-email-to-mailjet-by-the-rest-api",
+      "title": "Add news email to mailjet by the REST API",
+      "body": "<p>I making one application that can send different email, but the email address depends of the user. I'm using mailjet to do this, after reading the doc, it's seem that i have to add every email for have the right to send email from this address, but this address are not generate by me (they are gmail, toto, etc)</p>\n\n<p>I already use the Java API of mailjet to add user, and this part is working fine</p>\n\n<p>But my problem is when the validation email arrive, and the person follow the link, mailjet ask to login, but he do not know what to do, because normally is my own account, i only what to add their email address to have the right to send email with them. </p>\n\n<p>So the question, is how i can add email address (from gmail, yahoo...) and activate the user, without the login part.</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "pointers",
+        "reference",
+        "jna"
+      ],
+      "owner": {
+        "reputation": 1328,
+        "user_id": 1047713,
+        "user_type": "registered",
+        "accept_rate": 79,
+        "profile_image": "https://www.gravatar.com/avatar/6bd4a6e80c7c52685a465ef6fd4ebde3?s=128&d=identicon&r=PG",
+        "display_name": "elect",
+        "link": "http://stackoverflow.com/users/1047713/elect"
+      },
+      "is_answered": false,
+      "view_count": 8,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472631885,
+      "creation_date": 1472631521,
+      "last_edit_date": 1472631885,
+      "question_id": 39244264,
+      "link": "http://stackoverflow.com/questions/39244264/how-to-retrieve-java-class-from-jna-reference-pointer",
+      "title": "How to retrieve java class from jna reference pointer",
+      "body": "<p>I am porting the <a href=\"https://github.com/ValveSoftware/openvr\" rel=\"nofollow\">openvr sample</a> to <a href=\"https://github.com/jovr/jogl-hello-vr\" rel=\"nofollow\">jogl</a>, after we created the <a href=\"https://github.com/jovr/jopenvr\" rel=\"nofollow\">binding</a> with jna.</p>\n\n<p>Almost at the end (before rendering the controllers and the tracking base stations), I got stuck trying to retrieving the model class in java from a reference pointer in C++.</p>\n\n<p>C++ code <a href=\"https://github.com/ValveSoftware/openvr\" rel=\"nofollow\">here</a>:</p>\n\n<pre><code>while ( 1 )\n{\n    error = vr::VRRenderModels()-&gt;LoadRenderModel_Async( pchRenderModelName, &amp;pModel );\n    if ( error != vr::VRRenderModelError_Loading )\n        break;\n\n    ThreadSleep( 1 );\n}\n</code></pre>\n\n<p><code>LoadRenderModel_Async</code> <a href=\"https://github.com/ValveSoftware/openvr/blob/master/headers/openvr.h#L2745\" rel=\"nofollow\">here</a>:</p>\n\n<pre><code>/** Loads and returns a render model for use in the application. pchRenderModelName should be a render model name\n* from the Prop_RenderModelName_String property or an absolute path name to a render model on disk. \n*\n* The resulting render model is valid until VR_Shutdown() is called or until FreeRenderModel() is called. When the \n* application is finished with the render model it should call FreeRenderModel() to free the memory associated\n* with the model.\n*\n* The method returns VRRenderModelError_Loading while the render model is still being loaded.\n* The method returns VRRenderModelError_None once loaded successfully, otherwise will return an error. */\nvirtual EVRRenderModelError LoadRenderModel_Async( const char *pchRenderModelName, RenderModel_t **ppRenderModel ) = 0;\n</code></pre>\n\n<p>jna translated it as (<a href=\"https://github.com/jovr/jopenvr/blob/master/jopenvr/src/vr/IVRRenderModels_FnTable.java#L103-L106\" rel=\"nofollow\">here</a>):</p>\n\n<pre><code>public interface LoadRenderModel_Async_callback extends Callback {\n\n    int apply(Pointer pchRenderModelName, PointerByReference ppRenderModel);\n};\n</code></pre>\n\n<p>On java I am trying to load the model in this way (<a href=\"https://github.com/jovr/jogl-hello-vr/blob/master/jogl-hello-vr/src/helloVr/ModelsRender.java#L129-L145\" rel=\"nofollow\">here</a>):</p>\n\n<pre><code>int error;\nPointerByReference modelPtrRef = new PointerByReference();\n\nwhile (true) {\n\n    Pointer stringPointer = new Memory(modelName.length());\n\n    error = renderModels.LoadRenderModel_Async.apply(stringPointer, modelPtrRef);\n\n    if (error != VR.EVRRenderModelError.VRRenderModelError_Loading) {\n        break;\n    }\n\n    try {\n        Thread.sleep(1);\n    } catch (InterruptedException ex) {\n        Logger.getLogger(ModelsRender.class.getName()).log(Level.SEVERE, null, ex);\n    }\n}\n\nRenderModel_t m = new RenderModel_t(modelPtrRef.getValue());\nm.read();\n</code></pre>\n\n<p>But <code>m</code> is empty, that is <code>vertexData</code> is null and <code>vertexCount</code> is 0, on c++ I have valid values instead..</p>\n\n<p>How shall I retrieve the java class from a reference pointer in c++?</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "string",
+        "formatting"
+      ],
+      "owner": {
+        "reputation": 1027,
+        "user_id": 1249664,
+        "user_type": "registered",
+        "accept_rate": 84,
+        "profile_image": "https://www.gravatar.com/avatar/d3953712d5da8a78f5fe5a6f6b37ef4d?s=128&d=identicon&r=PG",
+        "display_name": "auser",
+        "link": "http://stackoverflow.com/users/1249664/auser"
+      },
+      "is_answered": true,
+      "view_count": 4884,
+      "accepted_answer_id": 12132674,
+      "answer_count": 3,
+      "score": 17,
+      "last_activity_date": 1472631880,
+      "creation_date": 1346004476,
+      "last_edit_date": 1346004583,
+      "question_id": 12132604,
+      "link": "http://stackoverflow.com/questions/12132604/correct-format-string-for-string-format-or-similar",
+      "title": "Correct format string for String.format or similar",
+      "body": "<p>I'm sure I've seen String.format used like this before:</p>\n\n<pre><code>String.format(\"Some {1}, {2}, {3}\", var1, var2, var3);\n</code></pre>\n\n<p>Does this ring any bells for anyone? Maybe I'm thinking of C# is there a way of achieving the same in java?</p>\n\n<p>I know you can do something like:</p>\n\n<p>String.format(\"Some %s, %d, %s\", aString, aNumber, aString)</p>\n\n<p>but the syntax I'm after is for the former...</p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "mongodb"
+      ],
+      "owner": {
+        "reputation": 7,
+        "user_id": 4701501,
+        "user_type": "registered",
+        "profile_image": "https://lh5.googleusercontent.com/-PrjJ2-apj3U/AAAAAAAAAAI/AAAAAAAAAG0/2UmZbXnbQWQ/photo.jpg?sz=128",
+        "display_name": "Akshaya.L. Bhat",
+        "link": "http://stackoverflow.com/users/4701501/akshaya-l-bhat"
+      },
+      "is_answered": true,
+      "view_count": 15,
+      "answer_count": 1,
+      "score": 1,
+      "last_activity_date": 1472631856,
+      "creation_date": 1472626269,
+      "question_id": 39242624,
+      "link": "http://stackoverflow.com/questions/39242624/lookup-in-mongodb-doesnt-compare-with-foriegn-key-id",
+      "title": "Lookup in MongoDB doesn&#39;t compare with foriegn key _id",
+      "body": "<pre><code>/*first Table*/\nDBCollection coll = db.getCollection(\"orgmembers\");\n\n/*second table*/\n        DBObject lookupFields = new BasicDBObject(\"from\", \"orgcenters\");\n        lookupFields.put(\"localField\", \"mappings.centerId\");\n        lookupFields.put(\"foreignField\", \"_id\");\n        lookupFields.put(\"as\", \"collegeDetails\"); \n        DBObject lookup = new BasicDBObject(\"$lookup\", lookupFields);\n</code></pre>\n\n<blockquote>\n  <p>Lookup in MongoDB doesn't compare with foriegn key _id</p>\n</blockquote>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android",
+        "react-native"
+      ],
+      "owner": {
+        "reputation": 171,
+        "user_id": 3896616,
+        "user_type": "registered",
+        "accept_rate": 67,
+        "profile_image": "https://lh5.googleusercontent.com/-c87OgJ2ELNM/AAAAAAAAAAI/AAAAAAAAA-0/jhy09eaLnSk/photo.jpg?sz=128",
+        "display_name": "mauron85",
+        "link": "http://stackoverflow.com/users/3896616/mauron85"
+      },
+      "is_answered": false,
+      "view_count": 3,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1472631758,
+      "creation_date": 1472631758,
+      "question_id": 39244353,
+      "link": "http://stackoverflow.com/questions/39244353/react-native-plugin-some-methods-are-not-exposed-to-js",
+      "title": "react-native plugin some methods are not exposed to js",
+      "body": "<p>I'm developing <a href=\"https://github.com/mauron85/react-native-background-geolocation\" rel=\"nofollow\">plugin</a> for react-native where I'm exposing java methods using @ReactMethod annotation. My problems is that not all methods are exposed to js. When I decompile sample app apk using <a href=\"https://github.com/skylot/jadx\" rel=\"nofollow\">jadx</a> I see all methods of class <a href=\"https://github.com/mauron85/react-native-background-geolocation/blob/master/android/src/main/java/com/marianhello/react/BackgroundGeolocationModule.java\" rel=\"nofollow\">BackgroundGeolocationModule</a> properly annotated with @ReactMethod, but not all of are actually exposed to js, which I can confirm by printing all js module properties.</p>\n\n<p>List of decorated methods in <a href=\"https://github.com/mauron85/react-native-background-geolocation/blob/master/android/src/main/java/com/marianhello/react/BackgroundGeolocationModule.java\" rel=\"nofollow\">BackgroundGeolocationModule</a> java: configure, start, stop, isLocationEnabled, showAppSettings, showLocationSettings, watchLocationMode, getLocations, getValidLocations, deleteLocation, deleteAllLocations, switchMode, getConfig</p>\n\n<p>List of actually exposed methods (confirmed by console.log(BackgroundGeolocation): configure, start, stop</p>\n\n<p>I've tried cleaning project gradlew clean, clearing watchman cache, clearing gradle cache, removing node_modules, clearing tmp dir. Nothing helped so far. Thanks for help.</p>\n\n<p>The debug <a href=\"https://www.dropbox.com/s/55pir34iyj7slgu/app-debug.apk?dl=0\" rel=\"nofollow\">apk is here</a>.\n<a href=\"http://i.stack.imgur.com/Sq1ur.png\" rel=\"nofollow\"><img src=\"http://i.stack.imgur.com/Sq1ur.png\" alt=\"jadx showing all methods\"></a></p>\n"
+    },
+    {
+      "tags": [
+        "java",
+        "android",
+        "include"
+      ],
+      "owner": {
+        "reputation": 19,
+        "user_id": 4695869,
+        "user_type": "registered",
+        "accept_rate": 20,
+        "profile_image": "https://www.gravatar.com/avatar/18ac1267db3daf9c874be22770b92abc?s=128&d=identicon&r=PG&f=1",
+        "display_name": "amir",
+        "link": "http://stackoverflow.com/users/4695869/amir"
+      },
+      "is_answered": false,
+      "view_count": 10,
+      "answer_count": 2,
+      "score": -1,
+      "last_activity_date": 1472631750,
+      "creation_date": 1472628684,
+      "last_edit_date": 1472629663,
+      "question_id": 39243370,
+      "link": "http://stackoverflow.com/questions/39243370/android-including-one-layout-with-different-ids",
+      "title": "android including one layout with different IDs",
+      "body": "<p>i've created a layout with an ImageView, i want to include it two times with two different ImageView \nlike a ListView with different positions.</p>\n\n<p>this is the ImageView layout</p>\n\n<pre><code>&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;\n&lt;LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\nandroid:orientation=\"vertical\" android:layout_width=\"match_parent\"\nandroid:layout_height=\"match_parent\"&gt;\n\n&lt;include\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    layout=\"@layout/main_guilds_item\"\n    android:layout_gravity=\"center_horizontal\" /&gt;\n\n&lt;include\n    layout=\"@layout/main_guilds_item\"\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    android:layout_gravity=\"center_horizontal\" /&gt;\n</code></pre>\n\n<p></p>\n\n<p>here i include the layout two times but i want to access those ImageViews with different IDs to set different Images.</p>\n\n<pre><code>&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;\n&lt;LinearLayout       xmlns:android=\"http://schemas.android.com/apk/res/android\"\nandroid:orientation=\"vertical\" android:layout_width=\"match_parent\"\nandroid:layout_height=\"match_parent\"&gt;\n\n&lt;include\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    layout=\"@layout/main_guilds_item\"\n    android:layout_gravity=\"center_horizontal\" /&gt;\n\n&lt;include\n    layout=\"@layout/main_guilds_item\"\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    android:layout_gravity=\"center_horizontal\" /&gt;\n&lt;/LinearLayout&gt;\n</code></pre>\n\n<p>how can i do it ?</p>\n"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 300,
+  "quota_remaining": 299
+}

@@ -27,6 +27,7 @@ public class Model implements IModel {
     Scheduler uiScheduler;
 
     public Model() {
+        //if (MyApplication.getAppComponent()==null) System.out.println("null");
         MyApplication.getAppComponent().inject(this);
     }
 

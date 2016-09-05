@@ -1,6 +1,9 @@
 package com.mavpokit.rxretrofitmvp.Model.Api;
 
 import com.mavpokit.rxretrofitmvp.BaseTest;
+import com.mavpokit.rxretrofitmvp.BuildConfig;
+import com.mavpokit.rxretrofitmvp.DI.MyApplication;
+import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
 import com.mavpokit.rxretrofitmvp.Model.Api.ApiModule;
 import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
@@ -19,22 +22,26 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 
 import okhttp3.mockwebserver.RecordedRequest;
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
 import rx.observers.TestSubscriber;
+import rx.schedulers.Schedulers;
 
 import static org.junit.Assert.assertEquals;
 
-@Ignore
-public class StackoverflowApiInterfaceTest
-        extends BaseTest {
 
-    private static final String HTTP_404_CLIENT_ERROR = "HTTP 404 Client Error";
+public class StackoverflowApiInterfaceTest
+        extends BaseTest
+{
+
+
     MockWebServer server;
     StackoverflowApiInterface apiInterface;
+
+    private static final String HTTP_404_CLIENT_ERROR = "HTTP 404 Client Error";
     private static final String QUERY = "java";
     private static final String QUESTION_ID = "23804123";
     ListQuestion mListQuestion;
@@ -45,7 +52,9 @@ public class StackoverflowApiInterfaceTest
 
     @Before
     public void setUp() throws Exception {
-        super.setUp();
+
+        //super.setUp();
+        //component.inject(this);
         server = new MockWebServer();
         server.start();
         String getQuestionsResponce = jsonReader.read("getquestions.json");
@@ -70,9 +79,10 @@ public class StackoverflowApiInterfaceTest
             }
         };
 
-        server.setDispatcher((Dispatcher)dispatcher);
+        server.setDispatcher(dispatcher);
         HttpUrl baseUrl = server.url("/");
-        apiInterface = ApiModule.getApiInterface((String)baseUrl.toString());
+        apiInterface = ApiModule.getApiInterface(baseUrl.toString());
+        //System.out.println(baseUrl.toString());
     }
 
     @After
@@ -81,8 +91,10 @@ public class StackoverflowApiInterfaceTest
 
     @Test
     public void testGetQuestions() throws Exception {
-        TestSubscriber testSubscriber = new TestSubscriber();
-        apiInterface.getQuestions("java").subscribe((Subscriber)testSubscriber);
+
+        TestSubscriber<ListQuestion> testSubscriber = new TestSubscriber<>();
+        apiInterface.getQuestions("java").subscribe(testSubscriber);
+
         testSubscriber.assertNoErrors();
         testSubscriber.assertValueCount(1);
         ListQuestion actualListQuestion = (ListQuestion)testSubscriber.getOnNextEvents().get(0);
@@ -96,7 +108,7 @@ public class StackoverflowApiInterfaceTest
     @Test
     public void testGetAnswers() throws Exception {
         TestSubscriber testSubscriber = new TestSubscriber();
-        apiInterface.getAnswers("23804123").subscribe((Subscriber)testSubscriber);
+        apiInterface.getAnswers("23804123").subscribe(testSubscriber);
         testSubscriber.assertNoErrors();
         testSubscriber.assertValueCount(1);
         ListAnswer actualListAnswer = (ListAnswer)testSubscriber.getOnNextEvents().get(0);
