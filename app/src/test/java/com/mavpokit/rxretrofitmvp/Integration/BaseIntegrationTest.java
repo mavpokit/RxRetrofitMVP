@@ -3,12 +3,17 @@ package com.mavpokit.rxretrofitmvp.Integration;
 import com.mavpokit.rxretrofitmvp.BuildConfig;
 import com.mavpokit.rxretrofitmvp.Integration.DI.AppIntegrationTestComponent;
 import com.mavpokit.rxretrofitmvp.Integration.DI.MyIntegrationTestApplication;
+import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+
+import javax.inject.Inject;
+
+import okhttp3.mockwebserver.MockWebServer;
 
 /**
  * Created by Alex on 01.09.2016.
@@ -20,7 +25,12 @@ import org.robolectric.annotation.Config;
 @Ignore
 public class BaseIntegrationTest {
 
-    protected AppIntegrationTestComponent component;
+    AppIntegrationTestComponent component;
+    JsonReader jsonReader = new JsonReader();
+
+    @Inject
+    MockWebServer server;
+
 
     @Before
     public void setUp() throws Exception {

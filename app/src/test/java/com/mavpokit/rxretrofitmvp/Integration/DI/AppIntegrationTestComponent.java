@@ -1,13 +1,12 @@
 package com.mavpokit.rxretrofitmvp.Integration.DI;
 
 import com.mavpokit.rxretrofitmvp.DI.AnswersPresenterProvider;
-import com.mavpokit.rxretrofitmvp.DI.ApiProvider;
 import com.mavpokit.rxretrofitmvp.DI.AppComponent;
 import com.mavpokit.rxretrofitmvp.DI.ModelProvider;
 import com.mavpokit.rxretrofitmvp.DI.QuestionsPresenterProvider;
 import com.mavpokit.rxretrofitmvp.DI.SchedulerMockProvider;
-import com.mavpokit.rxretrofitmvp.DI.SchedulerProvider;
-import com.mavpokit.rxretrofitmvp.Integration.ApiModelIntegrationTest;
+import com.mavpokit.rxretrofitmvp.Integration.ModelIntegrationTest;
+import com.mavpokit.rxretrofitmvp.Integration.PresenterIntegrationTest;
 
 import javax.inject.Singleton;
 
@@ -26,5 +25,6 @@ import dagger.Component;
 })
 
 public interface AppIntegrationTestComponent extends AppComponent{
-    public void inject(ApiModelIntegrationTest modelIntegrationTest);
+    public void inject(ModelIntegrationTest modelIntegrationTest);
+    public void inject(PresenterIntegrationTest presenterIntegrationTest);
 }

@@ -38,7 +38,7 @@ public class ModelTest extends BaseTest {
     private static final String QUERY = "QUERY";
     private static final String LINK="https://github.com";
 
-    Question question = new Question(LINK,"title",1,0);
+    Question question = new Question(LINK,"title",1,"0");
     ArrayList<Question> questionsList=new ArrayList<>();
     private ListQuestion mListQuestion =new ListQuestion();
 

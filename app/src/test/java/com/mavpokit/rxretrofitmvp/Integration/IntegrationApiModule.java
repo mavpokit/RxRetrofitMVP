@@ -1,6 +1,5 @@
 package com.mavpokit.rxretrofitmvp.Integration;
 
-//import okhttp3.HttpUrl;
 import com.mavpokit.rxretrofitmvp.Model.Api.ApiModule;
 import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
@@ -20,10 +19,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//import retrofit.GsonConverterFactory;
-//import retrofit.Retrofit;
-//import retrofit.RxJavaCallAdapterFactory;
-
 
 /**
  * Created by Alex on 27.07.2016.
@@ -33,10 +28,10 @@ public class IntegrationApiModule extends BaseIntegrationTest {
 
         server.start();
         JsonReader jsonReader=new JsonReader();
-        String getQuestionsResponce = jsonReader.read(Consts.JSONQUESTIONS);
-        ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS);
-        String getAnswersResponce = jsonReader.read(Consts.JSONANSWERS);
-        ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS);
+        String getQuestionsResponce = jsonReader.read(Consts.JSONQUESTIONS_FILE);
+        ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
+        String getAnswersResponce = jsonReader.read(Consts.JSONANSWERS_FILE);
+        ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS_FILE);
 
         final Dispatcher dispatcher = new Dispatcher() {
 

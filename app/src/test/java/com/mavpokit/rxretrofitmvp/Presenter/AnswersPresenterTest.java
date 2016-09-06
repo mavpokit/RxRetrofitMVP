@@ -40,7 +40,7 @@ public class AnswersPresenterTest extends BaseTest {
 
     private static final String LINK="https://github.com";
     private static final String ERROR_MESSAGE="ERROR_MESSAGE";
-    private static final Question question=new Question(LINK,"title",1,2);
+    private static final Question question=new Question(LINK,"title",1,"2");
     private ArrayList<Answer> answerList=new ArrayList<>();
     private ListAnswer listAnswer=new ListAnswer();
 

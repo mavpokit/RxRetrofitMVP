@@ -5,9 +5,10 @@ package com.mavpokit.rxretrofitmvp.Integration;
  */
 public interface Consts {
     static final String BASEURL="/";
+    static final String LINK = "https://github.com";
     static final String QUERY = "java";
     static final String QUESTION_ID = "23804123";
-    static final String JSONQUESTIONS = "getquestions.json";
-    static final String JSONANSWERS = "getanswers.json";
+    static final String JSONQUESTIONS_FILE = "getquestions.json";
+    static final String JSONANSWERS_FILE = "getanswers.json";
 
 }

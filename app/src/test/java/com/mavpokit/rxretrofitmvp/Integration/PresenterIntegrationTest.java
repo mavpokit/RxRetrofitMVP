@@ -1,11 +1,12 @@
-package com.mavpokit.rxretrofitmvp.Presenter;
+package com.mavpokit.rxretrofitmvp.Integration;
 
 import android.net.Uri;
 
-import com.mavpokit.rxretrofitmvp.BaseTest;
 import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
+import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
+import com.mavpokit.rxretrofitmvp.Presenter.QuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
 import org.junit.Before;
@@ -23,24 +24,19 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by Alex on 18.08.2016.
+ * Created by Alex on 05.09.2016.
  */
-public class QuestionsPresenterTest extends BaseTest {
+public class PresenterIntegrationTest extends BaseIntegrationTest {
 
-    private static final String LINK="https://github.com";
-    private static final String QUERY="java";
-    private static final String ERROR_MESSAGE="ERROR_MESSAGE";
-    Question question;
-    ArrayList<Question> questionsList=new ArrayList<>();
-    private ListQuestion mListQuestion =new ListQuestion();
+    private static final String ERROR_MESSAGE = "ERROR_MESSAGE";
+    Question question = new Question(Consts.LINK, "title", 1, Consts.QUESTION_ID);
+    private ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
 
     @Mock
     private IQuestionsView view;
 
-    IQuestionsPresenter presenter=new QuestionsPresenter();
-
     @Inject
-    IModel model;
+    IQuestionsPresenter presenter;
 
     @Before
     public void setUp() throws Exception {
@@ -48,33 +44,28 @@ public class QuestionsPresenterTest extends BaseTest {
         component.inject(this);
         MockitoAnnotations.initMocks(this);
 
-        question=new Question(LINK,"title",1,"0");
-        questionsList.add(question);
-        mListQuestion.setItems(questionsList);
-
-        //presenter=new QuestionsPresenter();
-        presenter.onCreate(view,null);
-        presenter.setListQuestion(mListQuestion);
+        presenter.onCreate(view, null);
+//        presenter.setListQuestion(mListQuestion);
     }
 
     @Test
     public void testShowAnswers() throws Exception {
-        final int INDEX=0;
+        final int INDEX = 0;
         presenter.showAnswers(INDEX);
         verify(view).openAnswers(mListQuestion.getItems().get(INDEX));
     }
 
     @Test
     public void testOpenLink() throws Exception {
-        final int INDEX=0;
+        final int INDEX = 0;
         presenter.openLink(INDEX);
 
-        Uri uri=Uri.parse(LINK);
+        Uri uri = Uri.parse("/");
         verify(view).openLink(uri);
     }
 
     @Test
-    public void testOnCreateView() throws Exception{
+    public void testOnCreateView() throws Exception {
         presenter.onCreateView();
         if (isListNotEmpty(mListQuestion))
             verify(view).showQuestionList(mListQuestion);
@@ -85,29 +76,32 @@ public class QuestionsPresenterTest extends BaseTest {
     }
 
     @Test
-    public void testOnSearchClick1result() throws Exception{
+    public void testOnSearchClick1result() throws Exception {
         presenter.setListQuestion(null);
-        when(model.getQuestionList(QUERY)).thenReturn(Observable.just(mListQuestion));
-        presenter.onSearchClick(QUERY);
+        //when(model.getQuestionList(QUERY)).thenReturn(Observable.just(mListQuestion));
+
+        presenter.onSearchClick(Consts.QUERY);
+
         verify(view).showSpinner();
         verify(view).showQuestionList(mListQuestion);
         verify(view).hideSpinner();
     }
 
     @Test
-    public void testOnSearchClick0results() throws Exception{
+    public void testOnSearchClick0results() throws Exception {
         presenter.setListQuestion(null);
-        when(model.getQuestionList(QUERY)).thenReturn(Observable.just(null));
-        presenter.onSearchClick(QUERY);
+        //when(model.getQuestionList(QUERY)).thenReturn(Observable.just(null));
+        presenter.onSearchClick(Consts.QUERY);
         verify(view).showSpinner();
         verify(view).showNothing();
         verify(view).hideSpinner();
     }
+
     @Test
-    public void testOnSearchClickError() throws Exception{
+    public void testOnSearchClickError() throws Exception {
         presenter.setListQuestion(null);
-        when(model.getQuestionList(QUERY)).thenReturn(Observable.error(new Throwable(ERROR_MESSAGE)));
-        presenter.onSearchClick(QUERY);
+        //when(model.getQuestionList(QUERY)).thenReturn(Observable.error(new Throwable(ERROR_MESSAGE)));
+        presenter.onSearchClick(Consts.QUERY);
         verify(view).showSpinner();
         verify(view).showError(ERROR_MESSAGE);
         verify(view).hideSpinner();

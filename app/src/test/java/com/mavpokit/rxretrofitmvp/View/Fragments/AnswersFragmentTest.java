@@ -37,7 +37,7 @@ public class AnswersFragmentTest extends BaseTest{
     MainActivity activity;
 
     private static final String LINK="https://github.com";
-    private static final Question question=new Question(LINK,"title",1,2);
+    private static final Question question=new Question(LINK,"title",1,"2");
 
 
     @Before

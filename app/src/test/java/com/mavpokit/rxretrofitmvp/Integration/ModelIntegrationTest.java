@@ -26,22 +26,18 @@ import static org.mockito.Mockito.when;
 /**
  * Created by Alex on 01.09.2016.
  */
-@Ignore
-public class ApiModelIntegrationTest extends BaseIntegrationTest{
+
+public class ModelIntegrationTest extends BaseIntegrationTest {
 
     @Inject
     IModel model;
-    //IModel model = new Model();
 
-    private static final String QUERY = "QUERY";
-    private static final String LINK="https://github.com";
+    private static final String LINK = "https://github.com";
 
-    Question question = new Question(LINK,"title",1,0);
-    ArrayList<Question> questionsList=new ArrayList<>();
-    private ListQuestion mListQuestion =new ListQuestion();
+    Question question = new Question(LINK, "title", 1, Consts.QUESTION_ID);
 
-    private ArrayList<Answer> answerList=new ArrayList<>();
-    private ListAnswer mListAnswer=new ListAnswer();
+    private ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
+    private ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS_FILE);
 
 
     @Before
@@ -53,17 +49,23 @@ public class ApiModelIntegrationTest extends BaseIntegrationTest{
     @Test
     public void testGetQuestionList() throws Exception {
         TestSubscriber<ListQuestion> testSubscriber = new TestSubscriber<>();
-        model.getQuestionList(QUERY).subscribe(testSubscriber);
+        model.getQuestionList(Consts.QUERY).subscribe(testSubscriber);
 
-//        testSubscriber.assertNoErrors();
-//        testSubscriber.assertValueCount(1);
-//
-//        ListQuestion actual = testSubscriber.getOnNextEvents().get(0);
-//        assertEquals(actual,mListQuestion);
+        testSubscriber.assertNoErrors();
+        testSubscriber.assertValueCount(1);
+
+        ListQuestion actualListQuestion = testSubscriber.getOnNextEvents().get(0);
+
+        for (int i = 0; i < actualListQuestion.getItems().size(); ++i) {
+            Question actualQustion = actualListQuestion.getItems().get(i);
+            Question expected = mListQuestion.getItems().get(i);
+            assertEquals(actualQustion, expected);
+        }
+
 
     }
 
-    @Ignore @Test
+    @Test
     public void testGetAnswerList() throws Exception {
         TestSubscriber<ListAnswer> testSubscriber = new TestSubscriber<>();
         model.getAnswerList(String.valueOf(question.getQuestion_id())).subscribe(testSubscriber);
@@ -71,8 +73,12 @@ public class ApiModelIntegrationTest extends BaseIntegrationTest{
         testSubscriber.assertNoErrors();
         testSubscriber.assertValueCount(1);
 
-        ListAnswer actual = testSubscriber.getOnNextEvents().get(0);
-        assertEquals(actual,mListAnswer);
+        ListAnswer actualListAnswer = testSubscriber.getOnNextEvents().get(0);
+        for (int i = 0; i < actualListAnswer.getItems().size(); ++i) {
+            Answer actual = actualListAnswer.getItems().get(i);
+            Answer expected = mListAnswer.getItems().get(i);
+            assertEquals(actual, expected);
+        }
 
     }
 }

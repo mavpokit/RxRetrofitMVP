@@ -14,12 +14,12 @@ public class Question implements Serializable{
 
 
     int answer_count;
-    long question_id;
+    String question_id;
 
     public Question() {
     }
 
-    public Question(String link, String title, int answer_count, long question_id) {
+    public Question(String link, String title, int answer_count, String question_id) {
         this.link = link;
         this.title = title;
         this.answer_count = answer_count;
@@ -40,7 +40,7 @@ public class Question implements Serializable{
 
     public String getBody() {return body;}
 
-    public long getQuestion_id() {
+    public String getQuestion_id() {
         return question_id;
     }
 
@@ -74,7 +74,7 @@ public class Question implements Serializable{
         if (this.answer_count != equal.answer_count) {
             return false;
         }
-        if (this.question_id != equal.question_id) {
+        if (!this.question_id.equals(equal.question_id)) {
             return false;
         }
         return true;
