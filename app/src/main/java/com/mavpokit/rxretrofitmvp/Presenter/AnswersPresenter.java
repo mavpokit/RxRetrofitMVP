@@ -141,5 +141,9 @@ public class AnswersPresenter implements IAnswersPresenter {
         view.openLink(Uri.parse(question.getLink()));
     }
 
-
+    //for tests
+    @Override
+    public ListAnswer getListAnswer() {
+        return listAnswer;
+    }
 }

@@ -4,6 +4,8 @@ import com.mavpokit.rxretrofitmvp.BuildConfig;
 import com.mavpokit.rxretrofitmvp.Integration.DI.AppIntegrationTestComponent;
 import com.mavpokit.rxretrofitmvp.Integration.DI.MyIntegrationTestApplication;
 import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
+import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -26,7 +28,10 @@ import okhttp3.mockwebserver.MockWebServer;
 public class BaseIntegrationTest {
 
     AppIntegrationTestComponent component;
-    JsonReader jsonReader = new JsonReader();
+    protected JsonReader jsonReader = new JsonReader();
+    ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
+    ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS_FILE);
+
 
     @Inject
     MockWebServer server;

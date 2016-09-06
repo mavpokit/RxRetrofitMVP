@@ -56,6 +56,10 @@ public class Question implements Serializable{
         this.answer_count = answer_count;
     }
 
+    public void setQuestion_id(String question_id) {
+        this.question_id = question_id;
+    }
+
     @Override
     public String toString() {
         return title+"\n"+link;

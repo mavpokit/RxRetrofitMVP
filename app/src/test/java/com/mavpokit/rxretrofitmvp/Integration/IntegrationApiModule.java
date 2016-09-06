@@ -24,14 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Alex on 27.07.2016.
  */
 public class IntegrationApiModule extends BaseIntegrationTest {
-    public static StackoverflowApiInterface getApiInterface(MockWebServer server)throws IOException{
+    public StackoverflowApiInterface getApiInterface(MockWebServer server)throws IOException{
 
         server.start();
-        JsonReader jsonReader=new JsonReader();
         String getQuestionsResponce = jsonReader.read(Consts.JSONQUESTIONS_FILE);
-        ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
         String getAnswersResponce = jsonReader.read(Consts.JSONANSWERS_FILE);
-        ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS_FILE);
 
         final Dispatcher dispatcher = new Dispatcher() {
 
@@ -42,10 +39,15 @@ public class IntegrationApiModule extends BaseIntegrationTest {
                     return new MockResponse().setResponseCode(200)
                             .setBody(getQuestionsResponce);
                 }
+                if (request.getPath().equals("/2.2/search?order=desc&sort=activity&site=stackoverflow&filter=withbody&tagged="+Consts.QUERY_NULL)) {
+                    return new MockResponse().setResponseCode(200)
+                            .setBody("{}");
+                }
                 if (request.getPath().equals("/2.2/questions/"+Consts.QUESTION_ID+"/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody")) {
                     return new MockResponse().setResponseCode(200)
                             .setBody(getAnswersResponce);
                 }
+
                 return new MockResponse().setResponseCode(404);
             }
         };

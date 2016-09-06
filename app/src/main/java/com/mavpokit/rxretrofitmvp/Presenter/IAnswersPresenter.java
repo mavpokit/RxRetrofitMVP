@@ -20,4 +20,7 @@ public interface IAnswersPresenter {
     public void setNewQuestion(boolean newQuestion);
     public boolean isNewQuestion();
     public void setListAnswer(ListAnswer listAnswer);
+
+    //for tests
+    ListAnswer getListAnswer();
 }

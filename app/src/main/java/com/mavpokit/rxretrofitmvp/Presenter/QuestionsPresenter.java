@@ -112,4 +112,9 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     public void setListQuestion(ListQuestion listQuestion) {
         this.listQuestion = listQuestion;
     }
+    //for Tests
+    @Override
+    public ListQuestion getListQuestion() {
+        return listQuestion;
+    }
 }

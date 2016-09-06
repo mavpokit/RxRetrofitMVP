@@ -19,4 +19,7 @@ public interface IQuestionsPresenter {
 
     //for Tests
     void setListQuestion(ListQuestion listQuestion);
+
+    //for Tests
+    ListQuestion getListQuestion();
 }

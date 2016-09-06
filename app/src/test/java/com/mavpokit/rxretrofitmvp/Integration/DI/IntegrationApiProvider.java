@@ -22,7 +22,7 @@ public class IntegrationApiProvider {
     @Singleton
     StackoverflowApiInterface provideApiInterface(MockWebServer server){
         try {
-            return IntegrationApiModule.getApiInterface(server);
+            return new IntegrationApiModule().getApiInterface(server);
         } catch (IOException e) {
             throw new RuntimeException("Can't create ApiInterface: "+e.getLocalizedMessage());
         }

@@ -32,12 +32,7 @@ public class ModelIntegrationTest extends BaseIntegrationTest {
     @Inject
     IModel model;
 
-    private static final String LINK = "https://github.com";
-
-    Question question = new Question(LINK, "title", 1, Consts.QUESTION_ID);
-
-    private ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
-    private ListAnswer mListAnswer = jsonReader.getListAnswer(Consts.JSONANSWERS_FILE);
+    Question question = new Question(Consts.LINK, "title", 1, Consts.QUESTION_ID);
 
 
     @Before

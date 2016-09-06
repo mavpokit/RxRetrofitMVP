@@ -54,7 +54,7 @@ public class QuestionsPresenterTest extends BaseTest {
 
         //presenter=new QuestionsPresenter();
         presenter.onCreate(view,null);
-        presenter.setListQuestion(mListQuestion);
+
     }
 
     @Test

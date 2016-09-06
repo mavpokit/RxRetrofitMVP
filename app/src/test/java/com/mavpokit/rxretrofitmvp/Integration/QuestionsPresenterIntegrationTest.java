@@ -18,19 +18,18 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import okhttp3.mockwebserver.MockWebServer;
 import rx.Observable;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
  * Created by Alex on 05.09.2016.
  */
-public class PresenterIntegrationTest extends BaseIntegrationTest {
-
-    private static final String ERROR_MESSAGE = "ERROR_MESSAGE";
-    Question question = new Question(Consts.LINK, "title", 1, Consts.QUESTION_ID);
-    private ListQuestion mListQuestion = jsonReader.getListQuestion(Consts.JSONQUESTIONS_FILE);
+public class QuestionsPresenterIntegrationTest extends BaseIntegrationTest {
 
     @Mock
     private IQuestionsView view;
@@ -45,7 +44,7 @@ public class PresenterIntegrationTest extends BaseIntegrationTest {
         MockitoAnnotations.initMocks(this);
 
         presenter.onCreate(view, null);
-//        presenter.setListQuestion(mListQuestion);
+        presenter.setListQuestion(mListQuestion);
     }
 
     @Test
@@ -60,7 +59,7 @@ public class PresenterIntegrationTest extends BaseIntegrationTest {
         final int INDEX = 0;
         presenter.openLink(INDEX);
 
-        Uri uri = Uri.parse("/");
+        Uri uri = Uri.parse(mListQuestion.getItems().get(INDEX).getLink());
         verify(view).openLink(uri);
     }
 
@@ -76,22 +75,24 @@ public class PresenterIntegrationTest extends BaseIntegrationTest {
     }
 
     @Test
-    public void testOnSearchClick1result() throws Exception {
-        presenter.setListQuestion(null);
-        //when(model.getQuestionList(QUERY)).thenReturn(Observable.just(mListQuestion));
-
+    public void testOnSearchClickResultsOk() throws Exception {
         presenter.onSearchClick(Consts.QUERY);
 
         verify(view).showSpinner();
-        verify(view).showQuestionList(mListQuestion);
+        verify(view).showQuestionList(any());
         verify(view).hideSpinner();
+
+        ListQuestion actualListQuestion = presenter.getListQuestion();
+        for (int i = 0; i < actualListQuestion.getItems().size(); ++i) {
+            Question actualQustion = actualListQuestion.getItems().get(i);
+            Question expected = mListQuestion.getItems().get(i);
+            assertEquals(actualQustion, expected);
+        }
     }
 
     @Test
-    public void testOnSearchClick0results() throws Exception {
-        presenter.setListQuestion(null);
-        //when(model.getQuestionList(QUERY)).thenReturn(Observable.just(null));
-        presenter.onSearchClick(Consts.QUERY);
+    public void testOnSearchClick0Results() throws Exception {
+        presenter.onSearchClick(Consts.QUERY_NULL);
         verify(view).showSpinner();
         verify(view).showNothing();
         verify(view).hideSpinner();
@@ -99,11 +100,9 @@ public class PresenterIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void testOnSearchClickError() throws Exception {
-        presenter.setListQuestion(null);
-        //when(model.getQuestionList(QUERY)).thenReturn(Observable.error(new Throwable(ERROR_MESSAGE)));
-        presenter.onSearchClick(Consts.QUERY);
+        presenter.onSearchClick(Consts.QUERY_ERROR);
         verify(view).showSpinner();
-        verify(view).showError(ERROR_MESSAGE);
+        verify(view).showError(Consts.HTTP_404_CLIENT_ERROR);
         verify(view).hideSpinner();
     }
 }
