@@ -11,8 +11,6 @@ public class Question implements Serializable{
     String link;
     String title;
     String body;
-
-
     int answer_count;
     String question_id;
 
@@ -84,4 +82,7 @@ public class Question implements Serializable{
         return true;
     }
 
+    public void setBody(String body) {
+        this.body = body;
+    }
 }

@@ -187,7 +187,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                presenter.onSearchClick(query);
+                search(query);
                 searchView.clearFocus();
                 return true;
             }
@@ -207,6 +207,11 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
                 }
         );
 
+    }
+
+    //for integration tests
+    public void search(String query) {
+        presenter.onSearchClick(query);
     }
 
     @Override

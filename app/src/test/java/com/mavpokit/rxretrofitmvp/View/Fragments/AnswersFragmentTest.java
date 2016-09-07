@@ -20,6 +20,7 @@ import org.robolectric.Robolectric;
 import javax.inject.Inject;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 /**
  * Created by Alex on 01.09.2016.
