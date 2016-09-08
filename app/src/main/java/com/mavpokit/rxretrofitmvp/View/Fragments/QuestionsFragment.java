@@ -110,12 +110,15 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void showQuestionList(ListQuestion questionList) {
         adapter.setListQuestion(questionList);
         emptyTextView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void showNothing() {
-
+        mRecyclerView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
+        Toast.makeText(this.getActivity(),"No results",Toast.LENGTH_SHORT).show();
     }
 
     @Override

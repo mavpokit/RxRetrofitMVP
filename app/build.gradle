@@ -12,6 +12,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -69,4 +70,7 @@ dependencies {
     compile 'javax.inject:javax.inject:1'
     testApt "com.google.dagger:dagger-compiler:2.4"
     compile 'com.squareup.okhttp:okhttp:2.7.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 }

@@ -48,6 +48,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
             @Override
             public void onError(Throwable e) {
                 view.showError(e.getLocalizedMessage());
+                view.hideSpinner();
             }
 
             @Override
@@ -55,12 +56,14 @@ public class QuestionsPresenter implements IQuestionsPresenter {
                 if (isListNotEmpty(questionList)) {
                     listQuestion = questionList;
                     view.showQuestionList(questionList);
+                    view.hideSpinner();
                 }
                 else
                     view.showNothing();
+                    view.hideSpinner();
             }
         });
-        view.hideSpinner();
+
     }
 
     @Override

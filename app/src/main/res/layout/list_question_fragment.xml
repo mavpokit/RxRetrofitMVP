@@ -19,7 +19,8 @@
                 android:paddingRight="@dimen/recycler_inner_margin"
                 android:paddingTop="@dimen/recycler_inner_margin"
 
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:visibility="gone" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
