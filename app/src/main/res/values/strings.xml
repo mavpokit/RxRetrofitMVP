@@ -3,4 +3,6 @@
     <string name="action_search">Search</string>
     <string name="query_hint">enter query</string>
     <string name="no_data_available">Enter your query</string>
+    <string name="no_results_toast">No results</string>
+
 </resources>

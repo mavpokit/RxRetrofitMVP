@@ -12,7 +12,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        //testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'com.mavpokit.rxretrofitmvp.DI.MockTestRunner'
     }
     buildTypes {
         release {
@@ -40,8 +41,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile "junit:junit:$rootProject.ext.junitVersion"
+    //compile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
-    compile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
     testCompile "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
     testCompile "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
@@ -69,8 +70,22 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
     compile 'javax.inject:javax.inject:1'
     testApt "com.google.dagger:dagger-compiler:2.4"
+    androidTestApt "com.google.dagger:dagger-compiler:2.4"
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    //androidTestCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    androidTestCompile 'org.mockito:mockito-core:1.10.19'
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+ //   compile 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+    compile "com.android.support.test.espresso:espresso-idling-resource:2.2.2"
 }

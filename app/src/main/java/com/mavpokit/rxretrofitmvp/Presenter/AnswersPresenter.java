@@ -28,7 +28,7 @@ public class AnswersPresenter implements IAnswersPresenter {
 
     IAnswersView view;
     private ListAnswer listAnswer;
-    private Question question;//we het it from args, so it is retained
+    private Question question;//we get it from args, so it is retained
     private Subscription subscription = Subscriptions.empty();
 
     boolean newQuestion=false;
@@ -85,6 +85,7 @@ public class AnswersPresenter implements IAnswersPresenter {
 
                 @Override
                 public void onError(Throwable e) {
+                    System.out.println("================================view.showError(e.getLocalizedMessage());");
                     view.showError(e.getLocalizedMessage());
                 }
 
@@ -96,6 +97,7 @@ public class AnswersPresenter implements IAnswersPresenter {
 
                 } else
                     view.showNothing();
+                    System.out.println("==============================view.showNothing();");
                 }
             });
         view.hideSpinner();

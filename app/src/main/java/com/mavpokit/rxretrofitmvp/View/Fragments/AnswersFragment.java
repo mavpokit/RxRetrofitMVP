@@ -100,6 +100,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showAnswerList(ListAnswer answerList) {
+        mRecyclerView.setVisibility(View.VISIBLE);
         adapter.setListAnswer(answerList);
     }
 
@@ -115,7 +116,10 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     @Override
     public void showError(String errorMessage) {
+        textView0answers.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
         Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        //Log.d("////////////////","|||||||||||||||||");
     }
 
     @Override
@@ -133,6 +137,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     @Override
     public void showNothing() {
         textView0answers.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
     }
 
     @Override

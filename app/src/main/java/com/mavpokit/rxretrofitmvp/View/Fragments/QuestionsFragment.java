@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -118,12 +119,16 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void showNothing() {
         mRecyclerView.setVisibility(View.GONE);
         emptyTextView.setVisibility(View.VISIBLE);
-        Toast.makeText(this.getActivity(),"No results",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getActivity(),R.string.no_results_toast,Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showError(String errorMessage) {
+        mRecyclerView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
         Toast.makeText(getContext(),errorMessage,Toast.LENGTH_LONG).show();
+
+
     }
 
     @Override

@@ -9,4 +9,5 @@
     <color name="link_background">#e6fdfb</color>
     <color name="answered_background">#c1ffc1</color>
     <color name="answer_background">#d9dad9</color>
+    <color name="recycler_bg1">#ceedc8</color>
 </resources>
