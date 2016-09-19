@@ -33,6 +33,8 @@ public class AnswersPresenter implements IAnswersPresenter {
 
     boolean newQuestion=false;
 
+    private int answerBodySize=1;
+
     public void setNewQuestion(boolean newQuestion) {
         this.newQuestion = newQuestion;
     }
@@ -44,6 +46,7 @@ public class AnswersPresenter implements IAnswersPresenter {
     public void setListAnswer(ListAnswer listAnswer) {
         this.listAnswer = listAnswer;
     }
+
 
     public AnswersPresenter()
     {
@@ -87,6 +90,7 @@ public class AnswersPresenter implements IAnswersPresenter {
                 public void onError(Throwable e) {
                     System.out.println("================================view.showError(e.getLocalizedMessage());");
                     view.showError(e.getLocalizedMessage());
+                    view.hideSpinner();
                 }
 
                 @Override
@@ -94,13 +98,16 @@ public class AnswersPresenter implements IAnswersPresenter {
                 if (isListNotEmpty(answerList)) {
                     listAnswer = answerList;
                     view.showAnswerList(listAnswer);
+                    view.hideSpinner();
 
-                } else
+                }
+                else {
                     view.showNothing();
-                    System.out.println("==============================view.showNothing();");
+                    view.hideSpinner();
+                }
                 }
             });
-        view.hideSpinner();
+
     }
 
     private boolean isListNotEmpty(ListAnswer answerList) {
@@ -125,7 +132,9 @@ public class AnswersPresenter implements IAnswersPresenter {
         if (isListNotEmpty(listAnswer))
             view.showAnswerList(listAnswer);
 
+        answerBodySize=1;
     }
+
 
     //@Override
     //public void onSaveInstanceState(Bundle outState) {
@@ -141,6 +150,16 @@ public class AnswersPresenter implements IAnswersPresenter {
     @Override
     public void openLink() {
         view.openLink(Uri.parse(question.getLink()));
+    }
+
+    @Override
+    public void textViewQuestionBodyClick() {
+        if (answerBodySize==1)
+            answerBodySize=2;
+        else
+            answerBodySize=1;
+
+        view.setAnswerBodySize(answerBodySize);
     }
 
     //for tests

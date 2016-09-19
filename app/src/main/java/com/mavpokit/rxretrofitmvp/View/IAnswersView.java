@@ -16,4 +16,5 @@ public interface IAnswersView {
     void hideSpinner();
     void showNothing();
     void openLink(Uri uri);
+    void setAnswerBodySize(int answerBodySize);
 }

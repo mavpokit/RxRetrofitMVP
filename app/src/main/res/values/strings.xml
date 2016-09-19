@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RxRetrofitMVP</string>
+    <string name="app_name">Stack Overflow</string>
     <string name="action_search">Search</string>
     <string name="query_hint">enter query</string>
     <string name="no_data_available">Enter your query</string>

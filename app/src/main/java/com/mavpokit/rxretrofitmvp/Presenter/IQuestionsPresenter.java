@@ -11,6 +11,7 @@ import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 public interface IQuestionsPresenter {
     void onSearchClick(String query);
     void onStop();
+    void onDestroy();
     void onCreate(IQuestionsView view, Bundle savedInstanceState);
     void onCreateView();
     void onSaveInstanceState(Bundle outState);

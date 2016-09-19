@@ -7,6 +7,7 @@ import com.mavpokit.rxretrofitmvp.DI.QuestionsPresenterProvider;
 import com.mavpokit.rxretrofitmvp.DI.SchedulerMockProvider;
 import com.mavpokit.rxretrofitmvp.Integration.AnswersFragmentIntegrationTest;
 import com.mavpokit.rxretrofitmvp.Integration.AnswersPresenterIntegrationTest;
+import com.mavpokit.rxretrofitmvp.Integration.IntegrationApiModule;
 import com.mavpokit.rxretrofitmvp.Integration.ModelIntegrationTest;
 import com.mavpokit.rxretrofitmvp.Integration.QuestionsFragmentIntegrationTest;
 import com.mavpokit.rxretrofitmvp.Integration.QuestionsPresenterIntegrationTest;
@@ -33,4 +34,5 @@ public interface AppIntegrationTestComponent extends AppComponent{
     public void inject(AnswersPresenterIntegrationTest answersPresenterIntegrationTest);
     public void inject(QuestionsFragmentIntegrationTest questionsFragmentIntegrationTest);
     public void inject(AnswersFragmentIntegrationTest answersFragmentIntegrationTest);
+    public void inject(IntegrationApiModule integrationApiModule);
 }

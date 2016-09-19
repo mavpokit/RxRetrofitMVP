@@ -128,4 +128,11 @@ public class AnswersPresenterTest extends BaseTest {
         presenter.openLink();
         verify(view).openLink(Uri.parse(question.getLink()));
     }
+
+    @Test
+    public void textViewQuestionBodyClick() throws Exception{
+        presenter.onCreate(view,question);
+        presenter.textViewQuestionBodyClick();
+        verify(view).setAnswerBodySize(2);
+    }
 }

@@ -1,6 +1,9 @@
 package com.mavpokit.rxretrofitmvp.View.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -9,10 +12,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Alex on 04.08.2016.
@@ -47,6 +57,9 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     ProgressBar mProgressBar;
     @BindView(R.id.textView0answers)
     TextView textView0answers;
+    @BindView(R.id.questionBodyScrollView)
+    ScrollView questionBodyScrollView;
+
 
 
     private Question question;
@@ -154,6 +167,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -161,5 +175,30 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         setRetainInstance(true);
     }
 
+    @OnClick(R.id.textViewQuestionBody)
+    public void onTextViewQuestionBodyClick(View v){
+        presenter.textViewQuestionBodyClick();
+    }
+
+    @Override
+    public void setAnswerBodySize(int answerBodySize) {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+
+        int height_px=height/4;
+        if (answerBodySize==2) height_px=height/2;
+
+        questionBodyScrollView.setLayoutParams(
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, height_px)
+        );
+
+        Log.d("****************   ",String.valueOf(height_px));
+
+    }
 
 }

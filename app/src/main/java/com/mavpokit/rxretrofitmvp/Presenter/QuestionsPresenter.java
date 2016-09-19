@@ -73,6 +73,11 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     }
 
     @Override
+    public void onDestroy() {
+        listQuestion=null;
+    }
+
+    @Override
     public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
 //        MyApplication.getAppComponent().inject(this);
         this.view = view;

@@ -1,5 +1,6 @@
 package com.mavpokit.rxretrofitmvp.View.Adapters;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         public TextView mTextViewTitle;
         public TextView mTextViewLink;
         public TextView mTextViewAnswers;
+        public Context context;
         //public CardView mCard;
 
 
@@ -38,6 +40,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
             mTextViewLink = (TextView)v.findViewById(R.id.textViewLink);
             mTextViewAnswers = (TextView)v.findViewById(R.id.textViewAnswers);
             //mCard = (CardView)v.findViewById(R.id.card_view);answers_card_view
+            context=v.getContext();
         }
     }
 
@@ -69,7 +72,10 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         holder.mTextViewLink.setText(link.substring(7,link.length()));
         int answerCount=listQuestion.getItems().get(position).getAnswer_count();
         holder.mTextViewAnswers.setText("Answers:"+answerCount);
-        if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xc1,0xff,0xc1));
+        //if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xc1,0xff,0xc1));
+
+        if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(holder.context.getResources().getColor(R.color.answered_background));
+
         else holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xd9,0xda,0xd9));
 
         holder.mTextViewLink.setOnClickListener(v ->  presenter.openLink(position));

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#457cca</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#e69558</color>
     <color name="link_color">#2741a7</color>
-    <color name="recycler_bg">#90d9e6</color>
+    <color name="recycler_bg">#457cca</color>
     <color name="answers_color">#168101</color>
     <color name="link_background">#e6fdfb</color>
-    <color name="answered_background">#c1ffc1</color>
+    <color name="answered_background">#e69558</color>
     <color name="answer_background">#d9dad9</color>
-    <color name="recycler_bg1">#ceedc8</color>
+    <color name="recycler_bg1">#ffffff</color>
 </resources>

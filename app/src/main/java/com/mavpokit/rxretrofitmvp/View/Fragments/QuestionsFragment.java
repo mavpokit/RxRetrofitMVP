@@ -225,7 +225,10 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(LOGTAG,"Fragment onDestroy");
+        Log.d(LOGTAG,"Question Fragment onDestroy");
+        presenter.onDestroy();
+
+
     }
 
     public interface OnShowAnswersListener{

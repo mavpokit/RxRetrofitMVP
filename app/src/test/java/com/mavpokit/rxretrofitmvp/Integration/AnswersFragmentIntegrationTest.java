@@ -34,8 +34,8 @@ public class AnswersFragmentIntegrationTest extends BaseIntegrationTest{
     @Inject
     IAnswersPresenter presenter;
 
-    @Inject
-    MockWebServer server;
+//    @Inject
+//    MockWebServer server;
 
     AnswersFragment answersFragment;
 

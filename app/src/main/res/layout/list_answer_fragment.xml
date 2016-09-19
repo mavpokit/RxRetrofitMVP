@@ -5,28 +5,47 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <TextView
-        android:id="@+id/textViewQuestionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:text="title"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textViewQuestionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:textStyle="bold" />
+    <!--android:maxLines="2"-->
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/questionBodyScrollView"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/textViewQuestionBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="body" />
+        <!--android:maxLines="3"-->
+    </ScrollView>
 
     <TextView
-        android:id="@+id/textViewQuestionBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="3"
-        android:text="body" />
+            android:id="@+id/textViewQuestionLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="link"
+            android:textColor="#0800ff" />
 
-    <TextView
-        android:id="@+id/textViewQuestionLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="link"
-        android:textColor="#0800ff" />
+        <TextView
+            android:id="@+id/textViewAnswersHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="answers:"
+            android:background="@color/colorAccent"
+            android:textColor="#FFFFFF"
+            android:gravity="center" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"

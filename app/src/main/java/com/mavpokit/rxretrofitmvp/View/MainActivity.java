@@ -24,12 +24,14 @@ public class MainActivity extends AppCompatActivity implements QuestionsFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.soicon);
+
         fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentByTag(QUESTION_TAG) == null)
             replaceFragment(new QuestionsFragment(), QUESTION_TAG, false);
 
         Log.d(LOGTAG,"Activity onCreate "+this.hashCode());
-
     }
 
     private void replaceFragment(Fragment fragment, String FRAGMENT_TAG, boolean addToBackStackFlag) {
@@ -45,12 +47,14 @@ public class MainActivity extends AppCompatActivity implements QuestionsFragment
         replaceFragment(AnswersFragment.getInstance(question), ANSWER_TAG, true);
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOGTAG,"Activity onDestroy");
+
+    }
+
 }
 
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        Log.d(LOGTAG,"Activity onDestroy");
-//
-//    }

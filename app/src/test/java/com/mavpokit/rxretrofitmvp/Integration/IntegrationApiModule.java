@@ -1,5 +1,7 @@
 package com.mavpokit.rxretrofitmvp.Integration;
 
+import com.mavpokit.rxretrofitmvp.Integration.DI.AppIntegrationTestComponent;
+import com.mavpokit.rxretrofitmvp.Integration.DI.MyIntegrationTestApplication;
 import com.mavpokit.rxretrofitmvp.Model.Api.ApiModule;
 import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
@@ -9,6 +11,8 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
 import java.io.IOError;
 import java.io.IOException;
+
+import javax.inject.Inject;
 
 import okhttp3.HttpUrl;
 import okhttp3.mockwebserver.Dispatcher;
@@ -24,7 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Alex on 27.07.2016.
  */
 public class IntegrationApiModule extends BaseIntegrationTest {
-    public StackoverflowApiInterface getApiInterface(MockWebServer server)throws IOException{
+
+    public IntegrationApiModule() {
+        ((AppIntegrationTestComponent) MyIntegrationTestApplication.getAppComponent()).inject(this);
+    }
+
+    public StackoverflowApiInterface getApiInterface()throws IOException{
+//    public StackoverflowApiInterface getApiInterface(MockWebServer server)throws IOException{
 
         server.start();
         String getQuestionsResponce = jsonReader.read(Consts.JSONQUESTIONS_FILE);
