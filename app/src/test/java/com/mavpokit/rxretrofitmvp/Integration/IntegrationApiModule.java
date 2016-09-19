@@ -9,6 +9,8 @@ import com.mavpokit.rxretrofitmvp.Model.Const;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
+import org.junit.Ignore;
+
 import java.io.IOError;
 import java.io.IOException;
 
@@ -27,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Alex on 27.07.2016.
  */
+@Ignore
 public class IntegrationApiModule extends BaseIntegrationTest {
 
     public IntegrationApiModule() {

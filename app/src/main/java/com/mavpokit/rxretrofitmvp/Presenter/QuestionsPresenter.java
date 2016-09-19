@@ -59,8 +59,10 @@ public class QuestionsPresenter implements IQuestionsPresenter {
                     view.hideSpinner();
                 }
                 else
+                {
                     view.showNothing();
                     view.hideSpinner();
+                }
             }
         });
 

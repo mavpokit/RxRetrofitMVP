@@ -59,6 +59,7 @@ public class QuestionsPresenterTest extends BaseTest {
 
     @Test
     public void testShowAnswers() throws Exception {
+        presenter.setListQuestion(mListQuestion);
         final int INDEX=0;
         presenter.showAnswers(INDEX);
         verify(view).openAnswers(mListQuestion.getItems().get(INDEX));
@@ -66,6 +67,7 @@ public class QuestionsPresenterTest extends BaseTest {
 
     @Test
     public void testOpenLink() throws Exception {
+        presenter.setListQuestion(mListQuestion);
         final int INDEX=0;
         presenter.openLink(INDEX);
 
@@ -75,6 +77,7 @@ public class QuestionsPresenterTest extends BaseTest {
 
     @Test
     public void testOnCreateView() throws Exception{
+        presenter.setListQuestion(mListQuestion);
         presenter.onCreateView();
         if (isListNotEmpty(mListQuestion))
             verify(view).showQuestionList(mListQuestion);
