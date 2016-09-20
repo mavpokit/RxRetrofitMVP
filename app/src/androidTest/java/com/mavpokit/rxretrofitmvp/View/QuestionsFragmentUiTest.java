@@ -85,9 +85,8 @@ public class QuestionsFragmentUiTest {
 
         apiConfig.setListQuestionsResultOk();
 
-        onView(withId(R.id.search_src_text))
-                .perform(replaceText("java"))
-                .perform(pressImeActionButton(), closeSoftKeyboard());
+        typeQueryText();
+
         onView(withId(R.id.questions_recycler_view)).check(matches(isDisplayed()));
         onView(withId(R.id.progressBar)).check(matches(not((isDisplayed()))));
 
@@ -110,9 +109,7 @@ public class QuestionsFragmentUiTest {
 
         apiConfig.setListQuestionsResultEmpty();
 
-        onView(withId(R.id.search_src_text))
-                .perform(replaceText("java"))
-                .perform(pressImeActionButton(), closeSoftKeyboard());
+        typeQueryText();
 
         onView(withId(R.id.questions_recycler_view)).check(matches(not(isDisplayed())));
         onView(withId(R.id.emptyTextView)).check(matches((isDisplayed())));
@@ -131,14 +128,13 @@ public class QuestionsFragmentUiTest {
 
     }
 
+
     @Test
     public void showErrorTest() {
 
         apiConfig.setListQuestionsResultError();
 
-        onView(withId(R.id.search_src_text))
-                .perform(replaceText("java"))
-                .perform(pressImeActionButton(), closeSoftKeyboard());
+        typeQueryText();
 
         onView(withId(R.id.questions_recycler_view)).check(matches(not(isDisplayed())));
         onView(withId(R.id.emptyTextView)).check(matches((isDisplayed())));
@@ -155,6 +151,13 @@ public class QuestionsFragmentUiTest {
         }
     }
 
+    void typeQueryText() {
+        onView(withId(R.id.action_search)).perform(click());
+        onView(allOf(withId(R.id.search_src_text),
+                withParent(withId(R.id.search_plate))))
+                .perform(replaceText("java"))
+                .perform(pressImeActionButton(), closeSoftKeyboard());
+    }
 
 
 
