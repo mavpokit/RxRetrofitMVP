@@ -1,5 +1,6 @@
 package com.mavpokit.rxretrofitmvp.View.Fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ public class QuestionsFragmentTest extends BaseTest{
 
     MainActivity activity;
 
-
     @Before
     public void setUp() throws Exception {
         super.setUp();
@@ -66,5 +66,6 @@ public class QuestionsFragmentTest extends BaseTest{
         questionsFragment.onStop();
         verify(presenter).onStop();
     }
+
 
 }
