@@ -17,6 +17,8 @@ public interface IQuestionsPresenter {
     void onSaveInstanceState(Bundle outState);
     void showAnswers(int position);
     void openLink(int position);
+    void onSuggestionClick(int position);
+
 
     //for Tests
     void setListQuestion(ListQuestion listQuestion);

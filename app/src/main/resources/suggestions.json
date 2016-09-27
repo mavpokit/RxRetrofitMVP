@@ -1,0 +1,11 @@
+[
+  "java",
+  "android",
+  "activity",
+  "realm",
+  "fragment",
+  "service",
+  "content provider",
+  "lidecycle",
+  "retrofit"
+]

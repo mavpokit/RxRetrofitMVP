@@ -25,6 +25,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     private IQuestionsView view;
     private Subscription subscription = Subscriptions.empty();
+    private Subscription subscriptionSuggestions = Subscriptions.empty();
     private ListQuestion listQuestion;
     private final static String Q_LIST_KEY = "questionList";
 
@@ -72,6 +73,8 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     public void onStop() {
         if (!subscription.isUnsubscribed())
             subscription.unsubscribe();
+        if (!subscriptionSuggestions.isUnsubscribed())
+            subscriptionSuggestions.unsubscribe();
     }
 
     @Override
@@ -81,10 +84,31 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     @Override
     public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
-//        MyApplication.getAppComponent().inject(this);
         this.view = view;
-//        if (savedInstanceState != null)
-//            listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
+//        if (savedInstanceState != null) listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
+
+        //model asynchronously loads suggestions array and view adds it to searchview suggestion list
+        if (!subscriptionSuggestions.isUnsubscribed())
+            subscriptionSuggestions.unsubscribe();
+
+        subscriptionSuggestions=model.loadSuggestions().subscribe(new Observer<String[]>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String[] strings) {
+                view.initSuggestions(strings);
+            }
+        });
+        //this case worked well, but in QuestionsFragmentIntegrationTest we got rx.exceptions.OnErrorNotImplementedException
+        //subscriptionSuggestions=model.loadSuggestions().subscribe(strings -> view.initSuggestions(strings));
 
     }
 
@@ -93,9 +117,6 @@ public class QuestionsPresenter implements IQuestionsPresenter {
         if (isListNotEmpty(listQuestion))
             view.showQuestionList(listQuestion);
     }
-
-
-
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -111,6 +132,12 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     @Override
     public void openLink(int position) {
         view.openLink(Uri.parse(listQuestion.getItems().get(position).getLink()));
+    }
+
+    @Override
+    public void onSuggestionClick(int position) {
+        //suggestions are already loaded, so we can get suggest synchronously
+        view.selectSuggestion(model.getSuggestion(position));
     }
 
     private boolean isListNotEmpty(ListQuestion questionList) {

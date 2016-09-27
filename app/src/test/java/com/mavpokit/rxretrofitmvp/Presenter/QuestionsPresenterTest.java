@@ -30,6 +30,8 @@ public class QuestionsPresenterTest extends BaseTest {
     private static final String LINK="https://github.com";
     private static final String QUERY="java";
     private static final String ERROR_MESSAGE="ERROR_MESSAGE";
+    private static final String[] SUGGESTIONS={"A","B","C"};
+
     Question question;
     ArrayList<Question> questionsList=new ArrayList<>();
     private ListQuestion mListQuestion =new ListQuestion();
@@ -53,8 +55,14 @@ public class QuestionsPresenterTest extends BaseTest {
         mListQuestion.setItems(questionsList);
 
         //presenter=new QuestionsPresenter();
+        when(model.loadSuggestions()).thenReturn(Observable.just(SUGGESTIONS));
         presenter.onCreate(view,null);
 
+    }
+
+    @Test
+    public void testOnCreate() throws Exception {
+        verify(view).initSuggestions(SUGGESTIONS);
     }
 
     @Test

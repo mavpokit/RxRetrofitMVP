@@ -11,4 +11,8 @@ import rx.Observable;
 public interface IModel {
     Observable<ListQuestion> getQuestionList(String query);
     Observable<ListAnswer> getAnswerList(String questionId);
+    Observable<String[]> loadSuggestions();
+    String getSuggestion(int position);
+
+
 }

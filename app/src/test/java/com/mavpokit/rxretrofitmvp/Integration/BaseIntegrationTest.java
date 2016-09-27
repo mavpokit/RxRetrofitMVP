@@ -3,7 +3,7 @@ package com.mavpokit.rxretrofitmvp.Integration;
 import com.mavpokit.rxretrofitmvp.BuildConfig;
 import com.mavpokit.rxretrofitmvp.Integration.DI.AppIntegrationTestComponent;
 import com.mavpokit.rxretrofitmvp.Integration.DI.MyIntegrationTestApplication;
-import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
+import com.mavpokit.rxretrofitmvp.Util.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 

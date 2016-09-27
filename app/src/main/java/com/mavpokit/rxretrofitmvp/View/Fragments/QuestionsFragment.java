@@ -2,12 +2,17 @@ package com.mavpokit.rxretrofitmvp.View.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
 import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -60,6 +65,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     private static String LOGTAG="------------------";
 
+    private SimpleCursorAdapter mAdapter;
+
 
     @Override
     public void onAttach(Context context) {
@@ -74,6 +81,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         super.onCreate(savedInstanceState);
         Log.d(LOGTAG,"Fragment onCreate "+this.hashCode());
         Log.d(LOGTAG,"Presenter "+presenter.hashCode());
+
+
     }
 
     @Nullable
@@ -164,6 +173,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     }
 
+
     private void initList() {
         //mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -187,25 +197,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.optionsmenu, menu);
         MenuItem item = menu.findItem(R.id.action_search);
-        searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setIconifiedByDefault(false);
-        searchView.setQueryHint(getResources().getString(R.string.query_hint));
-        searchView.setQuery(searchViewText, false);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                search(query);
-                searchView.clearFocus();
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
+        setupSearchView(item);
 
         MenuItem itemOptions = menu.findItem(R.id.refresh);
         itemOptions.setOnMenuItemClickListener((menuitem) -> {
@@ -217,7 +210,44 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     }
 
-    //for integration tests
+    void setupSearchView(MenuItem item) {
+        searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint(getResources().getString(R.string.query_hint));
+        searchView.setQuery(searchViewText, false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);// -----here we run search--------
+                searchView.clearFocus();
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        //show search suggestion
+        if (mAdapter!=null)
+            searchView.setSuggestionsAdapter(mAdapter);
+
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionClick(int position) {
+                presenter.onSuggestionClick(position);
+                return true;
+            }
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return true;
+            }
+        });
+    }
+
+    //moved from onCreateOptionsMenu method to separate method
+    // wih purpose for run search in integration tests
     public void search(String query) {
         presenter.onSearchClick(query);
     }
@@ -234,4 +264,27 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public interface OnShowAnswersListener{
         void openAnswersFragment(Question question);
     }
+
+    @Override
+    public void initSuggestions(String[] suggestions) {
+        final String[] from = new String[] {"query_text"};
+        final int[] to = new int[] {android.R.id.text1};
+        MatrixCursor matrixCursor= new MatrixCursor(new String[]{ BaseColumns._ID, "query_text" });
+        for (int i = 0; i <suggestions.length ; i++)
+            matrixCursor.addRow(new Object[]{i,suggestions[i]});
+
+        mAdapter = new SimpleCursorAdapter(getActivity(),
+                android.R.layout.simple_list_item_1,
+                matrixCursor,
+                from,
+                to,
+                CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+    }
+
+    @Override
+    public void selectSuggestion(String suggestion) {
+        searchView.setQuery(suggestion,false);
+    }
+
 }

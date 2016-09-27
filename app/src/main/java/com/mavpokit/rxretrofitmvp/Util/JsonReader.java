@@ -1,4 +1,4 @@
-package com.mavpokit.rxretrofitmvp.Model.Api;
+package com.mavpokit.rxretrofitmvp.Util;
 
 import com.google.gson.Gson;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
 
+//for load suggestions in app, for load MockWebServer responces in integration tests
 public class JsonReader {
     public String read(String filename) {
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(filename);

@@ -17,4 +17,7 @@ public interface IQuestionsView {
     void hideSpinner();
     void openLink(Uri link);
     void openAnswers(Question question);
+    void initSuggestions(String[] suggestions);
+    void selectSuggestion(String suggestion);
+
 }

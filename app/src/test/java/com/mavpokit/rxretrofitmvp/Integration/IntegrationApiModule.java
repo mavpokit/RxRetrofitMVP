@@ -3,27 +3,16 @@ package com.mavpokit.rxretrofitmvp.Integration;
 import com.mavpokit.rxretrofitmvp.Integration.DI.AppIntegrationTestComponent;
 import com.mavpokit.rxretrofitmvp.Integration.DI.MyIntegrationTestApplication;
 import com.mavpokit.rxretrofitmvp.Model.Api.ApiModule;
-import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
-import com.mavpokit.rxretrofitmvp.Model.Const;
-import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
-import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
 import org.junit.Ignore;
 
-import java.io.IOError;
 import java.io.IOException;
-
-import javax.inject.Inject;
 
 import okhttp3.HttpUrl;
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**

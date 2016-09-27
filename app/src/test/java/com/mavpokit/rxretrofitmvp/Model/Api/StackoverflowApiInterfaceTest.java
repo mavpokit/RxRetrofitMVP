@@ -1,34 +1,22 @@
 package com.mavpokit.rxretrofitmvp.Model.Api;
 
 import com.mavpokit.rxretrofitmvp.BaseTest;
-import com.mavpokit.rxretrofitmvp.BuildConfig;
-import com.mavpokit.rxretrofitmvp.DI.MyApplication;
-import com.mavpokit.rxretrofitmvp.DI.MyTestApplication;
-import com.mavpokit.rxretrofitmvp.Model.Api.ApiModule;
-import com.mavpokit.rxretrofitmvp.Model.Api.JsonReader;
-import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
-import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterfaceTest;
+import com.mavpokit.rxretrofitmvp.Util.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Answer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
-import java.util.List;
+
 import okhttp3.HttpUrl;
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
 
 import okhttp3.mockwebserver.RecordedRequest;
 import rx.observers.TestSubscriber;
-import rx.schedulers.Schedulers;
 
 import static org.junit.Assert.assertEquals;
 
