@@ -54,22 +54,22 @@ public class Model implements IModel {
     @Override
     public Observable<String[]> loadSuggestions() {
 
-        final String[] SUGGESTIONS = {
-                "java", "android", "activity",
-                "fragment", "service", "content provider",
-                "lidecycle", "retrofit"
-        };
+//        final String[] SUGGESTIONS = {
+//                "java", "android", "activity",
+//                "fragment", "service", "content provider",
+//                "lidecycle", "retrofit"
+//        };
+//
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        suggestions = SUGGESTIONS;
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        suggestions = SUGGESTIONS;
-
-//        String s=new JsonReader().read("suggestions.json");
-//        Gson gson = new Gson();
-//        suggestions=gson.fromJson(s,String[].class);
+        String s=new JsonReader().read("suggestions.json");
+        Gson gson = new Gson();
+        suggestions=gson.fromJson(s,String[].class);
 
         Observable<String[]> suggestionsObservable = Observable.just(suggestions);
         return suggestionsObservable
