@@ -160,6 +160,12 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(LOGTAG,"AnswersFragment onDestroy");
+    }
+
+    @Override
     public void openLink(Uri link) {
         Intent intent = new Intent(Intent.ACTION_VIEW, link);
         if (intent.resolveActivity(getContext().getPackageManager()) != null)
@@ -200,5 +206,7 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         Log.d("****************   ",String.valueOf(height_px));
 
     }
+
+
 
 }

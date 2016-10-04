@@ -39,8 +39,9 @@ public class Model implements IModel {
     public Observable<ListQuestion> getQuestionList(String query) {
         //return ApiModule.getApiInterface().getQuestions(query) //before DI
         return apiInterface.getQuestions(query)
-                .subscribeOn(ioScheduler)
-                .observeOn(uiScheduler);
+                .observeOn(uiScheduler)
+                .subscribeOn(ioScheduler);
+
     }
 
     @Override

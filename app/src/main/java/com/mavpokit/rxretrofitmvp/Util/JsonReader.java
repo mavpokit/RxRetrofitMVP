@@ -10,7 +10,16 @@ import java.io.PrintStream;
 import java.io.Reader;
 
 //for load suggestions in app, for load MockWebServer responces in integration tests
+
+/**
+ * class for reading json files from resources
+ */
 public class JsonReader {
+    /**
+     * simply reads file from resources
+     * @param filename filename with extension, located in resources folder
+     * @return string with file content
+     */
     public String read(String filename) {
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(filename);
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
@@ -27,6 +36,11 @@ public class JsonReader {
         return sb.toString();
     }
 
+    /**
+     * reads json file and converts json to ListQuestion class object
+     * @param filename filename with extension, located in resources folder
+     * @return ListQuestion class object
+     */
     public ListQuestion getListQuestion(String filename) {
         ListQuestion listQuestion = (ListQuestion)new Gson().fromJson(this.read(filename), (Class)ListQuestion.class);
         return listQuestion;

@@ -79,7 +79,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         MyApplication.getAppComponent().inject(this);
         presenter.onCreate(this, savedInstanceState);
         super.onCreate(savedInstanceState);
-        Log.d(LOGTAG,"Fragment onCreate "+this.hashCode());
+        Log.d(LOGTAG,"Question Fragment onCreate "+this.hashCode());
         Log.d(LOGTAG,"Presenter "+presenter.hashCode());
 
 
@@ -135,7 +135,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void showError(String errorMessage) {
         mRecyclerView.setVisibility(View.GONE);
         emptyTextView.setVisibility(View.VISIBLE);
-        Toast.makeText(getContext(),errorMessage,Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"Error making network request "+errorMessage,Toast.LENGTH_LONG).show();
 
 
     }
@@ -163,7 +163,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @Override
     public void onPause() {
         super.onPause();
-        Log.d(LOGTAG,"Fragment onPause");
+        Log.d(LOGTAG,"Question Fragment onPause");
     }
 
     @Override
