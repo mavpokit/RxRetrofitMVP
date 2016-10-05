@@ -2,14 +2,22 @@ package com.mavpokit.rxretrofitmvp.Model;
 
 import com.google.gson.Gson;
 import com.mavpokit.rxretrofitmvp.DI.MyApplication;
+import com.mavpokit.rxretrofitmvp.Model.Realm.RealmString;
 import com.mavpokit.rxretrofitmvp.Util.JsonReader;
 import com.mavpokit.rxretrofitmvp.Model.Api.StackoverflowApiInterface;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import rx.Observable;
 import rx.Scheduler;
 
@@ -28,7 +36,10 @@ public class Model implements IModel {
     @Named(Const.UI_THREAD)
     Scheduler uiScheduler;
 
-    String[] suggestions = new String[]{};
+    @Inject
+    Realm realm;
+
+    List<String> suggestions = new ArrayList<>();
 
     public Model() {
         //if (MyApplication.getAppComponent()==null) System.out.println("null");
@@ -53,34 +64,45 @@ public class Model implements IModel {
     }
 
     @Override
-    public Observable<String[]> loadSuggestions() {
+    public Observable<List<String>> loadSuggestions() {
 
-//        final String[] SUGGESTIONS = {
-//                "java", "android", "activity",
-//                "fragment", "service", "content provider",
-//                "lidecycle", "retrofit"
-//        };
+        Observable<List<String>> suggestionsObservable = realm.where(RealmString.class).findAllAsync().asObservable()
+                .filter(realmStrings -> realmStrings.isLoaded())
+                .flatMap(realmStrings -> {
+                    List<String> list = new ArrayList<String>();
+                    for (int i = realmStrings.size()-1; i >= 0 ; i--)
+                        list.add(realmStrings.get(i).getValue());
+                    return Observable.just(list);
+                    });
+        return suggestionsObservable;
+
+//----------------------load from json file in resources------------------
+//        String s=new JsonReader().read("suggestions.json");
+//        Gson gson = new Gson();
+//        suggestions=gson.fromJson(s,ArrayList.class);
 //
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+//        Observable<List<String>> suggestionsObservable = Observable.just(suggestions);
+//        return suggestionsObservable
+//                .subscribeOn(ioScheduler)
+//                .observeOn(uiScheduler);
+
+//        final String[] SUGGESTIONS = {"java", "android", "activity"};
 //        suggestions = SUGGESTIONS;
 
-        String s=new JsonReader().read("suggestions.json");
-        Gson gson = new Gson();
-        suggestions=gson.fromJson(s,String[].class);
-
-        Observable<String[]> suggestionsObservable = Observable.just(suggestions);
-        return suggestionsObservable
-                .subscribeOn(ioScheduler)
-                .observeOn(uiScheduler);
 
     }
 
     @Override
     public String getSuggestion(int position) {
-        return suggestions[position];
+        return suggestions.get(position);
+    }
+
+    @Override
+    public void addQueryToSuggestionsList(String query, RealmAddListener listener) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(new RealmString(query));
+        realm.commitTransaction();
+        listener.onAdd();
+
     }
 }

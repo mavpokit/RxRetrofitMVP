@@ -3,6 +3,8 @@ package com.mavpokit.rxretrofitmvp.Model;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 
+import java.util.List;
+
 import rx.Observable;
 
 /**
@@ -11,8 +13,11 @@ import rx.Observable;
 public interface IModel {
     Observable<ListQuestion> getQuestionList(String query);
     Observable<ListAnswer> getAnswerList(String questionId);
-    Observable<String[]> loadSuggestions();
+    public Observable<List<String>> loadSuggestions();
     String getSuggestion(int position);
+    void addQueryToSuggestionsList(String query, RealmAddListener listener);
 
-
+    interface RealmAddListener{
+        void onAdd();
+    }
 }

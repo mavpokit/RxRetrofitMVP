@@ -5,6 +5,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
@@ -59,7 +61,14 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextViewAnswer.setText(Html.fromHtml( listAnswer.getItems().get(position).getBody()));
+        setAnimation(holder.mTextViewAnswer, position);
+    }
 
+    private void setAnimation(View viewToAnimate, int position)
+    {
+            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), android.R.anim.slide_in_left);
+            animation.setDuration(500);
+            viewToAnimate.startAnimation(animation);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

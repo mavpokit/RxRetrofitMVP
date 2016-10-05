@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/answers_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -7,10 +8,13 @@
 
         <TextView
             android:id="@+id/textViewQuestionTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="title"
-            android:textStyle="bold" />
+            android:textColor="#000000"
+            android:background="@color/colorAccent"/>
+            <!--android:textStyle="bold"-->
+
     <!--android:maxLines="2"-->
 
 
@@ -24,6 +28,7 @@
             android:id="@+id/textViewQuestionBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="body" />
         <!--android:maxLines="3"-->
     </ScrollView>

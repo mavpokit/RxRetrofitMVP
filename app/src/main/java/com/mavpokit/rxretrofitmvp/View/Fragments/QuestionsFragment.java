@@ -23,6 +23,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,8 @@ import com.mavpokit.rxretrofitmvp.Presenter.IQuestionsPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapters.QuestionsAdapter;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -67,6 +73,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
     private SimpleCursorAdapter mAdapter;
 
+    List<String> suggestionsList;
 
     @Override
     public void onAttach(Context context) {
@@ -121,6 +128,14 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         adapter.setListQuestion(questionList);
         emptyTextView.setVisibility(View.GONE);
         mRecyclerView.setVisibility(View.VISIBLE);
+//        Animation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,
+//                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+//        Animation animation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        Animation animation = new AlphaAnimation(0,1);
+        animation.setDuration(1000);
+
+        mRecyclerView.startAnimation(animation);
+
 
     }
 
@@ -236,7 +251,9 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
         searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
             @Override
             public boolean onSuggestionClick(int position) {
-                presenter.onSuggestionClick(position);
+                //select suggestion directly from view, without V-P-M-P-V chain
+                searchView.setQuery(suggestionsList.get(position),false);
+                //presenter.onSuggestionClick(position);
                 return true;
             }
             @Override
@@ -266,12 +283,13 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     }
 
     @Override
-    public void initSuggestions(String[] suggestions) {
+    public void initSuggestions(List<String> suggestions) {
+        suggestionsList=suggestions;
         final String[] from = new String[] {"query_text"};
         final int[] to = new int[] {android.R.id.text1};
         MatrixCursor matrixCursor= new MatrixCursor(new String[]{ BaseColumns._ID, "query_text" });
-        for (int i = 0; i <suggestions.length ; i++)
-            matrixCursor.addRow(new Object[]{i,suggestions[i]});
+        for (int i = 0; i <suggestions.size() ; i++)
+            matrixCursor.addRow(new Object[]{i,suggestions.get(i)});
 
         mAdapter = new SimpleCursorAdapter(getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -279,6 +297,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
                 from,
                 to,
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        if (mAdapter!=null && searchView!=null)
+            searchView.setSuggestionsAdapter(mAdapter);
 
     }
 

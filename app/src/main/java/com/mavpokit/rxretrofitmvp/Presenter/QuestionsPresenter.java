@@ -8,6 +8,8 @@ import com.mavpokit.rxretrofitmvp.Model.IModel;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.View.IQuestionsView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import rx.Observer;
@@ -67,7 +69,11 @@ public class QuestionsPresenter implements IQuestionsPresenter {
             }
         });
 
+        model.addQueryToSuggestionsList(query, () -> initSuggestionList());
+
     }
+
+
 
     @Override
     public void onStop() {
@@ -86,30 +92,34 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     public void onCreate(IQuestionsView view, Bundle savedInstanceState) {
         this.view = view;
 //        if (savedInstanceState != null) listQuestion = (ListQuestion) savedInstanceState.getSerializable(Q_LIST_KEY);
+        initSuggestionList();
 
-        //model asynchronously loads suggestions array and view adds it to searchview suggestion list
+    }
+
+
+    /**
+     * model asynchronously loads suggestions array and view adds it to searchview suggestion list
+     */
+    void initSuggestionList() {
+
         if (!subscriptionSuggestions.isUnsubscribed())
             subscriptionSuggestions.unsubscribe();
 
-        subscriptionSuggestions=model.loadSuggestions().subscribe(new Observer<String[]>() {
+        subscriptionSuggestions=model.loadSuggestions().subscribe(new Observer<List<String>>() {
             @Override
-            public void onCompleted() {
-
-            }
+            public void onCompleted() {}
 
             @Override
-            public void onError(Throwable e) {
-
-            }
+            public void onError(Throwable e) {}
 
             @Override
-            public void onNext(String[] strings) {
+            public void onNext(List<String> strings) {
+                System.out.println("----------------------------------"+strings);
                 view.initSuggestions(strings);
             }
         });
         //this case worked well, but in QuestionsFragmentIntegrationTest we got rx.exceptions.OnErrorNotImplementedException
         //subscriptionSuggestions=model.loadSuggestions().subscribe(strings -> view.initSuggestions(strings));
-
     }
 
     @Override

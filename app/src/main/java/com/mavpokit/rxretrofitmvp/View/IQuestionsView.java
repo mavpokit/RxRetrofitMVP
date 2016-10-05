@@ -5,6 +5,8 @@ import android.net.Uri;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
 
+import java.util.List;
+
 
 /**
  * Created by Alex on 27.07.2016.
@@ -17,7 +19,7 @@ public interface IQuestionsView {
     void hideSpinner();
     void openLink(Uri link);
     void openAnswers(Question question);
-    void initSuggestions(String[] suggestions);
+    void initSuggestions(List<String> suggestions);
     void selectSuggestion(String suggestion);
 
 }

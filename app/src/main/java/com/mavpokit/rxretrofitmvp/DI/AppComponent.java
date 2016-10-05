@@ -18,7 +18,8 @@ import dagger.Component;
         SchedulerProvider.class,
         ModelProvider.class,
         QuestionsPresenterProvider.class,
-        AnswersPresenterProvider.class})
+        AnswersPresenterProvider.class,
+        RealmProvider.class})
 public interface AppComponent {
     public void inject(Model model);
     public void inject(QuestionsPresenter questionsPresenter);

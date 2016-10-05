@@ -2,7 +2,6 @@ package com.mavpokit.rxretrofitmvp.View.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Point;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -17,10 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +31,7 @@ import com.mavpokit.rxretrofitmvp.Presenter.IAnswersPresenter;
 import com.mavpokit.rxretrofitmvp.R;
 import com.mavpokit.rxretrofitmvp.View.Adapters.AnswersAdapter;
 import com.mavpokit.rxretrofitmvp.View.IAnswersView;
+import com.mavpokit.rxretrofitmvp.View.Util.HeightAnimation;
 
 import javax.inject.Inject;
 
@@ -59,6 +59,8 @@ public class AnswersFragment extends Fragment implements IAnswersView {
     TextView textView0answers;
     @BindView(R.id.questionBodyScrollView)
     ScrollView questionBodyScrollView;
+    @BindView(R.id.answers_fragment_container)
+    LinearLayout answers_fragment_container;
 
 
 
@@ -84,6 +86,8 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         View view = inflater.inflate(R.layout.list_answer_fragment, container, false);
         ButterKnife.bind(this, view);
 
+        animateAppearance();
+
         initAnswersList();
 
         presenter.onCreateView();
@@ -91,6 +95,14 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         Log.d(LOGTAG,"AnswersFragment onCreateView");
 
         return view;
+    }
+
+    private void animateAppearance() {
+//        Animation animation = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_out_right);
+        Animation animation = new AlphaAnimation(0,1);
+        animation.setDuration(1000);
+        textViewQuestionBody.startAnimation(animation);
+
     }
 
     @Override
@@ -195,15 +207,25 @@ public class AnswersFragment extends Fragment implements IAnswersView {
         int width = size.x;
         int height = size.y;
 
-        int height_px=height/4;
-        if (answerBodySize==2) height_px=height/2;
+        int target_height_px=height/4;
+        int start_height_px=height/2;
 
-        questionBodyScrollView.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT, height_px)
-        );
+        if (answerBodySize==2) {
+            target_height_px=height/2;
+            start_height_px=height/4;
+        }
 
-        Log.d("****************   ",String.valueOf(height_px));
+        HeightAnimation resizeAnimation = new HeightAnimation(questionBodyScrollView,start_height_px,target_height_px);
+        resizeAnimation.setDuration(500);
+        questionBodyScrollView.startAnimation(resizeAnimation);
+
+//        old version without animation
+//        questionBodyScrollView.setLayoutParams(
+//                new LinearLayout.LayoutParams(
+//                        LinearLayout.LayoutParams.MATCH_PARENT, target_height_px)
+//        );
+
+        //Log.d("****************   ",String.valueOf(target_height_px));
 
     }
 
