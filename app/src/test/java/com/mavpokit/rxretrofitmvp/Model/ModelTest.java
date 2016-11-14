@@ -6,23 +6,33 @@ import com.mavpokit.rxretrofitmvp.Model.Pojo.Answer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListAnswer;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.ListQuestion;
 import com.mavpokit.rxretrofitmvp.Model.Pojo.Question;
+import com.mavpokit.rxretrofitmvp.Model.Realm.RealmString;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
+import org.powermock.api.mockito.PowerMockito;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+import io.realm.log.RealmLog;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.observers.TestSubscriber;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mock;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
  * Created by Alex on 26.08.2016.
@@ -44,6 +54,10 @@ public class ModelTest extends BaseTest {
 
     private ArrayList<Answer> answerList=new ArrayList<>();
     private ListAnswer mListAnswer=new ListAnswer();
+
+    private static final String[] SUGGESTIONS={"A","B","C"};
+    private static final List<String> LIST_SUGGESTIONS= Arrays.asList(SUGGESTIONS);
+
 
 
     @Before
@@ -90,4 +104,13 @@ public class ModelTest extends BaseTest {
         assertEquals(actual,mListAnswer);
 
     }
+
+    @Test
+    public void testLoadSuggestions() throws Exception {
+
+
+    }
+
+
+
 }

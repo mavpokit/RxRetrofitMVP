@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,6 +33,7 @@ public class QuestionsPresenterTest extends BaseTest {
     private static final String QUERY="java";
     private static final String ERROR_MESSAGE="ERROR_MESSAGE";
     private static final String[] SUGGESTIONS={"A","B","C"};
+    private static final List<String> LIST_SUGGESTIONS= Arrays.asList(SUGGESTIONS);
 
     Question question;
     ArrayList<Question> questionsList=new ArrayList<>();
@@ -55,14 +58,14 @@ public class QuestionsPresenterTest extends BaseTest {
         mListQuestion.setItems(questionsList);
 
         //presenter=new QuestionsPresenter();
-        when(model.loadSuggestions()).thenReturn(Observable.just(SUGGESTIONS));
+        when(model.loadSuggestions()).thenReturn(Observable.just(LIST_SUGGESTIONS));
         presenter.onCreate(view,null);
 
     }
 
     @Test
     public void testOnCreate() throws Exception {
-        verify(view).initSuggestions(SUGGESTIONS);
+        verify(view).initSuggestions(LIST_SUGGESTIONS);
     }
 
     @Test

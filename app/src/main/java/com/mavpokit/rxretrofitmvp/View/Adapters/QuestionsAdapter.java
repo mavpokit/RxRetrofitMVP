@@ -59,6 +59,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     public void setListQuestion(ListQuestion listQuestion) {
         this.listQuestion = listQuestion;
         notifyDataSetChanged();
+        lastPosition = -1;
     }
 
     // Create new views (invoked by the layout manager)
@@ -94,24 +95,24 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
 
         holder.mTextViewAnswers.setOnClickListener(v-> presenter.showAnswers(position));
 
-        setAnimation(holder.mTextViewLink, position);
-        setAnimation(holder.mTextViewAnswers, position);
-//        setAnimation(holder.container, position);
+//        setAnimation(holder.mTextViewLink, position);
+//        setAnimation(holder.mTextViewAnswers, position);
+        setAnimation(holder.container, position);
 
     }
 
     private void setAnimation(View viewToAnimate, int position)
     {
         // If the bound view wasn't previously displayed on screen, it's animated
-        //if (position > lastPosition)
+        if (position > lastPosition)
         {
-            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), android.R.anim.slide_in_left);
+//            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), android.R.anim.slide_in_left);
 
 //            Animation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
 //            Animation animation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
 
-//            Animation animation = new AlphaAnimation(0,1);
+            Animation animation = new AlphaAnimation(0,1);
 
             animation.setDuration(500);
             viewToAnimate.startAnimation(animation);

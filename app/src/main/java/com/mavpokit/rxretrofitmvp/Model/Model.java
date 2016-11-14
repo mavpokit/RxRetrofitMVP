@@ -36,8 +36,8 @@ public class Model implements IModel {
     @Named(Const.UI_THREAD)
     Scheduler uiScheduler;
 
-    @Inject
-    Realm realm;
+//it's bad idea to inject realm because we don't know when to close it
+//    @Inject Realm realm;
 
     List<String> suggestions = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class Model implements IModel {
 
     @Override
     public Observable<List<String>> loadSuggestions() {
-
+        Realm realm = Realm.getDefaultInstance();
         Observable<List<String>> suggestionsObservable = realm.where(RealmString.class).findAllAsync().asObservable()
                 .filter(realmStrings -> realmStrings.isLoaded())
                 .flatMap(realmStrings -> {
@@ -74,6 +74,7 @@ public class Model implements IModel {
                         list.add(realmStrings.get(i).getValue());
                     return Observable.just(list);
                     });
+        realm.close();
         return suggestionsObservable;
 
 //----------------------load from json file in resources------------------
@@ -99,10 +100,14 @@ public class Model implements IModel {
 
     @Override
     public void addQueryToSuggestionsList(String query, RealmAddListener listener) {
+        Realm realm = Realm.getDefaultInstance();
+
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(new RealmString(query));
         realm.commitTransaction();
         listener.onAdd();
+
+        realm.close();
 
     }
 }

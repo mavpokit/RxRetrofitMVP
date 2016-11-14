@@ -10,4 +10,9 @@ public class MyTestApplication extends MyApplication {
     protected AppComponent buildComponent() {
         return DaggerAppTestComponent.builder().build();
     }
+
+    @Override
+    void initRealm() {
+//        super.initRealm();
+    }
 }

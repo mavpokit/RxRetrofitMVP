@@ -19,6 +19,12 @@ public class MyApplication extends Application {
         //Init Dagger
         appComponent=buildComponent();
 
+        initRealm();
+
+
+    }
+
+    void initRealm() {
         //Init Realm
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
