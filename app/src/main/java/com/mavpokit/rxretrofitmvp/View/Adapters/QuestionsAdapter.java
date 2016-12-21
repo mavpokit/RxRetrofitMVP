@@ -1,5 +1,6 @@
 package com.mavpokit.rxretrofitmvp.View.Adapters;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -106,16 +107,20 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         // If the bound view wasn't previously displayed on screen, it's animated
         if (position > lastPosition)
         {
+//view animation
 //            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), android.R.anim.slide_in_left);
-
 //            Animation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-
 //            Animation animation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+//            Animation animation = new AlphaAnimation(0,1);
+//            animation.setDuration(500);
+//            viewToAnimate.startAnimation(animation);
 
-            Animation animation = new AlphaAnimation(0,1);
+//property animation
+            ObjectAnimator animation = ObjectAnimator.ofFloat(viewToAnimate,View.SCALE_X,0,1);
+            animation.setDuration(200);
+            animation.start();
+//            viewToAnimate.animate().rotationYBy(720).alpha(0.5f);
 
-            animation.setDuration(500);
-            viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
     }

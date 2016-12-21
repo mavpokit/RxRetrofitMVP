@@ -217,12 +217,10 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
         MenuItem itemOptions = menu.findItem(R.id.refresh);
         itemOptions.setOnMenuItemClickListener((menuitem) -> {
-                    //BusProvider.getInstance().post(new Message(Message.SWIPED, null));
                     Toast.makeText(getContext(),"refreshed",Toast.LENGTH_SHORT).show();
                     return true;
                 }
         );
-
     }
 
     void setupSearchView(MenuItem item) {
