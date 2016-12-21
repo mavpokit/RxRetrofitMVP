@@ -229,6 +229,4 @@ public class AnswersFragment extends Fragment implements IAnswersView {
 
     }
 
-
-
 }

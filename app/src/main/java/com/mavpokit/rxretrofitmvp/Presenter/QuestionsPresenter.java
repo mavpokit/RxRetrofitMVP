@@ -130,6 +130,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        //after retaining, we don't need to save this
         //if (isListNotEmpty(listQuestion))
         //outState.putSerializable(Q_LIST_KEY, listQuestion);
     }

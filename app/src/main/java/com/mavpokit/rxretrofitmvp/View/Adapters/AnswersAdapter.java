@@ -20,6 +20,9 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     private ListAnswer listAnswer =new ListAnswer();
     private IAnswersPresenter presenter;
 
+    // Allows to remember the last item shown on screen for animation
+    private int lastPosition = -1;
+
     public AnswersAdapter(IAnswersPresenter presenter) {
         this.presenter = presenter;
     }

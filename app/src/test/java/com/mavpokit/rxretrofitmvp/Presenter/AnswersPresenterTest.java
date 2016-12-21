@@ -130,7 +130,7 @@ public class AnswersPresenterTest extends BaseTest {
     }
 
     @Test
-    public void textViewQuestionBodyClick() throws Exception{
+    public void testTextViewQuestionBodyClick() throws Exception{
         presenter.onCreate(view,question);
         presenter.textViewQuestionBodyClick();
         verify(view).setAnswerBodySize(2);
