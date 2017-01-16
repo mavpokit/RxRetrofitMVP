@@ -116,7 +116,8 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
 //            viewToAnimate.startAnimation(animation);
 
 //property animation
-            ObjectAnimator animation = ObjectAnimator.ofFloat(viewToAnimate,View.SCALE_X,0,1);
+//            ObjectAnimator animation = ObjectAnimator.ofFloat(viewToAnimate,View.SCALE_X,0,1);
+            ObjectAnimator animation = ObjectAnimator.ofFloat(viewToAnimate,View.X,-100,0);
             animation.setDuration(200);
             animation.start();
 //            viewToAnimate.animate().rotationYBy(720).alpha(0.5f);

@@ -1,5 +1,9 @@
 package com.mavpokit.rxretrofitmvp.View.Fragments;
 
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +21,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,8 +30,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +66,8 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     ProgressBar mProgressBar;
     @BindView(R.id.emptyTextView)
     TextView emptyTextView;
+    @BindView(R.id.arrowImageView)
+    ImageView arrowImageView;
 
     //private IQuestionsPresenter presenter=new QuestionsPresenter(this); before DI
     @Inject
@@ -104,9 +115,58 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
         presenter.onCreateView();
 
+        runStartAnimation();
+
+////        emptyTextView.animate().setDuration(2000).translationX(400);
+//
+////        Animation arrowAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.arrow_anim);
+////        arrowImageView.startAnimation(arrowAnimation);
+//        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(arrowImageView,"y",0f,200f).setDuration(5000);
+////        fadeIn.start();
+////        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(arrowImageView,"x",0,200f).setDuration(1000);
+//        AnimatorSet fadeInOut = new AnimatorSet();
+//        fadeInOut.playSequentially(fadeIn,fadeIn);
+//        fadeInOut.start();
+
         Log.d(LOGTAG,"Fragment onCreateView");
 
         return view;
+    }
+
+    private void runStartAnimation() {
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(arrowImageView,View.ALPHA,0f,1f);
+//        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(imageView,"alpha",0f,1f);
+        final int duration=1500;
+        fadeIn.setDuration(duration);
+        fadeIn.setRepeatCount(1);
+//        fadeIn.setStartDelay(500);
+
+//        fadeIn.setRepeatCount(ValueAnimator.INFINITE);
+        fadeIn.setRepeatMode(ValueAnimator.REVERSE);
+//        fadeIn.start();
+//        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(imageView,"alpha",1f,0f);
+//        fadeOut.setDuration(duration);
+//        fadeOut.setStartDelay(duration);
+//        fadeOut.start();
+
+        //final position of textView should be in the center of display
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        emptyTextView.setAlpha(1);//must set to 1 because after previus animation, it is 0 and not visible
+        emptyTextView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int textViewWidth = emptyTextView.getMeasuredWidth();
+        int x = display.getWidth()/2 - textViewWidth/2;
+        ObjectAnimator moveAnim = ObjectAnimator.ofFloat(emptyTextView,View.X,0,x);
+        moveAnim.setInterpolator(new BounceInterpolator());
+        moveAnim.setDuration(1000);
+//        moveAnim.start();
+
+
+        emptyTextView.animate().alpha(0).setStartDelay(2500).setDuration(1000);
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(moveAnim,fadeIn);
+        animatorSet.start();
+
     }
 
     @Override
@@ -127,6 +187,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     public void showQuestionList(ListQuestion questionList) {
         adapter.setListQuestion(questionList);
         emptyTextView.setVisibility(View.GONE);
+        arrowImageView.setVisibility(View.GONE);
         mRecyclerView.setVisibility(View.VISIBLE);
 //        Animation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,
 //                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -142,6 +203,7 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @Override
     public void showNothing() {
         mRecyclerView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
         emptyTextView.setVisibility(View.VISIBLE);
         Toast.makeText(this.getActivity(),R.string.no_results_toast,Toast.LENGTH_SHORT).show();
     }
