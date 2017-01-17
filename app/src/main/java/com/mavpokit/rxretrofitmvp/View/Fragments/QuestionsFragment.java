@@ -115,59 +115,11 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
         presenter.onCreateView();
 
-        runStartAnimation();
-
-////        emptyTextView.animate().setDuration(2000).translationX(400);
-//
-////        Animation arrowAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.arrow_anim);
-////        arrowImageView.startAnimation(arrowAnimation);
-//        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(arrowImageView,"y",0f,200f).setDuration(5000);
-////        fadeIn.start();
-////        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(arrowImageView,"x",0,200f).setDuration(1000);
-//        AnimatorSet fadeInOut = new AnimatorSet();
-//        fadeInOut.playSequentially(fadeIn,fadeIn);
-//        fadeInOut.start();
-
         Log.d(LOGTAG,"Fragment onCreateView");
 
         return view;
     }
 
-    private void runStartAnimation() {
-        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(arrowImageView,View.ALPHA,0f,1f);
-//        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(imageView,"alpha",0f,1f);
-        final int duration=1500;
-        fadeIn.setDuration(duration);
-        fadeIn.setRepeatCount(1);
-//        fadeIn.setStartDelay(500);
-
-//        fadeIn.setRepeatCount(ValueAnimator.INFINITE);
-        fadeIn.setRepeatMode(ValueAnimator.REVERSE);
-//        fadeIn.start();
-//        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(imageView,"alpha",1f,0f);
-//        fadeOut.setDuration(duration);
-//        fadeOut.setStartDelay(duration);
-//        fadeOut.start();
-
-        //final position of textView should be in the center of display
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        emptyTextView.setAlpha(1);//must set to 1 because after previus animation, it is 0 and not visible
-        emptyTextView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int textViewWidth = emptyTextView.getMeasuredWidth();
-        int x = display.getWidth()/2 - textViewWidth/2;
-        ObjectAnimator moveAnim = ObjectAnimator.ofFloat(emptyTextView,View.X,0,x);
-        moveAnim.setInterpolator(new BounceInterpolator());
-        moveAnim.setDuration(1000);
-//        moveAnim.start();
-
-
-        emptyTextView.animate().alpha(0).setStartDelay(2500).setDuration(1000);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playSequentially(moveAnim,fadeIn);
-        animatorSet.start();
-
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -277,12 +229,6 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
 
         setupSearchView(item);
 
-        MenuItem itemOptions = menu.findItem(R.id.refresh);
-        itemOptions.setOnMenuItemClickListener((menuitem) -> {
-                    Toast.makeText(getContext(),"refreshed",Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-        );
     }
 
     void setupSearchView(MenuItem item) {
@@ -365,6 +311,43 @@ public class QuestionsFragment extends Fragment implements IQuestionsView {
     @Override
     public void selectSuggestion(String suggestion) {
         searchView.setQuery(suggestion,false);
+    }
+
+    @Override
+    public void runQueryArrowAnimation() {
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(arrowImageView,View.ALPHA,0f,0.5f);
+//        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(imageView,"alpha",0f,1f);
+        final int duration=1500;
+        fadeIn.setDuration(duration);
+        fadeIn.setRepeatCount(1);
+//        fadeIn.setStartDelay(500);
+
+//        fadeIn.setRepeatCount(ValueAnimator.INFINITE);
+        fadeIn.setRepeatMode(ValueAnimator.REVERSE);
+//        fadeIn.start();
+//        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(imageView,"alpha",1f,0f);
+//        fadeOut.setDuration(duration);
+//        fadeOut.setStartDelay(duration);
+//        fadeOut.start();
+
+        //final position of textView should be in the center of display
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        emptyTextView.setAlpha(1);//must set to 1 because after previus animation, it is 0 and not visible
+        emptyTextView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int textViewWidth = emptyTextView.getMeasuredWidth();
+        int x = display.getWidth()/2 - textViewWidth/2;
+        ObjectAnimator moveAnim = ObjectAnimator.ofFloat(emptyTextView,View.X,0,x);
+        moveAnim.setInterpolator(new BounceInterpolator());
+        moveAnim.setDuration(1000);
+//        moveAnim.start();
+
+
+        emptyTextView.animate().alpha(0).setStartDelay(2500).setDuration(1000);
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(moveAnim,fadeIn);
+        animatorSet.start();
+
     }
 
 }

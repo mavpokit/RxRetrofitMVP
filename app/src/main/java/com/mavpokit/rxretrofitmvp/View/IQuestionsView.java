@@ -21,5 +21,6 @@ public interface IQuestionsView {
     void openAnswers(Question question);
     void initSuggestions(List<String> suggestions);
     void selectSuggestion(String suggestion);
+    void runQueryArrowAnimation();
 
 }

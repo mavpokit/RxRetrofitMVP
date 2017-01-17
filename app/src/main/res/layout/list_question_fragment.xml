@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:id="@+id/arrowImageView"
             android:src="@drawable/arrow2"
-            android:layout_marginRight="67dp"
+            android:layout_marginRight="20dp"
             android:alpha="0"
             android:scaleType="fitXY"
             android:layout_toRightOf="@id/emptyTextView"

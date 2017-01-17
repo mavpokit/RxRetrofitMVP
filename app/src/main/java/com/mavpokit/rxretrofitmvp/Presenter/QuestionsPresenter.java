@@ -127,6 +127,8 @@ public class QuestionsPresenter implements IQuestionsPresenter {
     public void onCreateView() {
         if (isListNotEmpty(listQuestion))
             view.showQuestionList(listQuestion);
+        else
+            view.runQueryArrowAnimation();
     }
 
     @Override
