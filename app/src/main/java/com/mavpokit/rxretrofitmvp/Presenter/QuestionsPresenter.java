@@ -63,6 +63,7 @@ public class QuestionsPresenter implements IQuestionsPresenter {
                 }
                 else
                 {
+                    listQuestion=null;
                     view.showNothing();
                     view.hideSpinner();
                 }

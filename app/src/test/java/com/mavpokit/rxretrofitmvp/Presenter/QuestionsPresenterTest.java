@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -110,12 +111,13 @@ public class QuestionsPresenterTest extends BaseTest {
 
     @Test
     public void testOnSearchClick0results() throws Exception{
-        presenter.setListQuestion(null);
+        presenter.setListQuestion(mListQuestion);
         when(model.getQuestionList(QUERY)).thenReturn(Observable.just(null));
         presenter.onSearchClick(QUERY);
         verify(view).showSpinner();
         verify(view).showNothing();
         verify(view).hideSpinner();
+        assertNull(presenter.getListQuestion());
     }
     @Test
     public void testOnSearchClickError() throws Exception{
