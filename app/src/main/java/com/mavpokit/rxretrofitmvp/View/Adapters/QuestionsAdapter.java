@@ -88,12 +88,15 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         holder.mTextViewAnswers.setText("Answers:"+answerCount);
         //if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xc1,0xff,0xc1));
 
-        if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(holder.context.getResources().getColor(R.color.answered_background));
+//        if (answerCount>0) holder.mTextViewAnswers.setBackgroundColor(holder.context.getResources().getColor(R.color.answered_background));
+//        else holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xd9,0xda,0xd9));
 
-        else holder.mTextViewAnswers.setBackgroundColor(Color.rgb(0xd9,0xda,0xd9));
+        if (answerCount>0) holder.mTextViewAnswers.setBackgroundDrawable(holder.context.getResources().getDrawable(R.drawable.button_shape_round));
+        else holder.mTextViewAnswers.setBackgroundDrawable(holder.context.getResources().getDrawable(R.drawable.button_shape_round_0answers));
 
         holder.mTextViewLink.setOnClickListener(v ->  presenter.openLink(position));
 
+        holder.mTextViewTitle.setOnClickListener(v-> presenter.showAnswers(position));
         holder.mTextViewAnswers.setOnClickListener(v-> presenter.showAnswers(position));
 
 //        setAnimation(holder.mTextViewLink, position);

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/questions_item_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -10,12 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
-        card_view:cardCornerRadius="4dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        card_view:cardCornerRadius="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="1dp"
             android:orientation="vertical">
 
             <TextView
@@ -35,7 +38,7 @@
                 <TextView
                     android:id="@+id/textViewLink"
                     android:layout_width="0dp"
-                    android:layout_weight="4"
+                    android:layout_weight="7"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="New Text"
@@ -46,11 +49,13 @@
                 <TextView
                     android:id="@+id/textViewAnswers"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:padding="2dp"
                     android:text="Answers:"
-                    android:background="@color/answer_background"
+                    android:background="@drawable/button_shape_round"
+                    android:layout_marginLeft="4dp"
                     android:textColor="@color/answers_color" />
 
             </LinearLayout>

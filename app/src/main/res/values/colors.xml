@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#e69558</color>
     <color name="link_color">#2741a7</color>
-    <color name="recycler_bg">#457cca</color>
+    <color name="recycler_bg">#5e7197</color>
+    <!--<color name="recycler_bg">#c4c4c4</color>-->
     <color name="answers_color">#168101</color>
     <color name="link_background">#e6fdfb</color>
     <color name="answered_background">#e69558</color>
